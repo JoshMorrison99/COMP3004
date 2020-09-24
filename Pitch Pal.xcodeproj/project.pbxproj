@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A71B26C2534689BFA153857A /* Pods_Pitch_Pal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */; };
+		E721A756251D667800C2145A /* PitchDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E721A755251D667800C2145A /* PitchDetection.swift */; };
 		E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */; };
 		E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */; };
-		E7C53FFA251C0ED000EDECE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF9251C0ED000EDECE0 /* ViewController.swift */; };
 		E7C53FFD251C0ED000EDECE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFB251C0ED000EDECE0 /* Main.storyboard */; };
 		E7C53FFF251C0ED500EDECE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */; };
 		E7C54002251C0ED500EDECE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitch_Pal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.release.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.release.xcconfig"; sourceTree = "<group>"; };
+		9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.debug.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.debug.xcconfig"; sourceTree = "<group>"; };
+		E721A755251D667800C2145A /* PitchDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetection.swift; sourceTree = "<group>"; };
 		E7C53FF2251C0ED000EDECE0 /* Pitch Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E7C53FF9251C0ED000EDECE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7C53FFC251C0ED000EDECE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7C54001251C0ED500EDECE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A71B26C2534689BFA153857A /* Pods_Pitch_Pal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		560E0C5FC761324E8A9DBB73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB3C5242292BA8D7CCB5BE2E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */,
+				708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E7C53FE9251C0ED000EDECE0 = {
 			isa = PBXGroup;
 			children = (
 				E7C53FF4251C0ED000EDECE0 /* Pitch Pal */,
 				E7C53FF3251C0ED000EDECE0 /* Products */,
+				CB3C5242292BA8D7CCB5BE2E /* Pods */,
+				560E0C5FC761324E8A9DBB73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,11 +82,11 @@
 			children = (
 				E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */,
 				E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */,
-				E7C53FF9251C0ED000EDECE0 /* ViewController.swift */,
 				E7C53FFB251C0ED000EDECE0 /* Main.storyboard */,
 				E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */,
 				E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */,
 				E7C54003251C0ED500EDECE0 /* Info.plist */,
+				E721A755251D667800C2145A /* PitchDetection.swift */,
 			);
 			path = "Pitch Pal";
 			sourceTree = "<group>";
@@ -74,6 +98,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7C54006251C0ED500EDECE0 /* Build configuration list for PBXNativeTarget "Pitch Pal" */;
 			buildPhases = (
+				1FC3093FFF3CB9513CF22DD4 /* [CP] Check Pods Manifest.lock */,
 				E7C53FEE251C0ED000EDECE0 /* Sources */,
 				E7C53FEF251C0ED000EDECE0 /* Frameworks */,
 				E7C53FF0251C0ED000EDECE0 /* Resources */,
@@ -133,13 +158,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1FC3093FFF3CB9513CF22DD4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pitch Pal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E7C53FEE251C0ED000EDECE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7C53FFA251C0ED000EDECE0 /* ViewController.swift in Sources */,
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
+				E721A756251D667800C2145A /* PitchDetection.swift in Sources */,
 				E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +332,7 @@
 		};
 		E7C54007251C0ED500EDECE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +351,7 @@
 		};
 		E7C54008251C0ED500EDECE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
