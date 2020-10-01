@@ -1,0 +1,11 @@
+Add the ability for the app to get frequencies from the users microphone and convert those frequencies into note.
+
+Added debug labels to the app, this will help determine what is going on when working with frequencies being picked up by the users microphone.
+
+Add a noise gate to the note detection. The microphone will only read the frequencies from the mircophone only if the sound passes a certain threthold.
+
+Added UI for the note detection. When a certain frequency is picked up from the microphone, the UI will display what note it is reading on the UI piano.
+
+Started working on a tutorial on how to use the app.
+
+Added the ability to hit notes in a certain order when the app displays the notes in a certain order.

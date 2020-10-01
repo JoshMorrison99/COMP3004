@@ -10,7 +10,7 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class PitchDetection: UIViewController {
+class Lesson: UIViewController {
     
     // Debug Labels
     @IBOutlet weak var pitchDetectionLabel: UILabel!
@@ -35,6 +35,17 @@ class PitchDetection: UIViewController {
     @IBOutlet weak var Piano_Stack: UIStackView!
     @IBOutlet weak var Piano_StackView_1: UIStackView!
     
+    // Game Logic
+    let NotesSequence = ["G","B","G","E","D","B"]
+    var goalNote = "G"
+    var goalIndex = 0
+    @IBOutlet weak var Note_G_01: UIImageView!
+    @IBOutlet weak var Note_B_02: UIImageView!
+    @IBOutlet weak var Note_G_03: UIImageView!
+    @IBOutlet weak var Note_E_04: UIImageView!
+    @IBOutlet weak var Note_D_05: UIImageView!
+    @IBOutlet weak var Note_B_06: UIImageView!
+    var NoteImageSequence : [UIImageView] = []
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     
@@ -50,6 +61,9 @@ class PitchDetection: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup lesson logic
+        self.NoteImageSequence = [Note_G_01, Note_B_02, Note_G_03, Note_E_04, Note_D_05, Note_B_06]
         
         // Setup UI
         setupPianoUI()
@@ -71,6 +85,7 @@ class PitchDetection: UIViewController {
                 Timer.scheduledTimer(withTimeInterval: self.timerCycle, repeats: true) { timer in // Timer executes every 1/10 of a second
                     if(self.tracker.amplitude > self.noiseGateThreshold){ // The amplitude is the loudness of the noise. Therefore, if th eloudness of the noise in the microphone is greater than the given threshold then the microphone will pick it up. (noise gate)
                         self.pitchDetection()
+                        self.GameLogic()
                     }else{
                         self.amplitudeDebugLabel.text = "amplitude: 0.00"
                     }
@@ -99,13 +114,13 @@ class PitchDetection: UIViewController {
         for i in 0...8 {
             if(tracker.frequency >= noteOctaveLowerBound[i] && tracker.frequency <= noteOctaveUpperBound[i]){
                 octave = i
-                print("Ocatave: ", i)
+                //print("Ocatave: ", i)
             }
         }
         
         // Get middle A of the octave we are on
         let middleA = 440 * pow(2, (octave - 5))
-        print("middleA: ", middleA)
+        //print("middleA: ", middleA)
         
         // Calculate the frequency from middleA
         var octaveFrequencies: [Double] = []
@@ -114,7 +129,7 @@ class PitchDetection: UIViewController {
             octaveFrequencies.append(middleACalculation)
         }
         
-        print("octaveFrequencies: ", octaveFrequencies)
+        //print("octaveFrequencies: ", octaveFrequencies)
         
         // Find the closest value in the octaveFrequencies array
         var smallestValue:Double = 0
@@ -136,13 +151,13 @@ class PitchDetection: UIViewController {
         }else{
             closest = smallestValue
         }
-        print("BIG: ", biggestValue)
-        print("SMALL: ", smallestValue)
-        print("CLOSEST: ", closest)
+        //print("BIG: ", biggestValue)
+        //print("SMALL: ", smallestValue)
+        //print("CLOSEST: ", closest)
         
         // Get the index of the closest value
         let index = octaveFrequencies.firstIndex(of: closest)
-        print(index)
+        //print(index)
         pitchDetectionLabel.text = Notes[index ?? 0]
         pianoKeyPressedUI()
     }
@@ -160,6 +175,25 @@ class PitchDetection: UIViewController {
         Piano_A_1.pianoNoteStyle()
         Piano_As_1.pianoSharpStyle()
         Piano_B_1.pianoNoteStyle()
+    }
+    
+    func GameLogic(){
+        print("Goal Note: " + goalNote)
+        print(pitchDetectionLabel.text!)
+        print(NoteImageSequence[goalIndex])
+        if(pitchDetectionLabel.text! == goalNote && pitchDetectionLabel.text! == NotesSequence[goalIndex]){
+            NoteImageSequence[goalIndex].tintColor = UIColor.green
+            if(goalIndex >= NotesSequence.count-1){
+                CompleteLession()
+            }else{
+                goalIndex += 1
+                goalNote = NotesSequence[goalIndex]
+            }
+        }
+    }
+    
+    func CompleteLession(){
+        print("LESSON COMPLETE :)")
     }
     
     func pianoKeyPressedUI(){

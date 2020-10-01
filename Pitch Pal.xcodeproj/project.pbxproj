@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		A71B26C2534689BFA153857A /* Pods_Pitch_Pal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */; };
 		E721A756251D667800C2145A /* PitchDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E721A755251D667800C2145A /* PitchDetection.swift */; };
+		E790F60D251EB068005652C0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E790F60C251EB068005652C0 /* Styles.swift */; };
 		E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */; };
 		E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */; };
 		E7C53FFD251C0ED000EDECE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFB251C0ED000EDECE0 /* Main.storyboard */; };
 		E7C53FFF251C0ED500EDECE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */; };
 		E7C54002251C0ED500EDECE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */; };
+		E7E58B6A2523AF6F0061EE19 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B692523AF6F0061EE19 /* Lesson.swift */; };
+		E7E58B6E25240B070061EE19 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B6D25240B070061EE19 /* Play.swift */; };
+		E7E58B7125240DAA0061EE19 /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B7025240DAA0061EE19 /* PlayScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,7 @@
 		708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.release.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.release.xcconfig"; sourceTree = "<group>"; };
 		9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.debug.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.debug.xcconfig"; sourceTree = "<group>"; };
 		E721A755251D667800C2145A /* PitchDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetection.swift; sourceTree = "<group>"; };
+		E790F60C251EB068005652C0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		E7C53FF2251C0ED000EDECE0 /* Pitch Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,9 @@
 		E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7C54001251C0ED500EDECE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7C54003251C0ED500EDECE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7E58B692523AF6F0061EE19 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		E7E58B6D25240B070061EE19 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
+		E7E58B7025240DAA0061EE19 /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +67,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E790F60A251EB04D005652C0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E790F60C251EB068005652C0 /* Styles.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		E7C53FE9251C0ED000EDECE0 = {
 			isa = PBXGroup;
 			children = (
+				E790F60A251EB04D005652C0 /* Helpers */,
 				E7C53FF4251C0ED000EDECE0 /* Pitch Pal */,
 				E7C53FF3251C0ED000EDECE0 /* Products */,
 				CB3C5242292BA8D7CCB5BE2E /* Pods */,
@@ -87,6 +104,9 @@
 				E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */,
 				E7C54003251C0ED500EDECE0 /* Info.plist */,
 				E721A755251D667800C2145A /* PitchDetection.swift */,
+				E7E58B692523AF6F0061EE19 /* Lesson.swift */,
+				E7E58B6D25240B070061EE19 /* Play.swift */,
+				E7E58B7025240DAA0061EE19 /* PlayScene.swift */,
 			);
 			path = "Pitch Pal";
 			sourceTree = "<group>";
@@ -189,8 +209,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
+				E7E58B6A2523AF6F0061EE19 /* Lesson.swift in Sources */,
 				E721A756251D667800C2145A /* PitchDetection.swift in Sources */,
+				E7E58B7125240DAA0061EE19 /* PlayScene.swift in Sources */,
 				E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */,
+				E790F60D251EB068005652C0 /* Styles.swift in Sources */,
+				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
