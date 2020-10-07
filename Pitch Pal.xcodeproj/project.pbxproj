@@ -15,9 +15,10 @@
 		E7C53FFD251C0ED000EDECE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFB251C0ED000EDECE0 /* Main.storyboard */; };
 		E7C53FFF251C0ED500EDECE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */; };
 		E7C54002251C0ED500EDECE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */; };
-		E7E58B6A2523AF6F0061EE19 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B692523AF6F0061EE19 /* Lesson.swift */; };
+		E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB6B252D290B0078968E /* PlayScene.swift */; };
+		E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B692523AF6F0061EE19 /* Lesson001.swift */; };
 		E7E58B6E25240B070061EE19 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B6D25240B070061EE19 /* Play.swift */; };
-		E7E58B7125240DAA0061EE19 /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B7025240DAA0061EE19 /* PlayScene.swift */; };
+		E7E58B762527D10A0061EE19 /* Lessons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B752527D10A0061EE19 /* Lessons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +34,10 @@
 		E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7C54001251C0ED500EDECE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7C54003251C0ED500EDECE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7E58B692523AF6F0061EE19 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		E7D7FB6B252D290B0078968E /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		E7E58B692523AF6F0061EE19 /* Lesson001.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson001.swift; sourceTree = "<group>"; };
 		E7E58B6D25240B070061EE19 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
-		E7E58B7025240DAA0061EE19 /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		E7E58B752527D10A0061EE19 /* Lessons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lessons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +106,10 @@
 				E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */,
 				E7C54003251C0ED500EDECE0 /* Info.plist */,
 				E721A755251D667800C2145A /* PitchDetection.swift */,
-				E7E58B692523AF6F0061EE19 /* Lesson.swift */,
+				E7E58B692523AF6F0061EE19 /* Lesson001.swift */,
 				E7E58B6D25240B070061EE19 /* Play.swift */,
-				E7E58B7025240DAA0061EE19 /* PlayScene.swift */,
+				E7E58B752527D10A0061EE19 /* Lessons.swift */,
+				E7D7FB6B252D290B0078968E /* PlayScene.swift */,
 			);
 			path = "Pitch Pal";
 			sourceTree = "<group>";
@@ -209,12 +212,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
-				E7E58B6A2523AF6F0061EE19 /* Lesson.swift in Sources */,
+				E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */,
 				E721A756251D667800C2145A /* PitchDetection.swift in Sources */,
-				E7E58B7125240DAA0061EE19 /* PlayScene.swift in Sources */,
 				E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */,
 				E790F60D251EB068005652C0 /* Styles.swift in Sources */,
 				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
+				E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */,
+				E7E58B762527D10A0061EE19 /* Lessons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
