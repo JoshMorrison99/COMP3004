@@ -78,7 +78,7 @@ class PitchDetection: UIViewController {
             } catch {
                 AKLog("AudioKit did not start!")
             }
-        }
+    }
 
     func pitchDetection(){
         frequencyDebugLabel.text = "frequency: " + String(tracker.frequency)

@@ -1,0 +1,5 @@
+- Added lesson 1
+- Created main menu
+- Added table for the users to select what lesson they want to do.
+- Added ability to detect collison between user note through micorphone and the note on screen
+- Added ability to spawn music notes and have them move horizontally towards the treble clef.
