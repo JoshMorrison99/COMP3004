@@ -1,0 +1,270 @@
+//
+//  PitchDetection.swift
+//  Pitch Pal
+//
+//  Created by Josh Morrison on 9/24/20.
+//  Copyright © 2020 Pied Piper. All rights reserved.
+//
+
+import UIKit
+import AudioKit
+import AudioKitUI
+
+class Lesson001: UIViewController {
+    
+    // Pause Button
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var pauseView: UIView!
+    @IBOutlet weak var mainManu_Yes_Btn: UIButton!
+    @IBOutlet weak var mainManu_No_Btn: UIButton!
+    
+    
+    // Lesson text at the top of the screen
+    @IBOutlet weak var LessonLabel: UILabel!
+    @IBOutlet weak var LessonLabel_number: UILabel!
+    
+    
+    // Lesson Logic
+    let NotesSequence = ["G","B","E"]
+    var goalNote = "G"
+    var goalIndex = 0
+    var lessonStepNum = 0
+    var startLessonPlay: Bool = false
+    
+    var note001 = UIImageView()
+    var note002 = UIImageView()
+    var note003 = UIImageView()
+    
+    
+    var NoteImageSequence : [UIImageView] = []
+    
+    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Setup Staff UI
+        StaffUI.shared.setupStaffUI(view: view)
+        
+        // Setup Piano UI
+        PianoUI.shared.setupPianoUI(view: view)
+        
+        // Setup Pitch Detection
+        PitchDetection.shared.initializePitchDetection()
+        
+        // Pause Button Setup
+        self.setupHomeMenu()
+
+        // Start the Lesson
+        self.startLesson()
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        PitchDetection.shared.setupPitchDetection()
+        
+        
+        self.lessonLoop()
+    }
+    
+    func startLesson(){
+        StaffUI.shared.getStaff().alpha = 0
+        StaffUI.shared.getTrebleClef().alpha = 0
+        
+        self.NoteImageSequence = [note001, note002, note003]
+        
+        LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen."
+        LessonLabel_number.text = "1 / 9"
+        lessonStepNum = 1
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        StaffUI.shared.getStaff().alpha = 1
+        StaffUI.shared.FLine.alpha = 1
+        StaffUI.shared.DLine.alpha = 1
+        StaffUI.shared.GLine.alpha = 1
+        StaffUI.shared.BLine.alpha = 1
+        StaffUI.shared.ELine.alpha = 1
+        clearNotes()
+        LessonLabel.text = "This is the STAFF. It is the foundation upon which notes are drawn. The STAFF consists of 5 lines and 4 spaces. Every line or white space on the STAFF represents a key on the keyboard."
+        LessonLabel_number.text = "2 / 9"
+        lessonStepNum = 2
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "Two CLEFS are normally used: Treble and Bass CLEFS. Displayed on the STAFF is the TREBLE CLEF (also called the G clef)."
+        LessonLabel_number.text = "3 / 9"
+        lessonStepNum = 3
+        StaffUI.shared.getTrebleClef().alpha = 1
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "The highlighted line show is: E"
+        StaffUI.shared.ELine.backgroundColor = UIColor.green
+        LessonLabel_number.text = "4 / 9"
+        lessonStepNum = 4
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "The highlighted line show is: G"
+        StaffUI.shared.ELine.backgroundColor = UIColor.black
+        StaffUI.shared.GLine.backgroundColor = UIColor.green
+        LessonLabel_number.text = "5 / 9"
+        lessonStepNum = 5
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "The highlighted line show is: B"
+        StaffUI.shared.ELine.backgroundColor = UIColor.black
+        StaffUI.shared.GLine.backgroundColor = UIColor.black
+        StaffUI.shared.BLine.backgroundColor = UIColor.green
+        LessonLabel_number.text = "6 / 9"
+        lessonStepNum = 6
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "The highlighted line show is: D"
+        StaffUI.shared.ELine.backgroundColor = UIColor.black
+        StaffUI.shared.GLine.backgroundColor = UIColor.black
+        StaffUI.shared.BLine.backgroundColor = UIColor.black
+        StaffUI.shared.DLine.backgroundColor = UIColor.green
+        LessonLabel_number.text = "7 / 9"
+        lessonStepNum = 7
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "The highlighted line show is: F"
+        StaffUI.shared.ELine.backgroundColor = UIColor.black
+        StaffUI.shared.GLine.backgroundColor = UIColor.black
+        StaffUI.shared.BLine.backgroundColor = UIColor.black
+        StaffUI.shared.DLine.backgroundColor = UIColor.black
+        StaffUI.shared.FLine.backgroundColor = UIColor.green
+        LessonLabel_number.text = "8 / 9"
+        lessonStepNum = 8
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        LessonLabel.text = "Pitch Pal works by picking up the sound through your mobile device's microphone. Play the sequence of notes display. (NOTE: Remember the line letters.)"
+        StaffUI.shared.ELine.backgroundColor = UIColor.black
+        StaffUI.shared.GLine.backgroundColor = UIColor.black
+        StaffUI.shared.BLine.backgroundColor = UIColor.black
+        StaffUI.shared.DLine.backgroundColor = UIColor.black
+        StaffUI.shared.FLine.backgroundColor = UIColor.black
+        
+        note001.image = UIImage(named: "musicalnote")
+        note002.image = UIImage(named: "musicalnote")
+        note003.image = UIImage(named: "musicalnote")
+        
+        LessonLabel_number.text = "9 / 9"
+        lessonStepNum = 9
+        
+        self.displayNotes()
+        
+        self.startLessonPlay = true
+        
+    }
+    
+    func lessonLoop(){
+        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
+            if(self.lessonStepNum == 9){
+                self.LessonLogic()
+            }
+        }
+    }
+    
+    func LessonLogic(){
+        if(PitchDetection.shared.getLabel() == goalNote && PitchDetection.shared.getLabel() == NotesSequence[goalIndex]){
+            NoteImageSequence[goalIndex].tintColor = UIColor.green
+            if(goalIndex >= NotesSequence.count-1){
+                CompleteLession()
+            }else{
+                goalIndex += 1
+                goalNote = NotesSequence[goalIndex]
+            }
+        }
+    }
+    
+    func CompleteLession(){
+        LessonLabel.text = "Good Job. Lesson Complete"
+        LessonLabel_number.text = "100%"
+        StaffUI.shared.staff.alpha = 0
+        StaffUI.shared.getTrebleClef().alpha = 0
+    }
+    
+    @objc func pauseButtonClicked(){
+        pauseView.isHidden = false
+    }
+    
+    
+    func clearNotes(){
+        note001.alpha = 0
+        note002.alpha = 0
+        note003.alpha = 0
+    }
+    
+    func displayNotes(){
+        note001.alpha = 1
+        note002.alpha = 1
+        note003.alpha = 1
+    }
+    
+    func setupHomeMenu(){
+        self.pauseView.isHidden = true
+        pauseButton.addTarget(self,
+                           action: #selector(pauseButtonClicked),
+                           for: .touchUpInside)
+        mainManu_Yes_Btn.addTarget(self,
+                                   action: #selector(pauseYesButtonClicked),
+                                   for: .touchUpInside)
+    }
+    
+    @objc func pauseYesButtonClicked(){
+        do {
+            try AKManager.stop()
+        }catch{
+                print("Error: AudioKit cannot be stopped...")
+        }
+    }
+    
+    @IBAction func PauseNoButtonClick(_ sender: Any) {
+        self.pauseView.isHidden = true
+    }
+}
+
+

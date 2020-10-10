@@ -10,31 +10,12 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class PitchDetection: UIViewController {
+class PitchDetection2: UIViewController {
     
     // Debug Labels
     @IBOutlet weak var pitchDetectionLabel: UILabel!
     @IBOutlet weak var frequencyDebugLabel: UILabel!
     @IBOutlet weak var amplitudeDebugLabel: UILabel!
-    
-    // UI Piano
-    @IBOutlet weak var Piano_C_1: UIButton!
-    @IBOutlet weak var Piano_Cs_1: UIButton!
-    @IBOutlet weak var Piano_D_1: UIButton!
-    @IBOutlet weak var Piano_Ds_1: UIButton!
-    @IBOutlet weak var Piano_E_1: UIButton!
-    @IBOutlet weak var Piano_F_1: UIButton!
-    @IBOutlet weak var Piano_Fs_1: UIButton!
-    @IBOutlet weak var Piano_G_1: UIButton!
-    @IBOutlet weak var Piano_Gs_1: UIButton!
-    @IBOutlet weak var Piano_A_1: UIButton!
-    @IBOutlet weak var Piano_As_1: UIButton!
-    @IBOutlet weak var Piano_B_1: UIButton!
-    
-    // Piano StackView
-    @IBOutlet weak var Piano_Stack: UIStackView!
-    @IBOutlet weak var Piano_StackView_1: UIStackView!
-    
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     
@@ -52,7 +33,8 @@ class PitchDetection: UIViewController {
         super.viewDidLoad()
         
         // Setup UI
-        setupPianoUI()
+        PianoUI.shared.setupPianoUI(view: view)
+        
 
         AKSettings.audioInputEnabled = true
         mic = AKMicrophone()
@@ -144,52 +126,10 @@ class PitchDetection: UIViewController {
         let index = octaveFrequencies.firstIndex(of: closest)
         print(index)
         pitchDetectionLabel.text = Notes[index ?? 0]
-        pianoKeyPressedUI()
+        PianoUI.shared.pianoKeyPressedUI(pitchDetectionLabel: pitchDetectionLabel.text!)
     }
     
-    func setupPianoUI(){
-        Piano_C_1.pianoNoteStyle()
-        Piano_Cs_1.pianoSharpStyle()
-        Piano_D_1.pianoNoteStyle()
-        Piano_Ds_1.pianoSharpStyle()
-        Piano_E_1.pianoNoteStyle()
-        Piano_F_1.pianoNoteStyle()
-        Piano_Fs_1.pianoSharpStyle()
-        Piano_G_1.pianoNoteStyle()
-        Piano_Gs_1.pianoSharpStyle()
-        Piano_A_1.pianoNoteStyle()
-        Piano_As_1.pianoSharpStyle()
-        Piano_B_1.pianoNoteStyle()
-    }
     
-    func pianoKeyPressedUI(){
-        setupPianoUI()
-        if(pitchDetectionLabel.text == "C"){
-            Piano_C_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "C#"){
-            Piano_Cs_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "D"){
-            Piano_D_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "D#"){
-            Piano_Ds_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "E"){
-            Piano_E_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "F"){
-            Piano_F_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "F#"){
-            Piano_Fs_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "G"){
-            Piano_G_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "G#"){
-            Piano_Gs_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "A"){
-            Piano_A_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "A#"){
-            Piano_As_1.pianoPressedStyle()
-        }else if(pitchDetectionLabel.text == "B"){
-            Piano_B_1.pianoPressedStyle()
-        }
-    }
     
 }
 

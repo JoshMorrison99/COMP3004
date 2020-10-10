@@ -21,17 +21,17 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     var isOverlap = false
     
-    let noiseGateThreshold: Double = 0.1 // The threshold to determine at what loudness the microphone will begin picking up sound
-    let timerCycle:Double = 0.05 // the amount of time between each time the function to determinePitch() is called
-    let frequencyError:Double = 1 // the room for error on the frequency calculations
-
-    var mic: AKMicrophone!
-    var tracker: AKFrequencyTracker!
-    var silence: AKBooster!
-    
-    let amplitudeDebugLabel = UILabel()
-    let frequencyDebugLabel = UILabel()
-    let pitchDetectionLabel = UILabel()
+//    let noiseGateThreshold: Double = 0.1 // The threshold to determine at what loudness the microphone will begin picking up sound
+//    let timerCycle:Double = 0.05 // the amount of time between each time the function to determinePitch() is called
+//    let frequencyError:Double = 1 // the room for error on the frequency calculations
+//
+//    var mic: AKMicrophone!
+//    var tracker: AKFrequencyTracker!
+//    var silence: AKBooster!
+//
+//    let amplitudeDebugLabel = UILabel()
+//    let frequencyDebugLabel = UILabel()
+//    let pitchDetectionLabel = UILabel()
     
     let lineBitMask:UInt32 = 0b001
     let noteBitMask:UInt32 = 0b010
@@ -41,31 +41,21 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         
         setupUI()
         
-        AKSettings.audioInputEnabled = true
-        mic = AKMicrophone()
-        tracker = AKFrequencyTracker(mic)
-        silence = AKBooster(tracker, gain: 0)
+        // Setup Staff UI
+        StaffUI.shared.setupStaffUI(view: view)
         
-        AKManager.output = silence
-        do {
-            try AKManager.start()
-            pitchDetection()
-            Timer.scheduledTimer(withTimeInterval: self.timerCycle, repeats: true) { timer in // Timer executes every 1/10 of a second
-                if(self.tracker.amplitude > self.noiseGateThreshold){ // The amplitude is the loudness of the noise. Therefore, if th eloudness of the noise in the microphone is greater than the given threshold then the microphone will pick it up. (noise gate)
-                    self.pitchDetection()
-                }else{
-                    self.amplitudeDebugLabel.text = "amplitude: 0.00"
-                    self.pitchDetectionLabel.text = self.EmptyNote
-                }
-            }
-        } catch {
-            AKLog("AudioKit did not start!")
-        }
+        // Setup Piano UI
+        PianoUI.shared.setupPianoUI(view: view)
+        
+        // Setup Pitch Detection
+        PitchDetection.shared.initializePitchDetection()
+        PitchDetection.shared.setupPitchDetection()
         
         physicsWorld.contactDelegate = self
         
+        backgroundColor = UIColor.init(red: 47/255, green: 49/255, blue: 52/255, alpha: 1.0)
         
-        backgroundColor = SKColor.green
+        
         createNoteDetectionLine()
         
         
@@ -74,15 +64,6 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     }
     
     func setupUI(){
-        pitchDetectionLabel.translatesAutoresizingMaskIntoConstraints = false
-        view?.addSubview(pitchDetectionLabel)
-    
-        let topConstraint = pitchDetectionLabel.topAnchor.constraint(equalTo: view!.topAnchor)
-        let leadingConstraint = pitchDetectionLabel.leadingAnchor.constraint(equalTo: view!.leadingAnchor)
-        let widthConstraint = pitchDetectionLabel.widthAnchor.constraint(equalToConstant: 100)
-        let heightConstraint = pitchDetectionLabel.heightAnchor.constraint(equalToConstant: 100)
-        view?.addConstraints([topConstraint, leadingConstraint, widthConstraint, heightConstraint])
-        
         
         // Create the UI line
         let Gline = SKSpriteNode(imageNamed: "line")
@@ -148,77 +129,12 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         perform(#selector(createBNote), with: nil, afterDelay: tempo)
     }
     
-    func pitchDetection(){
-        frequencyDebugLabel.text = "frequency: " + String(tracker.frequency)
-        amplitudeDebugLabel.text = "amplitude: " + String(tracker.amplitude)
-        
-        // Calculate the octave of the note
-        var noteOctaveLowerBound: [Double] = []
-        var noteOctaveUpperBound: [Double] = []
-        var octave: Int = 0
-        for i in 0...8{
-            noteOctaveLowerBound.append(16.25 * pow(2.0,Double(i)))
-            noteOctaveUpperBound.append(30.87 * pow(2.0,Double(i)))
-        }
-        
-        //print("noteOctaveLowerBound: ", noteOctaveLowerBound)
-        //print("noteOctaveUpperBound: ", noteOctaveUpperBound)
-        
-        for i in 0...8 {
-            if(tracker.frequency >= noteOctaveLowerBound[i] && tracker.frequency <= noteOctaveUpperBound[i]){
-                octave = i
-                //print("Ocatave: ", i)
-            }
-        }
-        
-        // Get middle A of the octave we are on
-        let middleA = 440 * pow(2, (octave - 5))
-        //print("middleA: ", middleA)
-        
-        // Calculate the frequency from middleA
-        var octaveFrequencies: [Double] = []
-        for i in 3...14{
-            let middleACalculation = middleA * pow(2, i / 12)
-            octaveFrequencies.append(middleACalculation)
-        }
-        
-        //print("octaveFrequencies: ", octaveFrequencies)
-        
-        // Find the closest value in the octaveFrequencies array
-        var smallestValue:Double = 0
-        var biggestValue:Double = 10000
-        for each in octaveFrequencies{
-            //let upperNLower: [Double] = []
-            if(tracker.frequency >= each && each > smallestValue){
-                smallestValue = each
-            }
-            if(tracker.frequency <= each && each < biggestValue){
-                biggestValue = each
-            }
-        }
-        var closest:Double = 0
-        let closestBig = abs(biggestValue - tracker.frequency)
-        let closestSmall = abs(smallestValue - tracker.frequency)
-        if(closestBig < closestSmall){
-            closest = biggestValue
-        }else{
-            closest = smallestValue
-        }
-//        print("BIG: ", biggestValue)
-//        print("SMALL: ", smallestValue)
-//        print("CLOSEST: ", closest)
-        
-        // Get the index of the closest value
-        let index = octaveFrequencies.firstIndex(of: closest)
-        //print(index)
-        pitchDetectionLabel.text = Notes[index ?? 0]
-        print(pitchDetectionLabel.text)
-    }
     
     
     func didEnd(_ contact: SKPhysicsContact) {
         isOverlap = false
-        self.pitchDetectionLabel.text = EmptyNote
+        PitchDetection.shared.setLabel(newLabel: EmptyNote)
+        //self.pitchDetectionLabel.text = EmptyNote
         
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
@@ -235,7 +151,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     func didBegin(_ contact: SKPhysicsContact) {
         isOverlap = true
-        self.pitchDetectionLabel.text = EmptyNote
+        PitchDetection.shared.setLabel(newLabel: EmptyNote)
         overlap(contact, isOverlapping: isOverlap)
     }
     
@@ -250,9 +166,9 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
                     
                     
 
-                    if (nodeA.name == self.pitchDetectionLabel.text){
+                if (nodeA.name == PitchDetection.shared.getLabel()){
                         self.collisionBetween(note: nodeA, object: nodeB)
-                    } else if (nodeB.name == self.pitchDetectionLabel.text){
+                    } else if (nodeB.name == PitchDetection.shared.getLabel()){
                         self.collisionBetween(note: nodeB, object: nodeA)
                     }
             }

@@ -3,3 +3,9 @@
 - Added table for the users to select what lesson they want to do.
 - Added ability to detect collison between user note through micorphone and the note on screen
 - Added ability to spawn music notes and have them move horizontally towards the treble clef.
+- Cleaned code
+- Split the UI from the view controllers (UI is now a singleton)
+- Created a 4 octave piano rather the one octave
+- turned all the UI to be added programmatically rather than static so we can use the UI as a template rather than re-doing it on every view controller.
+- Changed the piano UI.
+
