@@ -21,17 +21,15 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     var isOverlap = false
     
-//    let noiseGateThreshold: Double = 0.1 // The threshold to determine at what loudness the microphone will begin picking up sound
-//    let timerCycle:Double = 0.05 // the amount of time between each time the function to determinePitch() is called
-//    let frequencyError:Double = 1 // the room for error on the frequency calculations
-//
-//    var mic: AKMicrophone!
-//    var tracker: AKFrequencyTracker!
-//    var silence: AKBooster!
-//
-//    let amplitudeDebugLabel = UILabel()
-//    let frequencyDebugLabel = UILabel()
-//    let pitchDetectionLabel = UILabel()
+    var staff = UIView()
+    
+    let GAxis:Double = 0.43
+    let BAxis:Double = 0.52
+    let DAxis:Double = 0.61
+    let EAxis:Double = 0.34
+    let FAxis:Double = 0.70
+    let AAxis:Double = 0.48
+    let CAxis:Double = 0.56
     
     let lineBitMask:UInt32 = 0b001
     let noteBitMask:UInt32 = 0b010
@@ -42,18 +40,21 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         setupUI()
         
         // Setup Staff UI
-        StaffUI.shared.setupStaffUI(view: view)
+        staff = StaffUI.shared.setupStaffUI(view: view)!
+        staff.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
         
         // Setup Piano UI
         PianoUI.shared.setupPianoUI(view: view)
+        
         
         // Setup Pitch Detection
         PitchDetection.shared.initializePitchDetection()
         PitchDetection.shared.setupPitchDetection()
         
+        
         physicsWorld.contactDelegate = self
         
-        backgroundColor = UIColor.init(red: 47/255, green: 49/255, blue: 52/255, alpha: 1.0)
+        backgroundColor = UIColor.init(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
         
         
         createNoteDetectionLine()
@@ -67,40 +68,47 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         
         // Create the UI line
         let Gline = SKSpriteNode(imageNamed: "line")
-        Gline.position = CGPoint(x: size.width * 0.5, y: size.height * 0.45)
+        Gline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(GAxis))
         Gline.setScale(1.5)
+        Gline.alpha = 0
         Gline.zRotation = (CGFloat(Double.pi / 2));
+        Gline.zPosition = 1000
         Gline.name = "Gline"
         addChild(Gline)
         
         // Create the UI line
         let Bline = SKSpriteNode(imageNamed: "line")
-        Bline.position = CGPoint(x: size.width * 0.5, y: size.height * 0.55)
+        Bline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(BAxis))
         Bline.setScale(1.5)
+        Bline.alpha = 0
         Bline.zRotation = (CGFloat(Double.pi / 2));
+        Bline.zPosition = 1000
         Bline.name = "Bline"
         addChild(Bline)
         
         // Create the UI line
         let Dline = SKSpriteNode(imageNamed: "line")
-        Dline.position = CGPoint(x: size.width * 0.5, y: size.height * 0.65)
+        Dline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(DAxis))
         Dline.setScale(1.5)
+        Dline.alpha = 0
         Dline.zRotation = (CGFloat(Double.pi / 2));
         Dline.name = "Dline"
         addChild(Dline)
         
         // Create the UI line
         let Eline = SKSpriteNode(imageNamed: "line")
-        Eline.position = CGPoint(x: size.width * 0.5, y: size.height * 0.35)
+        Eline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(EAxis))
         Eline.setScale(1.5)
+        Eline.alpha = 0
         Eline.zRotation = (CGFloat(Double.pi / 2));
         Eline.name = "Gline"
         addChild(Eline)
         
         // Create the UI line
         let Fline = SKSpriteNode(imageNamed: "line")
-        Fline.position = CGPoint(x: size.width * 0.5, y: size.height * 0.75)
+        Fline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(FAxis))
         Fline.setScale(1.5)
+        Fline.alpha = 0
         Fline.zRotation = (CGFloat(Double.pi / 2));
         Fline.name = "Fline"
         addChild(Fline)
@@ -109,11 +117,12 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     func createMusicSheet(){
         
         var tempo:Double = 1
-        var tempoIncrement:Double = 1
-        createGNote()
-        perform(#selector(createCNote), with: nil, afterDelay: tempo)
+        let tempoIncrement:Double = 1
+        perform(#selector(createGNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
-        perform(#selector(createANote), with: nil, afterDelay: tempo)
+        perform(#selector(createGNote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        perform(#selector(createDNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
         perform(#selector(createDNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
@@ -121,20 +130,31 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         tempo = tempo + tempoIncrement
         perform(#selector(createENote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
-        perform(#selector(createFNote), with: nil, afterDelay: tempo)
+        perform(#selector(createDNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
         tempo = tempo + tempoIncrement
-        perform(#selector(createENote), with: nil, afterDelay: tempo)
+        perform(#selector(createCNote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        perform(#selector(createCNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
         perform(#selector(createBNote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        perform(#selector(createBNote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        perform(#selector(createANote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        perform(#selector(createANote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        perform(#selector(createGNote), with: nil, afterDelay: tempo)
+        tempo = tempo + tempoIncrement
+        tempo = tempo + tempoIncrement
     }
     
     
-    
+    // Called when contact ends between two physics bodies
     func didEnd(_ contact: SKPhysicsContact) {
         isOverlap = false
         PitchDetection.shared.setLabel(newLabel: EmptyNote)
-        //self.pitchDetectionLabel.text = EmptyNote
         
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
@@ -149,12 +169,14 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         overlap(contact, isOverlapping: isOverlap)
     }
     
+    // Called when contact begins between two physics bodies
     func didBegin(_ contact: SKPhysicsContact) {
         isOverlap = true
         PitchDetection.shared.setLabel(newLabel: EmptyNote)
         overlap(contact, isOverlapping: isOverlap)
     }
     
+    // Called in the interval from when the 2 physics bodies collide and when they end.
     func overlap(_ contact: SKPhysicsContact, isOverlapping:Bool){
         print(contact)
         print(isOverlapping)
@@ -211,7 +233,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.5)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(GAxis+0.05))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -243,7 +265,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         
         let note = SKSpriteNode(imageNamed: "musicnote")
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.4)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(EAxis+0.05))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -275,7 +297,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.7)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(DAxis+0.06))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -307,7 +329,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.8)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(FAxis+0.07))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -339,7 +361,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.6)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(BAxis+0.05))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -371,7 +393,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.55)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(AAxis+0.05))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -403,7 +425,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * 0.65)
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(CAxis+0.06))
         
         // Scale the note to proper size
         note.setScale(0.15)

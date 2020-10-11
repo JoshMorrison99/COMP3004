@@ -21,7 +21,7 @@ class StaffUI {
     let FLine = UIView()
     let trebleClef = UIImageView()
     
-    func setupStaffUI(view: UIView){
+    func setupStaffUI(view: UIView) -> UIView?{
         
         // Line Logic
         FLine.backgroundColor = .black
@@ -71,6 +71,7 @@ class StaffUI {
         
         view.sendSubviewToBack(staff)
         
+        return staff
     }
     
     func getGLine() -> UIView{

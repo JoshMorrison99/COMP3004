@@ -187,9 +187,41 @@ class Lesson001: UIViewController {
         StaffUI.shared.DLine.backgroundColor = UIColor.black
         StaffUI.shared.FLine.backgroundColor = UIColor.black
         
-        note001.image = UIImage(named: "musicalnote")
-        note002.image = UIImage(named: "musicalnote")
-        note003.image = UIImage(named: "musicalnote")
+        note001.image = UIImage(named: "musicnote")
+        note002.image = UIImage(named: "musicnote")
+        note003.image = UIImage(named: "musicnote")
+        
+        note001.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(note001)
+        note001.widthAnchor.constraint(equalToConstant: 85).isActive = true
+        note001.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        note001.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -140).isActive = true
+        note001.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120).isActive = true
+        
+        note002.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(note002)
+        note002.widthAnchor.constraint(equalToConstant: 85).isActive = true
+        note002.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        note002.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -175).isActive = true
+        note002.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 220).isActive = true
+        
+        note003.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(note003)
+        note003.widthAnchor.constraint(equalToConstant: 85).isActive = true
+        note003.heightAnchor.constraint(equalToConstant: 85).isActive = true
+        note003.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -105).isActive = true
+        note003.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 320).isActive = true
+        
+        // Render images as templates, so we can change the color
+        note001.image = note001.image?.withRenderingMode(.alwaysTemplate)
+        note002.image = note001.image?.withRenderingMode(.alwaysTemplate)
+        note003.image = note001.image?.withRenderingMode(.alwaysTemplate)
+        
+        // Set the note color to black
+        note001.tintColor = .black
+        note002.tintColor = .black
+        note003.tintColor = .black
+        
         
         LessonLabel_number.text = "9 / 9"
         lessonStepNum = 9
@@ -225,6 +257,7 @@ class Lesson001: UIViewController {
         LessonLabel_number.text = "100%"
         StaffUI.shared.staff.alpha = 0
         StaffUI.shared.getTrebleClef().alpha = 0
+        clearNotes()
     }
     
     @objc func pauseButtonClicked(){
@@ -252,6 +285,7 @@ class Lesson001: UIViewController {
         mainManu_Yes_Btn.addTarget(self,
                                    action: #selector(pauseYesButtonClicked),
                                    for: .touchUpInside)
+        view.bringSubviewToFront(pauseView)
     }
     
     @objc func pauseYesButtonClicked(){
@@ -265,6 +299,7 @@ class Lesson001: UIViewController {
     @IBAction func PauseNoButtonClick(_ sender: Any) {
         self.pauseView.isHidden = true
     }
+    
 }
 
 
