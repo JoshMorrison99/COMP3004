@@ -8,11 +8,18 @@
 
 import UIKit
 import SpriteKit
+import AudioKit
 
 class Play: UIViewController {
+    @IBOutlet weak var pauseBtn: UIButton!
+    
+    @IBOutlet weak var pauseView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pauseView.isHidden = true
         
         let scene = PlayScene(size: view.bounds.size)
         let skView = self.view as! SKView
@@ -22,5 +29,20 @@ class Play: UIViewController {
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
+        
     }
+    @IBAction func pauseBtnClicked(_ sender: Any) {
+        pauseView.isHidden = false
+    }
+    @IBAction func yesBtnClicked(_ sender: Any) {
+        do {
+            try AKManager.stop()
+        }catch{
+                print("Error: AudioKit cannot be stopped...")
+        }
+    }
+    @IBAction func noBtnClicked(_ sender: Any) {
+        pauseView.isHidden = true
+    }
+    
 }

@@ -8,4 +8,7 @@
 - Created a 4 octave piano rather the one octave
 - turned all the UI to be added programmatically rather than static so we can use the UI as a template rather than re-doing it on every view controller.
 - Changed the piano UI.
+- Created new UI for the play scene
+- created a go back to menu option for lessons scene
+- added 'twinkle twinkle little star' to the play scene.
 

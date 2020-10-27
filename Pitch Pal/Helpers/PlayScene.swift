@@ -11,6 +11,8 @@ import AudioKit
 
 class PlayScene : SKScene, SKPhysicsContactDelegate{
     
+    static let shared = PlayScene()
+    
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     let EmptyNote = "#"
     let DiscardedNote = "-"
@@ -60,7 +62,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         createNoteDetectionLine()
         
         
-        createMusicSheet()
+        TwinkeTwinkle_Song()
         
     }
     
@@ -112,42 +114,6 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         Fline.zRotation = (CGFloat(Double.pi / 2));
         Fline.name = "Fline"
         addChild(Fline)
-    }
-    
-    func createMusicSheet(){
-        
-        var tempo:Double = 1
-        let tempoIncrement:Double = 1
-        perform(#selector(createGNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createGNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createDNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createDNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createENote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createENote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createDNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        tempo = tempo + tempoIncrement
-        perform(#selector(createCNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createCNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createBNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createBNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createANote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createANote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        perform(#selector(createGNote), with: nil, afterDelay: tempo)
-        tempo = tempo + tempoIncrement
-        tempo = tempo + tempoIncrement
     }
     
     
@@ -230,6 +196,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     }
     
     @objc func createGNote(){
+        print("hey")
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A71B26C2534689BFA153857A /* Pods_Pitch_Pal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */; };
+		E70DCE7725486D7D0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */; };
 		E790F60D251EB068005652C0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E790F60C251EB068005652C0 /* Styles.swift */; };
 		E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */; };
 		E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */; };
@@ -27,6 +28,7 @@
 		10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitch_Pal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.release.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.release.xcconfig"; sourceTree = "<group>"; };
 		9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.debug.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.debug.xcconfig"; sourceTree = "<group>"; };
+		E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleTwinkleLittleStar_Song.swift; sourceTree = "<group>"; };
 		E790F60C251EB068005652C0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		E7C53FF2251C0ED000EDECE0 /* Pitch Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,9 +75,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E70DCE712544B4160053BFA2 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
 		E790F60A251EB04D005652C0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E7E58B6D25240B070061EE19 /* Play.swift */,
+				E7D7FB6B252D290B0078968E /* PlayScene.swift */,
 				E790F60C251EB068005652C0 /* Styles.swift */,
 				E7D7FB6E25321AF90078968E /* PianoUI.swift */,
 				E7D7FB71253228630078968E /* PitchDetection.swift */,
@@ -105,6 +117,7 @@
 		E7C53FF4251C0ED000EDECE0 /* Pitch Pal */ = {
 			isa = PBXGroup;
 			children = (
+				E70DCE712544B4160053BFA2 /* Songs */,
 				E790F60A251EB04D005652C0 /* Helpers */,
 				E7EA3DA02532544500B1BBE2 /* Lessons */,
 				E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */,
@@ -113,8 +126,6 @@
 				E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */,
 				E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */,
 				E7C54003251C0ED500EDECE0 /* Info.plist */,
-				E7E58B6D25240B070061EE19 /* Play.swift */,
-				E7D7FB6B252D290B0078968E /* PlayScene.swift */,
 				E7D7FB74253229B80078968E /* Tuner.swift */,
 			);
 			path = "Pitch Pal";
@@ -231,6 +242,7 @@
 				E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */,
 				E7D7FB72253228630078968E /* PitchDetection.swift in Sources */,
 				E790F60D251EB068005652C0 /* Styles.swift in Sources */,
+				E70DCE7725486D7D0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift in Sources */,
 				E7D7FB75253229B80078968E /* Tuner.swift in Sources */,
 				E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */,
 				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
