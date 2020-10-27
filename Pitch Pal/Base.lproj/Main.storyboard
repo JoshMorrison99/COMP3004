@@ -321,7 +321,7 @@
                     <navigationItem key="navigationItem" id="lhd-fK-wVa"/>
                     <connections>
                         <outlet property="pauseBtn" destination="QEF-zu-Yt4" id="kH4-ad-GBF"/>
-                        <outlet property="pauseView" destination="ZUz-3T-jAJ" id="pmu-lD-4mQ"/>
+                        <outlet property="pauseView" destination="ZUz-3T-jAJ" id="aoD-qB-9q8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jm3-Fj-W2D" sceneMemberID="firstResponder"/>

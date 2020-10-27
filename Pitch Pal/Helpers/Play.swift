@@ -11,10 +11,12 @@ import SpriteKit
 import AudioKit
 
 class Play: UIViewController {
+    
+    static let shared = Play()
+    
     @IBOutlet weak var pauseBtn: UIButton!
     
     @IBOutlet weak var pauseView: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class Play: UIViewController {
         skView.presentScene(scene)
         
     }
+    
     @IBAction func pauseBtnClicked(_ sender: Any) {
         pauseView.isHidden = false
     }

@@ -11,8 +11,8 @@ extension PlayScene {
     func TwinkeTwinkle_Song(){
         print("Hello")
         
-        var tempo:Double = 1
-        let tempoIncrement:Double = 1
+        var tempo:Double = 0.75
+        let tempoIncrement:Double = 0.75
         perform(#selector(createCNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
         perform(#selector(createCNote), with: nil, afterDelay: tempo)
@@ -101,5 +101,9 @@ extension PlayScene {
         perform(#selector(createDNote), with: nil, afterDelay: tempo)
         tempo = tempo + tempoIncrement
         perform(#selector(createCNote), with: nil, afterDelay: tempo)
+    }
+    
+    func getTotalNotes() -> Int{
+        return 42
     }
 }

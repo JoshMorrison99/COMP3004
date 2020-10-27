@@ -13,6 +13,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     static let shared = PlayScene()
     
+    let noteSpeed = 6
+    
+    let noteHitLabel = SKLabelNode()
+    
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     let EmptyNote = "#"
     let DiscardedNote = "-"
@@ -22,6 +26,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     var noteDetectionTimerCycle:Double = 0.05
     
     var isOverlap = false
+    var totalNotes = 0
+    var notesHit = 0
     
     var staff = UIView()
     
@@ -67,6 +73,13 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     }
     
     func setupUI(){
+        
+        // Create the UI for amount of notes the user has hit
+        noteHitLabel.fontSize = 40
+        noteHitLabel.position = CGPoint(x: size.width*0.9, y: size.height * 0.9)
+        noteHitLabel.fontColor = .black
+        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        addChild(noteHitLabel)
         
         // Create the UI line
         let Gline = SKSpriteNode(imageNamed: "line")
@@ -167,6 +180,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         print("hello")
         if object.name == "line" {
             destroy(note: note)
+            notesHit+=1
+            noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
         }
     }
 
@@ -216,13 +231,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -248,13 +260,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -280,13 +289,11 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
+    
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -312,13 +319,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -344,13 +348,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -376,13 +377,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -408,13 +406,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         note.physicsBody!.categoryBitMask = lineBitMask
         
         addChild(note)
-        
-        // Determine speed of note
-        let actualDuration = 10
           
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: -note.size.width/2, y: note.position.y),
-                                         duration: TimeInterval(actualDuration))
+                                         duration: TimeInterval(noteSpeed))
         
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
