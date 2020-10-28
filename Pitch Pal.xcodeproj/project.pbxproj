@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A71B26C2534689BFA153857A /* Pods_Pitch_Pal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */; };
 		E70DCE7725486D7D0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */; };
+		E70DCE7A2549C2A80053BFA2 /* Lesson002.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE792549C2A80053BFA2 /* Lesson002.swift */; };
 		E790F60D251EB068005652C0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E790F60C251EB068005652C0 /* Styles.swift */; };
 		E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */; };
 		E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.release.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.release.xcconfig"; sourceTree = "<group>"; };
 		9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.debug.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.debug.xcconfig"; sourceTree = "<group>"; };
 		E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleTwinkleLittleStar_Song.swift; sourceTree = "<group>"; };
+		E70DCE792549C2A80053BFA2 /* Lesson002.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson002.swift; sourceTree = "<group>"; };
 		E790F60C251EB068005652C0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		E7C53FF2251C0ED000EDECE0 /* Pitch Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				E7E58B692523AF6F0061EE19 /* Lesson001.swift */,
+				E70DCE792549C2A80053BFA2 /* Lesson002.swift */,
 			);
 			path = Lessons;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70DCE7A2549C2A80053BFA2 /* Lesson002.swift in Sources */,
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
 				E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */,
 				E7EA3D9E253238ED00B1BBE2 /* StaffUI.swift in Sources */,
