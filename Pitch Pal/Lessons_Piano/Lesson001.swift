@@ -65,7 +65,7 @@ class Lesson001: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetection.shared.setupPitchDetection()
+        PitchDetection.shared.setupPitchDetection(isPiano: true)
         
         
         self.lessonLoop()

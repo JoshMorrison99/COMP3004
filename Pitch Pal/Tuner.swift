@@ -20,7 +20,7 @@ class Tuner: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        PitchDetection.shared.setupPitchDetection()
+        PitchDetection.shared.setupPitchDetection(isPiano: false)
     }
     
 }

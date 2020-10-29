@@ -57,7 +57,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         
         // Setup Pitch Detection
         PitchDetection.shared.initializePitchDetection()
-        PitchDetection.shared.setupPitchDetection()
+        PitchDetection.shared.setupPitchDetection(isPiano: true)
         
         
         physicsWorld.contactDelegate = self

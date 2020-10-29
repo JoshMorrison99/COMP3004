@@ -39,14 +39,14 @@ class PitchDetection{
         silence = AKBooster(tracker, gain: 0)
     }
     
-    func setupPitchDetection(){
+    func setupPitchDetection(isPiano: Bool){
         AKManager.output = silence
         do {
             try AKManager.start()
-            self.calculatePitchDetection()
+            self.calculatePitchDetection(isPiano: isPiano)
             Timer.scheduledTimer(withTimeInterval: self.timerCycle, repeats: true) { timer in // Timer executes every 1/10 of a second
                 if(self.tracker.amplitude > self.noiseGateThreshold){ // The amplitude is the loudness of the noise. Therefore, if the loudness of the noise in the microphone is greater than the given threshold then the microphone will pick it up. (noise gate)
-                    self.calculatePitchDetection()
+                    self.calculatePitchDetection(isPiano: isPiano)
                 }else{
                     self.amplitudeDebugLabel = "amplitude: 0.00"
                 }
@@ -56,7 +56,7 @@ class PitchDetection{
         }
     }
     
-    func calculatePitchDetection(){
+    func calculatePitchDetection(isPiano: Bool){
         frequencyDebugLabel = "frequency: " + String(tracker.frequency)
         amplitudeDebugLabel = "amplitude: " + String(tracker.amplitude)
         
@@ -117,7 +117,11 @@ class PitchDetection{
         let index = octaveFrequencies.firstIndex(of: closest)
         print(index)
         pitchDetectionLabel = Notes[index ?? 0]
-        PianoUI.shared.pianoKeyPressedUI(pitchDetectionLabel: pitchDetectionLabel)
+        
+        // Check if the user is using piano or guitar
+        if (isPiano){
+            PianoUI.shared.pianoKeyPressedUI(pitchDetectionLabel: pitchDetectionLabel)
+        }
     }
     
     func getLabel() -> String{
