@@ -14,8 +14,6 @@ class Tuner: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        StaffUI.shared.setupStaffUI(view: view)
-        PianoUI.shared.setupPianoUI(view: view)
         PitchDetection.shared.initializePitchDetection()
     }
     

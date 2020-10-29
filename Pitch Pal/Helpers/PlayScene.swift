@@ -13,7 +13,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     static let shared = PlayScene()
     
-    let noteSpeed = 6
+    var noteSpeed = 6
     
     let noteHitLabel = SKLabelNode()
     

@@ -35,6 +35,7 @@ class Play: UIViewController {
     }
     
     @IBAction func pauseBtnClicked(_ sender: Any) {
+        view.bringSubviewToFront(pauseView)
         pauseView.isHidden = false
     }
     @IBAction func yesBtnClicked(_ sender: Any) {

@@ -261,6 +261,7 @@ class Lesson001: UIViewController {
     }
     
     @objc func pauseButtonClicked(){
+        view.bringSubviewToFront(pauseView)
         pauseView.isHidden = false
     }
     

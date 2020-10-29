@@ -273,6 +273,7 @@ class Lesson002: UIViewController {
     }
     
     @IBAction func pauseMenuBtnClicked(_ sender: Any) {
+        view.bringSubviewToFront(pauseView)
         pauseView.isHidden = false
     }
 }
