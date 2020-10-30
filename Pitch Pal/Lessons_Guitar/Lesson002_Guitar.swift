@@ -37,6 +37,12 @@ class Lesson002_Guitar: UIViewController {
     
     
     var NoteImageSequence : [UIImageView] = []
+    let threeFretNum = UIImageView()
+    var noteDetectionLabel = UILabel()
+    
+    
+    
+    var lessonStepNum = 0
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
@@ -65,124 +71,128 @@ class Lesson002_Guitar: UIViewController {
         PitchDetection.shared.setupPitchDetection(isPiano: false)
         
         
-        //self.lessonLoop()
+        self.lessonLoop()
     }
     
     func startLesson(){
         
+        noteDetectionLabel.alpha = 0
+        GuitarTabUI.shared.getStrings().alpha = 0
         
-        LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen."
+        LessonLabel.text = "Hello! Welcome to lesson 2 of the Pitch Pal App. To proceed tap anywhere on the screen."
         LessonLabel_number.text = "1 / 9"
+        lessonStepNum = 1
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The image on the screen represents the six strings on a guitar."
+        LessonLabel.text = "Take a look at your guitar and notice the lines and dots under the strings of the guitar."
         LessonLabel_number.text = "2 / 9"
+        lessonStepNum = 2
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The highlighted string is the Big E String."
+        LessonLabel.text = "Theses lines are called frets and allow you to play different frequencies of notes by shortening the length of the string with your finger."
         LessonLabel_number.text = "3 / 9"
-        
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        lessonStepNum = 3
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The highlighted string is the A String."
+        LessonLabel.text = "The dots arn't shown on every guitar, but if they are, the dots are positioned on frets 3, 5, 7, 9, 12, 15, 17, 19, 21, 24. These dots are used to help you navigate you ways around the fretboard."
         LessonLabel_number.text = "4 / 9"
-        
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        lessonStepNum = 4
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The highlighted string is the D String."
+        LessonLabel.text = "Pitch pal read the notes by detecting the frequeuency of sound through your devices microphone. Play a string on your guitar and pitch pal will show you what note you are playing."
         LessonLabel_number.text = "5 / 9"
+        lessonStepNum = 5
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        noteDetectionLabel.alpha = 1
+        
+        noteDetectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noteDetectionLabel)
+        noteDetectionLabel.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        noteDetectionLabel.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        noteDetectionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        noteDetectionLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        
+        noteDetectionLabel.font = noteDetectionLabel.font.withSize(200)
+        noteDetectionLabel.textAlignment = .center
+        noteDetectionLabel.text = PitchDetection.shared.getLabel()
+        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The highlighted string is the G String."
+        LessonLabel.text = "Guitar tablature, or tab, is a form of writing down music for guitar, and it mainly uses numbers instead of standard music notation. It's alot easier to read."
         LessonLabel_number.text = "6 / 9"
+        lessonStepNum = 6
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        noteDetectionLabel.alpha = 0
+        GuitarTabUI.shared.getStrings().alpha = 1
+        
+        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The highlighted string is the B String."
-        LessonLabel_number.text = "7 / 9"
+        LessonLabel.text = "The symbol being displayed on the tab is a 3. To play this note, put your finger on the 3rd fret of the big E string (the string closest to your head) and strum."
+        LessonLabel_number.text = "7 / 8"
+        lessonStepNum = 7
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        PitchDetection.shared.setLabel(newLabel: "#")
+        
+        threeFretNum.image = UIImage(systemName: "3.circle")
+        threeFretNum.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(threeFretNum)
+        threeFretNum.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        threeFretNum.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        threeFretNum.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -105).isActive = true
+        threeFretNum.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 220).isActive = true
+        threeFretNum.tintColor = .red
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
+        
     }
     
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The highlighted string is the little E String."
-        LessonLabel_number.text = "8 / 9"
-        
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.green
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
-        CompleteLession()
+        self.CompleteLession()
     }
     
     func CompleteLession(){
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
+        GuitarTabUI.shared.getStrings().alpha = 0
+        threeFretNum.alpha = 0
+        
+    }
+    
+    func lessonLoop(){
+        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
+            if(self.lessonStepNum == 5){
+                self.noteDetectionLabel.text = PitchDetection.shared.getLabel()
+            }
+            if(PitchDetection.shared.getLabel() == "C" && self.lessonStepNum == 7){
+                self.CompleteLession()
+            }
+        }
     }
     
     @objc func pauseButtonClicked(){
