@@ -41,7 +41,7 @@ class GuitarTabUI {
         
         // staffStack logic
         stringsStack.axis = .vertical
-        stringsStack.spacing = 25.0
+        stringsStack.spacing = 27.0
         stringsStack.distribution = .fillEqually
         
         
@@ -61,8 +61,6 @@ class GuitarTabUI {
         strings.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
         strings.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         strings.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        
-        view.sendSubviewToBack(strings)
         
         return strings
     }

@@ -1,8 +1,8 @@
 //
-//  Play.swift
+//  Play_Guitar.swift
 //  Pitch Pal
 //
-//  Created by Josh Morrison on 9/29/20.
+//  Created by Josh Morrison on 10/31/20.
 //  Copyright © 2020 Pied Piper. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import UIKit
 import SpriteKit
 import AudioKit
 
-class Play: UIViewController {
+class Play_Guitar: UIViewController {
     
-    static let shared = Play()
+    static let shared = Play_Guitar()
     
     @IBOutlet weak var pauseBtn: UIButton!
     
@@ -23,7 +23,7 @@ class Play: UIViewController {
         
         pauseView.isHidden = true
         
-        let scene = PlayScene(size: view.bounds.size)
+        let scene = PlayScene_Guitar(size: view.bounds.size)
         let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
@@ -31,7 +31,6 @@ class Play: UIViewController {
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
-        
     }
     
     @IBAction func pauseBtnClicked(_ sender: Any) {

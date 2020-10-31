@@ -19,6 +19,9 @@
 		E7C53FFD251C0ED000EDECE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFB251C0ED000EDECE0 /* Main.storyboard */; };
 		E7C53FFF251C0ED500EDECE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */; };
 		E7C54002251C0ED500EDECE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C54000251C0ED500EDECE0 /* LaunchScreen.storyboard */; };
+		E7D00717254DA9F900262D0C /* Play_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D00716254DA9F900262D0C /* Play_Guitar.swift */; };
+		E7D0071B254DAA2500262D0C /* PlayScene_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */; };
+		E7D0071F254DAAA300262D0C /* SmokeOnTheWater_Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0071E254DAAA300262D0C /* SmokeOnTheWater_Song.swift */; };
 		E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB6B252D290B0078968E /* PlayScene.swift */; };
 		E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB6E25321AF90078968E /* PianoUI.swift */; };
 		E7D7FB72253228630078968E /* PitchDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB71253228630078968E /* PitchDetection.swift */; };
@@ -45,6 +48,9 @@
 		E7C53FFE251C0ED500EDECE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7C54001251C0ED500EDECE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7C54003251C0ED500EDECE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7D00716254DA9F900262D0C /* Play_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play_Guitar.swift; sourceTree = "<group>"; };
+		E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene_Guitar.swift; sourceTree = "<group>"; };
+		E7D0071E254DAAA300262D0C /* SmokeOnTheWater_Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeOnTheWater_Song.swift; sourceTree = "<group>"; };
 		E7D7FB6B252D290B0078968E /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		E7D7FB6E25321AF90078968E /* PianoUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoUI.swift; sourceTree = "<group>"; };
 		E7D7FB71253228630078968E /* PitchDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetection.swift; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 		E7C53FF4251C0ED000EDECE0 /* Pitch Pal */ = {
 			isa = PBXGroup;
 			children = (
+				E7D0071D254DAA8D00262D0C /* Songs_Guitar */,
+				E7D00715254DA9DD00262D0C /* Guitar_Logic */,
 				E70DCE80254B06D00053BFA2 /* Lessons_Guitar */,
 				E70DCE712544B4160053BFA2 /* Songs_Piano */,
 				E790F60A251EB04D005652C0 /* Helpers */,
@@ -148,6 +156,23 @@
 				E7D7FB74253229B80078968E /* Tuner.swift */,
 			);
 			path = "Pitch Pal";
+			sourceTree = "<group>";
+		};
+		E7D00715254DA9DD00262D0C /* Guitar_Logic */ = {
+			isa = PBXGroup;
+			children = (
+				E7D00716254DA9F900262D0C /* Play_Guitar.swift */,
+				E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */,
+			);
+			path = Guitar_Logic;
+			sourceTree = "<group>";
+		};
+		E7D0071D254DAA8D00262D0C /* Songs_Guitar */ = {
+			isa = PBXGroup;
+			children = (
+				E7D0071E254DAAA300262D0C /* SmokeOnTheWater_Song.swift */,
+			);
+			path = Songs_Guitar;
 			sourceTree = "<group>";
 		};
 		E7EA3DA02532544500B1BBE2 /* Lessons_Piano */ = {
@@ -259,6 +284,7 @@
 				E70DCE7A2549C2A80053BFA2 /* Lesson002.swift in Sources */,
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
 				E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */,
+				E7D0071F254DAAA300262D0C /* SmokeOnTheWater_Song.swift in Sources */,
 				E7EA3D9E253238ED00B1BBE2 /* StaffUI.swift in Sources */,
 				E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */,
 				E70DCE85254B0FB00053BFA2 /* Lesson002_Guitar.swift in Sources */,
@@ -267,8 +293,10 @@
 				E70DCE7725486D7D0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift in Sources */,
 				E7D7FB75253229B80078968E /* Tuner.swift in Sources */,
 				E70DCE82254B06ED0053BFA2 /* Lesson001_Guitar.swift in Sources */,
+				E7D0071B254DAA2500262D0C /* PlayScene_Guitar.swift in Sources */,
 				E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */,
 				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
+				E7D00717254DA9F900262D0C /* Play_Guitar.swift in Sources */,
 				E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */,
 				E70DCE7D254B03D20053BFA2 /* GuitarTabUI.swift in Sources */,
 			);

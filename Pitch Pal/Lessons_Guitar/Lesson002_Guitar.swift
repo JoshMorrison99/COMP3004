@@ -189,7 +189,7 @@ class Lesson002_Guitar: UIViewController {
             if(self.lessonStepNum == 5){
                 self.noteDetectionLabel.text = PitchDetection.shared.getLabel()
             }
-            if(PitchDetection.shared.getLabel() == "C" && self.lessonStepNum == 7){
+            if(PitchDetection.shared.getLabel() == "G" && self.lessonStepNum == 7){
                 self.CompleteLession()
             }
         }
