@@ -18,20 +18,96 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV5-SC-soD">
-                                <rect key="frame" x="375" y="87.5" width="146" height="239"/>
+                                <rect key="frame" x="375.5" y="87.5" width="145.5" height="239"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="200"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFK-vP-jmh">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Menu?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFk-Se-Q9E">
+                                        <rect key="frame" x="0.0" y="20" width="896" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="3" height="3"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-QT-Q9P">
+                                        <rect key="frame" x="0.0" y="90" width="896" height="224"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4x8-M9-i5M">
+                                                <rect key="frame" x="0.0" y="0.0" width="896" height="112"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <size key="titleShadowOffset" width="3" height="3"/>
+                                                <state key="normal" title="Yes">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pauseYesBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DvZ-EN-aND"/>
+                                                    <segue destination="7Ev-Gp-DTv" kind="show" id="R6f-dX-JzI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHq-Dd-LTM">
+                                                <rect key="frame" x="0.0" y="112" width="896" height="112"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <size key="titleShadowOffset" width="3" height="3"/>
+                                                <state key="normal" title="No">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="PauseNoButtonClick:" destination="gYS-ua-9bY" eventType="touchUpInside" id="6LJ-m1-XI0"/>
+                                                    <action selector="pauseNoBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K8I-w0-V8v"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.80187821059999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GUb-QT-Q9P" secondAttribute="trailing" id="5UN-A8-mUV"/>
+                                    <constraint firstAttribute="trailing" secondItem="KFk-Se-Q9E" secondAttribute="trailing" id="6g4-eN-Dtf"/>
+                                    <constraint firstAttribute="bottom" secondItem="GUb-QT-Q9P" secondAttribute="bottom" constant="100" id="8Ec-wo-PfQ"/>
+                                    <constraint firstItem="KFk-Se-Q9E" firstAttribute="top" secondItem="lFK-vP-jmh" secondAttribute="top" constant="20" id="JDw-14-NgD"/>
+                                    <constraint firstItem="KFk-Se-Q9E" firstAttribute="leading" secondItem="lFK-vP-jmh" secondAttribute="leading" id="KP0-kQ-rrp"/>
+                                    <constraint firstItem="GUb-QT-Q9P" firstAttribute="leading" secondItem="lFK-vP-jmh" secondAttribute="leading" id="Prg-JO-29j"/>
+                                    <constraint firstItem="GUb-QT-Q9P" firstAttribute="top" secondItem="KFk-Se-Q9E" secondAttribute="bottom" constant="10" id="XRf-G6-HzI"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3m-zI-4fR">
+                                <rect key="frame" x="44" y="0.5" width="50" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="W3Y-KG-HQQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="aH1-HV-gsz"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="house.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="pauseBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aPV-2B-6Ww"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.18449997900000001" green="0.1919861138" blue="0.20392328500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="lFK-vP-jmh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LhC-2S-hXC"/>
+                            <constraint firstAttribute="bottom" secondItem="lFK-vP-jmh" secondAttribute="bottom" id="Z1M-qS-DCe"/>
                             <constraint firstItem="eV5-SC-soD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZLx-Ci-RfF"/>
+                            <constraint firstItem="lFK-vP-jmh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="auu-5v-9vs"/>
+                            <constraint firstItem="B3m-zI-4fR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bWL-Mx-Zs9"/>
                             <constraint firstItem="eV5-SC-soD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wXy-hQ-KNe"/>
+                            <constraint firstAttribute="trailing" secondItem="lFK-vP-jmh" secondAttribute="trailing" id="ywE-5P-5Gu"/>
+                            <constraint firstItem="B3m-zI-4fR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zKM-m6-odD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ACK-6h-g8G"/>
+                    <connections>
+                        <outlet property="pauseBtn" destination="B3m-zI-4fR" id="IMd-x4-0ZH"/>
+                        <outlet property="pauseMenu" destination="lFK-vP-jmh" id="cPh-e3-Ol1"/>
+                        <outlet property="pauseNoBtn" destination="gHq-Dd-LTM" id="XPh-gB-hFv"/>
+                        <outlet property="pauseYesBtn" destination="4x8-M9-i5M" id="iz8-Uk-dIn"/>
+                        <outlet property="tunerLabel" destination="eV5-SC-soD" id="HGx-Cg-YQI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -1273,7 +1349,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DMi-OW-4aF"/>
+        <segue reference="mJP-pi-j8l"/>
         <segue reference="run-I4-5Yf"/>
     </inferredMetricsTieBreakers>
     <resources>
