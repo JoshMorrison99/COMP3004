@@ -44,7 +44,7 @@ class Lesson002_Guitar: UIViewController {
     
     var lessonStepNum = 0
     
-    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
 
     override func viewDidLoad() {

@@ -14,6 +14,8 @@ class PianoUI {
 
     let whiteNotes = ["C","D","E","F","G","A","B","C","D","E","F","G","A","B","C","D","E","F","G","A","B","C","D","E","F","G","A","B"]
     var notes: [UIButton]!
+    
+    var stackView = UIStackView()
 
     func setupPianoUI(view: UIView){
         
@@ -25,7 +27,7 @@ class PianoUI {
             return note
         }
         
-        let stackView = UIStackView(arrangedSubviews: notes)
+        stackView = UIStackView(arrangedSubviews: notes)
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         stackView.axis = .horizontal

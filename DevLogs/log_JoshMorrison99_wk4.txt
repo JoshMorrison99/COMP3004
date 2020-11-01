@@ -1,0 +1,21 @@
+- Created lesson 2
+- Separated song logic from note detection logic
+- Finished the song "Twinke Twinkle Little Star"
+- Cleaned up UI
+- Separated home screen button from view controller logic. 
+- Made pause menu modular, rather than adding the code to every view controller.- Created an option for the user to select guitar or piano.
+- Fixed pitch detection bug.
+- Added ability for pitch detection to determine whether the user is using a piano or a guitar.
+- Changed UI to allow for both piano and guitar.
+- Fixed tuner bug.
+- Added tuner to guitar option and took tuner away from piano option.
+- Added lesson 1 to guitar.
+- Added lesson 2 to guitar.
+- Spearated guitar and piano lessons code logic.
+- Separated guitar and piano song code logic.
+- Fixed bug where the UI doesn't come back if the user wants to play a song twice.
+- Fixed issue where the array went out of bounds if a developer wanted a note from a higher octave.
+- Created a new staff UI in photoshop
+- Created guitar stings UI in photoshop
+- Fixed the UI issue where the UI was blurry because of the lower resolution images.
+- Added the ability for the user to see how they did after the song finishes.

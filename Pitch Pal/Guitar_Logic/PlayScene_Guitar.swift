@@ -17,7 +17,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     
     let noteHitLabel = SKLabelNode()
     
-    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     let EmptyNote = "#"
     let DiscardedNote = "-"
     
@@ -31,12 +31,12 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     
     var staff = UIView()
     
-    let BigEAxis:Double = 0.7
-    let AAxis:Double = 0.6
-    let DAxis:Double = 0.5
-    let GAxis:Double = 0.4
-    let BAxis:Double = 0.3
-    let LittleEAxis:Double = 0.2
+    let BigEAxis:Double = 0.6
+    let AAxis:Double = 0.5
+    let DAxis:Double = 0.4
+    let GAxis:Double = 0.3
+    let BAxis:Double = 0.2
+    let LittleEAxis:Double = 0.1
     
     let lineBitMask:UInt32 = 0b001
     let noteBitMask:UInt32 = 0b010
@@ -78,56 +78,56 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         addChild(noteHitLabel)
         
         // Create the UI line
-        let BigEline = SKSpriteNode(imageNamed: "blackLine")
+        let BigEline = SKSpriteNode(imageNamed: "myLine")
         BigEline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(BigEAxis))
         BigEline.alpha = 1
-        BigEline.setScale(2)
+        BigEline.setScale(0.5)
         BigEline.zPosition = -1
         BigEline.name = "BigEline"
         addChild(BigEline)
         
         // Create the UI line
-        let Aline = SKSpriteNode(imageNamed: "blackLine")
+        let Aline = SKSpriteNode(imageNamed: "myLine")
         Aline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(AAxis))
         Aline.alpha = 1
-        Aline.setScale(2)
+        Aline.setScale(0.5)
         Aline.zPosition = -1
         Aline.name = "Aline"
         addChild(Aline)
         
         // Create the UI line
-        let Dline = SKSpriteNode(imageNamed: "blackLine")
+        let Dline = SKSpriteNode(imageNamed: "myLine")
         Dline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(DAxis))
         Dline.alpha = 1
-        Dline.setScale(2)
+        Dline.setScale(0.5)
         Dline.zPosition = -1
         Dline.name = "Dline"
         addChild(Dline)
         
         // Create the UI line
-        let Gline = SKSpriteNode(imageNamed: "blackLine")
+        let Gline = SKSpriteNode(imageNamed: "myLine")
         Gline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(GAxis))
         Gline.alpha = 1
         Gline.zPosition = -1
-        Gline.setScale(2)
+        Gline.setScale(0.5)
         Gline.name = "Gline"
         addChild(Gline)
         
         // Create the UI line
-        let Bline = SKSpriteNode(imageNamed: "blackLine")
+        let Bline = SKSpriteNode(imageNamed: "myLine")
         Bline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(BAxis))
         Bline.alpha = 1
-        Bline.setScale(2)
+        Bline.setScale(0.5)
         Bline.zPosition = -1
         Bline.name = "Bline"
         addChild(Bline)
         
         // Create the UI line
-        let LittleEline = SKSpriteNode(imageNamed: "blackLine")
+        let LittleEline = SKSpriteNode(imageNamed: "myLine")
         LittleEline.position = CGPoint(x: size.width * 0.5, y: size.height * CGFloat(LittleEAxis))
         LittleEline.alpha = 1
         LittleEline.zPosition = -1
-        LittleEline.setScale(2)
+        LittleEline.setScale(0.5)
         LittleEline.name = "LittleEline"
         addChild(LittleEline)
     }
@@ -149,6 +149,15 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
             nodeB.name = DiscardedNote // If the note passes the line, it will no longer be detected by collisions
         }
         overlap(contact, isOverlapping: isOverlap)
+    }
+    
+    @objc func endOfSong(){
+        removeAllChildren()
+        noteHitLabel.fontSize = 90
+        noteHitLabel.position = CGPoint(x: size.width*0.5, y: size.height * 0.5)
+        noteHitLabel.fontColor = .black
+        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        addChild(noteHitLabel)
     }
     
     // Called when contact begins between two physics bodies
@@ -258,7 +267,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(texture: texture,size: CGSize(width: 250, height: 250))
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(BigEAxis))
+        let noteYOffset = 0.09
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(BigEAxis+noteYOffset))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -294,7 +304,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(texture: texture,size: CGSize(width: 250, height: 250))
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(AAxis))
+        let noteYOffset = 0.09
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(AAxis+noteYOffset))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -329,7 +340,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(texture: texture,size: CGSize(width: 250, height: 250))
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(DAxis))
+        let noteYOffset = 0.09
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(DAxis+noteYOffset))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -363,7 +375,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(texture: texture,size: CGSize(width: 250, height: 250))
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(BAxis))
+        let noteYOffset = 0.09
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(BAxis+noteYOffset))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -397,7 +410,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         let note = SKSpriteNode(texture: texture,size: CGSize(width: 250, height: 250))
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(LittleEAxis))
+        let noteYOffset = 0.09
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(LittleEAxis+noteYOffset))
         
         // Scale the note to proper size
         note.setScale(0.15)

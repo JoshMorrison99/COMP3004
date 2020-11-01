@@ -51,6 +51,10 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         staff = StaffUI.shared.setupStaffUI(view: view)!
         staff.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
         
+        // Need to set the alpha back to 1 in the case where the user plays the song again
+        staff.alpha = 1
+        StaffUI.shared.getTrebleClef().alpha = 1
+        
         // Setup Piano UI
         PianoUI.shared.setupPianoUI(view: view)
         
@@ -153,6 +157,21 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         isOverlap = true
         PitchDetection.shared.setLabel(newLabel: EmptyNote)
         overlap(contact, isOverlapping: isOverlap)
+    }
+    
+    @objc func endOfSong(){
+        removeAllChildren()
+        staff.alpha = 0
+        StaffUI.shared.getTrebleClef().alpha = 0
+        PianoUI.shared.stackView.alpha = 0
+        for each in PianoUI.shared.notes{
+            each.alpha = 0
+        }
+        noteHitLabel.fontSize = 90
+        noteHitLabel.position = CGPoint(x: size.width*0.5, y: size.height * 0.5)
+        noteHitLabel.fontColor = .black
+        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        addChild(noteHitLabel)
     }
     
     // Called in the interval from when the 2 physics bodies collide and when they end.

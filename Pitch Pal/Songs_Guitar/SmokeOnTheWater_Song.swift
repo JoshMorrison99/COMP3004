@@ -9,10 +9,10 @@
 extension PlayScene_Guitar {
     
     func SmokeOnTheWater_Song(){
-        print("Hello")
         
         var tempo:Double = 0.75
         let tempoIncrement:Double = 0.75
+        let secondToWaitAfterLastNote:Double = 6
         perform(#selector(createBigENote), with: "0", afterDelay: tempo)
         tempo = tempo + tempoIncrement
         perform(#selector(createBigENote), with: "3", afterDelay: tempo)
@@ -36,6 +36,8 @@ extension PlayScene_Guitar {
         perform(#selector(createBigENote), with: "3", afterDelay: tempo)
         tempo = tempo + tempoIncrement
         perform(#selector(createBigENote), with: "0", afterDelay: tempo)
+        tempo = tempo + secondToWaitAfterLastNote
+        perform(#selector(endOfSong), with: nil, afterDelay: tempo)
     }
     
     func getTotalNotes() -> Int{
