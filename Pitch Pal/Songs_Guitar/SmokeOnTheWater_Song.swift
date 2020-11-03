@@ -10,31 +10,30 @@ extension PlayScene_Guitar {
     
     func SmokeOnTheWater_Song(){
         
-        var tempo:Double = 0.75
-        let tempoIncrement:Double = 0.75
+        var tempo:Double = 0
         let secondToWaitAfterLastNote:Double = 6
         perform(#selector(createBigENote), with: "0", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "3", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "5", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 1
         perform(#selector(createBigENote), with: "0", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "3", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "6", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "5", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 1
         perform(#selector(createBigENote), with: "0", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "3", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "5", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 1
         perform(#selector(createBigENote), with: "3", afterDelay: tempo)
-        tempo = tempo + tempoIncrement
+        tempo = tempo + 0.5
         perform(#selector(createBigENote), with: "0", afterDelay: tempo)
         tempo = tempo + secondToWaitAfterLastNote
         perform(#selector(endOfSong), with: nil, afterDelay: tempo)

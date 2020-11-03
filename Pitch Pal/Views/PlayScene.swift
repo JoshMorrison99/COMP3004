@@ -76,7 +76,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         createNoteDetectionLine()
         
         
-        TwinkeTwinkle_Song()
+        Twinke_Demo()
         
     }
     
@@ -93,7 +93,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         noteHitLabel.fontSize = 40
         noteHitLabel.position = CGPoint(x: size.width*0.9, y: size.height * 0.9)
         noteHitLabel.fontColor = .black
-        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes_Demo())
         addChild(noteHitLabel)
         
         // Create the UI line
@@ -181,7 +181,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         noteHitLabel.fontSize = 90
         noteHitLabel.position = CGPoint(x: size.width*0.5, y: size.height * 0.5)
         noteHitLabel.fontColor = .black
-        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes_Demo())
         addChild(noteHitLabel)
     }
     
@@ -211,7 +211,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         if object.name == "line" {
             destroy(note: note)
             notesHit+=1
-            noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+            noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes_Demo())
         }
     }
 

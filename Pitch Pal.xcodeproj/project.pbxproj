@@ -23,6 +23,8 @@
 		E7D0071B254DAA2500262D0C /* PlayScene_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */; };
 		E7D0071F254DAAA300262D0C /* SmokeOnTheWater_Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0071E254DAAA300262D0C /* SmokeOnTheWater_Song.swift */; };
 		E7D0072B2551ADA400262D0C /* LessonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0072A2551ADA400262D0C /* LessonsModel.swift */; };
+		E7D0073A255200E300262D0C /* OdeToJoy_Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D00739255200E300262D0C /* OdeToJoy_Song.swift */; };
+		E7D0073D2552026000262D0C /* Twinkle_Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0073C2552026000262D0C /* Twinkle_Demo.swift */; };
 		E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB6B252D290B0078968E /* PlayScene.swift */; };
 		E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB6E25321AF90078968E /* PianoUI.swift */; };
 		E7D7FB72253228630078968E /* PitchDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB71253228630078968E /* PitchDetection.swift */; };
@@ -53,6 +55,8 @@
 		E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene_Guitar.swift; sourceTree = "<group>"; };
 		E7D0071E254DAAA300262D0C /* SmokeOnTheWater_Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeOnTheWater_Song.swift; sourceTree = "<group>"; };
 		E7D0072A2551ADA400262D0C /* LessonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsModel.swift; sourceTree = "<group>"; };
+		E7D00739255200E300262D0C /* OdeToJoy_Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OdeToJoy_Song.swift; sourceTree = "<group>"; };
+		E7D0073C2552026000262D0C /* Twinkle_Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twinkle_Demo.swift; sourceTree = "<group>"; };
 		E7D7FB6B252D290B0078968E /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		E7D7FB6E25321AF90078968E /* PianoUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoUI.swift; sourceTree = "<group>"; };
 		E7D7FB71253228630078968E /* PitchDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetection.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */,
+				E7D00739255200E300262D0C /* OdeToJoy_Song.swift */,
+				E7D0073C2552026000262D0C /* Twinkle_Demo.swift */,
 			);
 			path = Songs_Piano;
 			sourceTree = "<group>";
@@ -310,9 +316,11 @@
 				E7D7FB72253228630078968E /* PitchDetection.swift in Sources */,
 				E790F60D251EB068005652C0 /* Styles.swift in Sources */,
 				E70DCE7725486D7D0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift in Sources */,
+				E7D0073D2552026000262D0C /* Twinkle_Demo.swift in Sources */,
 				E7D7FB75253229B80078968E /* TunerController.swift in Sources */,
 				E70DCE82254B06ED0053BFA2 /* Lesson001_Guitar.swift in Sources */,
 				E7D0071B254DAA2500262D0C /* PlayScene_Guitar.swift in Sources */,
+				E7D0073A255200E300262D0C /* OdeToJoy_Song.swift in Sources */,
 				E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */,
 				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
 				E7D00717254DA9F900262D0C /* Play_Guitar.swift in Sources */,
