@@ -12,16 +12,22 @@ import AudioKitUI
 
 class Lesson001_Guitar: UIViewController {
     
-    // Pause Button
-    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var pauseMenuBtn: UIButton!
+    @IBOutlet weak var pause_Yes_Btn: UIButton!
+    @IBOutlet weak var pause_No_Btn: UIButton!
     @IBOutlet weak var pauseView: UIView!
-    @IBOutlet weak var mainManu_Yes_Btn: UIButton!
-    @IBOutlet weak var mainManu_No_Btn: UIButton!
     
+    // Lesson Logic
+    let LessonGoalNote = ["G", "D", "E"]
+    var goalNote = "G"
+    var goalIndex = 0
+    var startLessonPlay: Bool = false
     
     // Lesson text at the top of the screen
     @IBOutlet weak var LessonLabel: UILabel!
     @IBOutlet weak var LessonLabel_number: UILabel!
+    
+    private var lessonModel: LessonsModel = LessonsModel()
     
     
 //    // Lesson Logic
@@ -38,7 +44,9 @@ class Lesson001_Guitar: UIViewController {
     
     var NoteImageSequence : [UIImageView] = []
     
-    //let guitarUI: GuitarTabUI = GuitarTabUI()
+    var note001 = UIImageView()
+    var note002 = UIImageView()
+    var note003 = UIImageView()
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
@@ -54,10 +62,8 @@ class Lesson001_Guitar: UIViewController {
         // Setup Pitch Detection
         PitchDetectionManager.initializePitchDetection()
         
-        // Pause Button Setup
-        self.setupHomeMenu()
-
-        // Start the Lesson
+        self.pauseView.isHidden = true
+        
         self.startLesson()
         
         
@@ -68,18 +74,20 @@ class Lesson001_Guitar: UIViewController {
 
         PitchDetectionManager.setupPitchDetection(isPiano: false)
         
-        
-        //self.lessonLoop()
     }
     
     func startLesson(){
         
-        
         LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen."
         LessonLabel_number.text = "1 / 9"
         
+        self.NoteImageSequence = [note001, note002, note003]
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
@@ -88,6 +96,9 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
@@ -103,6 +114,9 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
@@ -118,6 +132,9 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
@@ -133,6 +150,9 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
@@ -148,6 +168,9 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
@@ -163,6 +186,9 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
@@ -178,10 +204,83 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
     }
     
     @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
-        CompleteLession()
+        LessonLabel.text = "Complete the sequence of notes displayed. (Remember the lines)"
+        LessonLabel_number.text = "9 / 9"
+        
+        GuitarUI.BigELine.backgroundColor = UIColor.black
+        GuitarUI.ALine.backgroundColor = UIColor.black
+        GuitarUI.DLine.backgroundColor = UIColor.black
+        GuitarUI.GLine.backgroundColor = UIColor.black
+        GuitarUI.BLine.backgroundColor = UIColor.black
+        GuitarUI.LittleELine.backgroundColor = UIColor.black
+        
+        note001.image = UIImage(systemName: "3.circle")
+        note002.image = UIImage(systemName: "0.circle")
+        note003.image = UIImage(systemName: "0.circle")
+        
+        note001.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(note001)
+        note001.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        note001.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        note001.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -102).isActive = true
+        note001.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120).isActive = true
+        
+        note002.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(note002)
+        note002.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        note002.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        note002.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -160).isActive = true
+        note002.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 220).isActive = true
+        
+        note003.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(note003)
+        note003.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        note003.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        note003.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -102).isActive = true
+        note003.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 320).isActive = true
+        
+        // Render images as templates, so we can change the color
+        note001.image = note001.image?.withRenderingMode(.alwaysTemplate)
+        note002.image = note002.image?.withRenderingMode(.alwaysTemplate)
+        note003.image = note003.image?.withRenderingMode(.alwaysTemplate)
+        
+        // Set the note color to black
+        note001.tintColor = .red
+        note002.tintColor = .red
+        note003.tintColor = .red
+        
+        // Increase the lesson step in the model
+        lessonModel.accumulateLessonStepNumber()
+        
+        self.lessonLoop()
+    }
+    
+    
+    
+    func lessonLoop(){
+        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
+            if(self.lessonModel.getLessonStepNum() == 9){
+                self.LessonLogic()
+            }
+        }
+    }
+    
+    func LessonLogic(){
+        if(PitchDetectionManager.getLabel() == goalNote && PitchDetectionManager.getLabel() == LessonGoalNote[goalIndex]){
+            NoteImageSequence[goalIndex].tintColor = UIColor.green
+            if(goalIndex >= LessonGoalNote.count-1){
+                CompleteLession()
+            }else{
+                goalIndex += 1
+                goalNote = LessonGoalNote[goalIndex]
+            }
+        }
     }
     
     func CompleteLession(){
@@ -189,23 +288,7 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel_number.text = "100%"
     }
     
-    @objc func pauseButtonClicked(){
-        view.bringSubviewToFront(pauseView)
-        pauseView.isHidden = false
-    }
-    
-    func setupHomeMenu(){
-        self.pauseView.isHidden = true
-        pauseButton.addTarget(self,
-                           action: #selector(pauseButtonClicked),
-                           for: .touchUpInside)
-        mainManu_Yes_Btn.addTarget(self,
-                                   action: #selector(pauseYesButtonClicked),
-                                   for: .touchUpInside)
-        view.bringSubviewToFront(pauseView)
-    }
-    
-    @objc func pauseYesButtonClicked(){
+    @IBAction func pauseYesClicked(_ sender: Any) {
         do {
             try AKManager.stop()
         }catch{
@@ -213,10 +296,14 @@ class Lesson001_Guitar: UIViewController {
         }
     }
     
-    @IBAction func PauseNoButtonClick(_ sender: Any) {
+    @IBAction func pauseNoClicked(_ sender: Any) {
         self.pauseView.isHidden = true
     }
     
+    @IBAction func pauseBtnClicked(_ sender: Any) {
+        view.bringSubviewToFront(pauseView)
+        pauseView.isHidden = false
+    }
 }
 
 

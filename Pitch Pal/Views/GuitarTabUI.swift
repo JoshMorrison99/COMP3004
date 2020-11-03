@@ -19,7 +19,7 @@ class GuitarTabUI {
     let BLine = UIView()
     let LittleELine = UIView()
     
-    func setupStringUI(view: UIView) -> UIView?{
+    func setupStringUI(view: UIView) {
         
         // Line Logic
         BigELine.backgroundColor = .black
@@ -60,7 +60,7 @@ class GuitarTabUI {
         strings.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
         strings.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         
-        return strings
+    
     }
     
     func getBigELine() -> UIView{

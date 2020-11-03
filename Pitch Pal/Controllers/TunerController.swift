@@ -9,7 +9,7 @@
 import UIKit
 import AudioKit
 
-class Tuner: UIViewController {
+class TunerController: UIViewController {
     
     @IBOutlet weak var tunerLabel: UILabel!
     

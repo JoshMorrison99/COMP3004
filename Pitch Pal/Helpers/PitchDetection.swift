@@ -115,9 +115,8 @@ class PitchDetection{
         
         // Get the index of the closest value
         let index = octaveFrequencies.firstIndex(of: closest)
-        print(index)
+        print(pitchDetectionLabel)
         pitchDetectionLabel = Notes[index ?? 0]
-        
         // Check if the user is using piano or guitar
         
     }
