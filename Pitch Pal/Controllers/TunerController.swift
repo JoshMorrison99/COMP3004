@@ -32,7 +32,7 @@ class TunerController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.PitchDetectionManager.setupPitchDetection(isPiano: false)
+        self.PitchDetectionManager.setupPitchDetection()
         
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
             self.tunerLabel.text = self.PitchDetectionManager.getLabel()

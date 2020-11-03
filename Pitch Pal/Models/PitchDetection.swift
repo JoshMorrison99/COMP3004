@@ -11,8 +11,7 @@ import AudioKit
 import AudioKitUI
 
 class PitchDetection{
-    
-    let PianoKeysUI: PianoUI = PianoUI()
+
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     
@@ -39,14 +38,14 @@ class PitchDetection{
         silence = AKBooster(tracker, gain: 0)
     }
     
-    func setupPitchDetection(isPiano: Bool){
+    func setupPitchDetection(){
         AKManager.output = silence
         do {
             try AKManager.start()
-            self.calculatePitchDetection(isPiano: isPiano)
+            self.calculatePitchDetection()
             Timer.scheduledTimer(withTimeInterval: self.timerCycle, repeats: true) { timer in // Timer executes every 1/10 of a second
                 if(self.tracker.amplitude > self.noiseGateThreshold){ // The amplitude is the loudness of the noise. Therefore, if the loudness of the noise in the microphone is greater than the given threshold then the microphone will pick it up. (noise gate)
-                    self.calculatePitchDetection(isPiano: isPiano)
+                    self.calculatePitchDetection()
                 }else{
                     self.amplitudeDebugLabel = "amplitude: 0.00"
                 }
@@ -56,7 +55,7 @@ class PitchDetection{
         }
     }
     
-    func calculatePitchDetection(isPiano: Bool){
+    func calculatePitchDetection(){
         frequencyDebugLabel = "frequency: " + String(tracker.frequency)
         amplitudeDebugLabel = "amplitude: " + String(tracker.amplitude)
         
@@ -69,19 +68,14 @@ class PitchDetection{
             noteOctaveUpperBound.append(30.87 * pow(2.0,Double(i)))
         }
         
-        //print("noteOctaveLowerBound: ", noteOctaveLowerBound)
-        //print("noteOctaveUpperBound: ", noteOctaveUpperBound)
-        
         for i in 0...8 {
             if(tracker.frequency >= noteOctaveLowerBound[i] && tracker.frequency <= noteOctaveUpperBound[i]){
                 octave = i
-                print("Ocatave: ", i)
             }
         }
         
         // Get middle A of the octave we are on
         let middleA = 440 * pow(2, (octave - 5))
-        print("middleA: ", middleA)
         
         // Calculate the frequency from middleA
         var octaveFrequencies: [Double] = []
@@ -89,8 +83,6 @@ class PitchDetection{
             let middleACalculation = middleA * pow(2, i / 12)
             octaveFrequencies.append(middleACalculation)
         }
-        
-        //print("octaveFrequencies: ", octaveFrequencies)
         
         // Find the closest value in the octaveFrequencies array
         var smallestValue:Double = 0
@@ -115,9 +107,7 @@ class PitchDetection{
         
         // Get the index of the closest value
         let index = octaveFrequencies.firstIndex(of: closest)
-        print(pitchDetectionLabel)
         pitchDetectionLabel = Notes[index ?? 0]
-        // Check if the user is using piano or guitar
         
     }
     

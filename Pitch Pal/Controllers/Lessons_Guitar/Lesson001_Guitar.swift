@@ -61,7 +61,7 @@ class Lesson001_Guitar: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetectionManager.setupPitchDetection(isPiano: false)
+        PitchDetectionManager.setupPitchDetection()
         
     }
     

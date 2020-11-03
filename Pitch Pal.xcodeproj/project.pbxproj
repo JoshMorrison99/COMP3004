@@ -111,10 +111,7 @@
 		E790F60A251EB04D005652C0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E7E58B6D25240B070061EE19 /* Play.swift */,
-				E7D7FB6B252D290B0078968E /* PlayScene.swift */,
 				E790F60C251EB068005652C0 /* Styles.swift */,
-				E7D7FB71253228630078968E /* PitchDetection.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -144,7 +141,6 @@
 				E7D007292551AD9000262D0C /* Models */,
 				E7D007272551AD3D00262D0C /* Controllers */,
 				E7D0071D254DAA8D00262D0C /* Songs_Guitar */,
-				E7D00715254DA9DD00262D0C /* Guitar_Logic */,
 				E70DCE712544B4160053BFA2 /* Songs_Piano */,
 				E790F60A251EB04D005652C0 /* Helpers */,
 				E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */,
@@ -155,15 +151,6 @@
 				E7C54003251C0ED500EDECE0 /* Info.plist */,
 			);
 			path = "Pitch Pal";
-			sourceTree = "<group>";
-		};
-		E7D00715254DA9DD00262D0C /* Guitar_Logic */ = {
-			isa = PBXGroup;
-			children = (
-				E7D00716254DA9F900262D0C /* Play_Guitar.swift */,
-				E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */,
-			);
-			path = Guitar_Logic;
 			sourceTree = "<group>";
 		};
 		E7D0071D254DAA8D00262D0C /* Songs_Guitar */ = {
@@ -177,6 +164,8 @@
 		E7D007272551AD3D00262D0C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E7E58B6D25240B070061EE19 /* Play.swift */,
+				E7D00716254DA9F900262D0C /* Play_Guitar.swift */,
 				E70DCE80254B06D00053BFA2 /* Lessons_Guitar */,
 				E7EA3DA02532544500B1BBE2 /* Lessons_Piano */,
 				E7D7FB74253229B80078968E /* TunerController.swift */,
@@ -187,6 +176,7 @@
 		E7D007292551AD9000262D0C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E7D7FB71253228630078968E /* PitchDetection.swift */,
 				E7D0072A2551ADA400262D0C /* LessonsModel.swift */,
 			);
 			path = Models;
@@ -195,6 +185,8 @@
 		E7D0072D2551B0E800262D0C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E7D7FB6B252D290B0078968E /* PlayScene.swift */,
+				E7D0071A254DAA2500262D0C /* PlayScene_Guitar.swift */,
 				E70DCE7C254B03D20053BFA2 /* GuitarTabUI.swift */,
 				E7D7FB6E25321AF90078968E /* PianoUI.swift */,
 				E7EA3D9D253238ED00B1BBE2 /* StaffUI.swift */,

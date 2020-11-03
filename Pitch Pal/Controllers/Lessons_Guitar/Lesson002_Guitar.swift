@@ -69,7 +69,7 @@ class Lesson002_Guitar: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetectionManager.setupPitchDetection(isPiano: false)
+        PitchDetectionManager.setupPitchDetection()
         
         
         self.lessonLoop()
@@ -148,29 +148,8 @@ class Lesson002_Guitar: UIViewController {
         
         
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
-        LessonLabel.text = "The symbol being displayed on the tab is a 3. To play this note, put your finger on the 3rd fret of the big E string (the string closest to your head) and strum."
-        LessonLabel_number.text = "7 / 8"
-        lessonStepNum = 7
-        
-        PitchDetectionManager.setLabel(newLabel: "#")
-        
-        threeFretNum.image = UIImage(systemName: "3.circle")
-        threeFretNum.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(threeFretNum)
-        threeFretNum.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        threeFretNum.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        threeFretNum.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -105).isActive = true
-        threeFretNum.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 220).isActive = true
-        threeFretNum.tintColor = .red
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
-        
     }
     
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {

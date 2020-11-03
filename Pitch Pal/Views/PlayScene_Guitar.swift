@@ -53,7 +53,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         
         // Setup Pitch Detection
         PitchDetectionManager.initializePitchDetection()
-        PitchDetectionManager.setupPitchDetection(isPiano: false)
+        PitchDetectionManager.setupPitchDetection()
         
         
         physicsWorld.contactDelegate = self

@@ -73,7 +73,7 @@ class Lesson001: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetectionManager.setupPitchDetection(isPiano: true)
+        PitchDetectionManager.setupPitchDetection()
         
         pianoKeysPressedUI()
         

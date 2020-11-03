@@ -63,7 +63,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         
         // Setup Pitch Detection
         PitchDetectionManager.initializePitchDetection()
-        PitchDetectionManager.setupPitchDetection(isPiano: true)
+        PitchDetectionManager.setupPitchDetection()
         pianoKeysPressedUI()
         
         
