@@ -21,6 +21,7 @@ class Lesson001_Guitar: UIViewController {
     let LessonGoalNote = ["G", "D", "E"]
     var goalNote = "G"
     var goalIndex = 0
+    var timerLoop = 0.25
     var startLessonPlay: Bool = false
     
     // Lesson text at the top of the screen
@@ -28,18 +29,6 @@ class Lesson001_Guitar: UIViewController {
     @IBOutlet weak var LessonLabel_number: UILabel!
     
     private var lessonModel: LessonsModel = LessonsModel()
-    
-    
-//    // Lesson Logic
-//    let NotesSequence = ["G","B","E"]
-//    var goalNote = "G"
-//    var goalIndex = 0
-//    var lessonStepNum = 0
-//    var startLessonPlay: Bool = false
-//
-//    var note001 = UIImageView()
-//    var note002 = UIImageView()
-//    var note003 = UIImageView()
     
     
     var NoteImageSequence : [UIImageView] = []
@@ -86,6 +75,7 @@ class Lesson001_Guitar: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
         
+        
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
     }
@@ -96,6 +86,8 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
         
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
@@ -115,6 +107,8 @@ class Lesson001_Guitar: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
         
+        view.removeGestureRecognizer(sender!)
+        
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
     }
@@ -132,6 +126,8 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
         
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
@@ -151,6 +147,8 @@ class Lesson001_Guitar: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
         
+        view.removeGestureRecognizer(sender!)
+        
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
     }
@@ -168,6 +166,8 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
         
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
@@ -187,6 +187,8 @@ class Lesson001_Guitar: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
         
+        view.removeGestureRecognizer(sender!)
+        
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
     }
@@ -204,6 +206,8 @@ class Lesson001_Guitar: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
         
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
@@ -258,13 +262,17 @@ class Lesson001_Guitar: UIViewController {
         // Increase the lesson step in the model
         lessonModel.accumulateLessonStepNumber()
         
+        view.removeGestureRecognizer(sender!)
+        
+        self.startLessonPlay = true
+        
         self.lessonLoop()
     }
     
     
     
     func lessonLoop(){
-        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: timerLoop, repeats: true) { timer in
             if(self.lessonModel.getLessonStepNum() == 9){
                 self.LessonLogic()
             }
@@ -286,6 +294,7 @@ class Lesson001_Guitar: UIViewController {
     func CompleteLession(){
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
+        timerLoop = 0
     }
     
     @IBAction func pauseYesClicked(_ sender: Any) {

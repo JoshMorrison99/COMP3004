@@ -110,6 +110,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
@@ -121,6 +123,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
@@ -132,6 +136,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
@@ -144,6 +150,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
@@ -157,6 +165,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
@@ -171,6 +181,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
@@ -186,6 +198,8 @@ class Lesson001: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
 
     @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
@@ -232,6 +246,7 @@ class Lesson001: UIViewController {
         note002.tintColor = .black
         note003.tintColor = .black
         
+        view.removeGestureRecognizer(sender!)
         
         LessonLabel_number.text = "9 / 9"
         lessonStepNum = 9
@@ -272,9 +287,6 @@ class Lesson001: UIViewController {
     func CompleteLession(){
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
-        PianoStaffUI.staff.alpha = 0
-        PianoStaffUI.getTrebleClef().alpha = 0
-        clearNotes()
     }
     
     @objc func pauseButtonClicked(){
