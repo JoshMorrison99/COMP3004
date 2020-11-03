@@ -50,7 +50,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         setupUI()
         
         // Setup Staff UI
-        staff = PianoStaffUI.setupStaffUI(view: view)!
+        PianoStaffUI.setupStaffUI(view: view)
+        staff = PianoStaffUI.getStaff()
         staff.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
         
         // Need to set the alpha back to 1 in the case where the user plays the song again

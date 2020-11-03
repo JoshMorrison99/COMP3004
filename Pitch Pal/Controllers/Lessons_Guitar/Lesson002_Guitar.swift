@@ -23,29 +23,17 @@ class Lesson002_Guitar: UIViewController {
     @IBOutlet weak var LessonLabel: UILabel!
     @IBOutlet weak var LessonLabel_number: UILabel!
     
-    
-//    // Lesson Logic
-//    let NotesSequence = ["G","B","E"]
-//    var goalNote = "G"
-//    var goalIndex = 0
-//    var lessonStepNum = 0
-//    var startLessonPlay: Bool = false
-//
-//    var note001 = UIImageView()
-//    var note002 = UIImageView()
-//    var note003 = UIImageView()
-    
-    
-    var NoteImageSequence : [UIImageView] = []
-    let threeFretNum = UIImageView()
+    // Images used during the lesson
     var noteDetectionLabel = UILabel()
     
+    // Reference to the guitar UI
     let GuitarUI: GuitarTabUI = GuitarTabUI()
+    
+    // Reference to the pitch detection
     let PitchDetectionManager: PitchDetection = PitchDetection()
     
-    var lessonStepNum = 0
-    
-    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+    // Reference to the Lesson Model
+    private var lessonModel: LessonsModel = LessonsModel()
 
 
     override func viewDidLoad() {
@@ -71,8 +59,6 @@ class Lesson002_Guitar: UIViewController {
 
         PitchDetectionManager.setupPitchDetection()
         
-        
-        self.lessonLoop()
     }
     
     func startLesson(){
@@ -82,7 +68,7 @@ class Lesson002_Guitar: UIViewController {
         
         LessonLabel.text = "Hello! Welcome to lesson 2 of the Pitch Pal App. To proceed tap anywhere on the screen."
         LessonLabel_number.text = "1 / 9"
-        lessonStepNum = 1
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
@@ -91,7 +77,7 @@ class Lesson002_Guitar: UIViewController {
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "Take a look at your guitar and notice the lines and dots under the strings of the guitar."
         LessonLabel_number.text = "2 / 9"
-        lessonStepNum = 2
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
@@ -100,7 +86,7 @@ class Lesson002_Guitar: UIViewController {
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "Theses lines are called frets and allow you to play different frequencies of notes by shortening the length of the string with your finger."
         LessonLabel_number.text = "3 / 9"
-        lessonStepNum = 3
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
@@ -109,7 +95,7 @@ class Lesson002_Guitar: UIViewController {
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "The dots arn't shown on every guitar, but if they are, the dots are positioned on frets 3, 5, 7, 9, 12, 15, 17, 19, 21, 24. These dots are used to help you navigate you ways around the fretboard."
         LessonLabel_number.text = "4 / 9"
-        lessonStepNum = 4
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
@@ -118,7 +104,7 @@ class Lesson002_Guitar: UIViewController {
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "Pitch pal read the notes by detecting the frequeuency of sound through your devices microphone. Play a string on your guitar and pitch pal will show you what note you are playing."
         LessonLabel_number.text = "5 / 9"
-        lessonStepNum = 5
+        lessonModel.accumulateLessonStepNumber()
         
         noteDetectionLabel.alpha = 1
         
@@ -141,12 +127,10 @@ class Lesson002_Guitar: UIViewController {
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "Guitar tablature, or tab, is a form of writing down music for guitar, and it mainly uses numbers instead of standard music notation. It's alot easier to read."
         LessonLabel_number.text = "6 / 9"
-        lessonStepNum = 6
+        lessonModel.accumulateLessonStepNumber()
         
         noteDetectionLabel.alpha = 0
         GuitarUI.getStrings().alpha = 1
-        
-        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
@@ -160,19 +144,7 @@ class Lesson002_Guitar: UIViewController {
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
         GuitarUI.getStrings().alpha = 0
-        threeFretNum.alpha = 0
         
-    }
-    
-    func lessonLoop(){
-        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
-            if(self.lessonStepNum == 5){
-                self.noteDetectionLabel.text = self.PitchDetectionManager.getLabel()
-            }
-            if(self.PitchDetectionManager.getLabel() == "G" && self.lessonStepNum == 7){
-                self.CompleteLession()
-            }
-        }
     }
     
     @objc func pauseButtonClicked(){

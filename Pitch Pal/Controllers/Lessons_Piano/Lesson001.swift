@@ -23,30 +23,22 @@ class Lesson001: UIViewController {
     @IBOutlet weak var LessonLabel: UILabel!
     @IBOutlet weak var LessonLabel_number: UILabel!
     
-    var timer = Timer()
     var noteDetectionTimer = Timer()
     var noteDetectionTimerCycle:Double = 0.05
     
     
-    // Lesson Logic
-    let NotesSequence = ["G","B","E"]
-    var goalNote = "G"
-    var goalIndex = 0
-    var lessonStepNum = 0
-    var startLessonPlay: Bool = false
-    
+    // Images used in the lesson
+    var NoteImageSequence : [UIImageView] = []
     var note001 = UIImageView()
     var note002 = UIImageView()
     var note003 = UIImageView()
     
+    // Reference to the Lesson Model
+    var lessonModel: LessonsModel = LessonsModel()
+    
     let PianoStaffUI:StaffUI = StaffUI()
     let PianoKeysUI: PianoUI = PianoUI()
     let PitchDetectionManager: PitchDetection = PitchDetection()
-    
-    
-    var NoteImageSequence : [UIImageView] = []
-    
-    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
 
     override func viewDidLoad() {
@@ -64,8 +56,9 @@ class Lesson001: UIViewController {
         // Pause Button Setup
         self.setupHomeMenu()
 
-        // Start the Lesson
-        self.startLesson()
+        setupLesson()
+        
+        startLesson()
         
         
     }
@@ -81,6 +74,11 @@ class Lesson001: UIViewController {
         self.lessonLoop()
     }
     
+    func setupLesson(){
+        lessonModel.setLessonGoalNote(lessonNotes: ["G","B","E"])
+        lessonModel.setGoalNote(newGoalNote: "G")
+    }
+    
     func startLesson(){
         PianoStaffUI.getStaff().alpha = 0
         PianoStaffUI.getTrebleClef().alpha = 0
@@ -89,7 +87,7 @@ class Lesson001: UIViewController {
         
         LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen."
         LessonLabel_number.text = "1 / 9"
-        lessonStepNum = 1
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
@@ -106,7 +104,7 @@ class Lesson001: UIViewController {
         clearNotes()
         LessonLabel.text = "This is the STAFF. It is the foundation upon which notes are drawn. The STAFF consists of 5 lines and 4 spaces. Every line or white space on the STAFF represents a key on the keyboard."
         LessonLabel_number.text = "2 / 9"
-        lessonStepNum = 2
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
@@ -118,7 +116,7 @@ class Lesson001: UIViewController {
         // handling code
         LessonLabel.text = "Two CLEFS are normally used: Treble and Bass CLEFS. Displayed on the STAFF is the TREBLE CLEF (also called the G clef)."
         LessonLabel_number.text = "3 / 9"
-        lessonStepNum = 3
+        lessonModel.accumulateLessonStepNumber()
         PianoStaffUI.getTrebleClef().alpha = 1
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
@@ -132,7 +130,7 @@ class Lesson001: UIViewController {
         LessonLabel.text = "The highlighted line show is: E"
         PianoStaffUI.ELine.backgroundColor = UIColor.green
         LessonLabel_number.text = "4 / 9"
-        lessonStepNum = 4
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
@@ -146,7 +144,7 @@ class Lesson001: UIViewController {
         PianoStaffUI.ELine.backgroundColor = UIColor.black
         PianoStaffUI.GLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "5 / 9"
-        lessonStepNum = 5
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
@@ -161,7 +159,7 @@ class Lesson001: UIViewController {
         PianoStaffUI.GLine.backgroundColor = UIColor.black
         PianoStaffUI.BLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "6 / 9"
-        lessonStepNum = 6
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
@@ -177,7 +175,7 @@ class Lesson001: UIViewController {
         PianoStaffUI.BLine.backgroundColor = UIColor.black
         PianoStaffUI.DLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "7 / 9"
-        lessonStepNum = 7
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
@@ -194,7 +192,7 @@ class Lesson001: UIViewController {
         PianoStaffUI.DLine.backgroundColor = UIColor.black
         PianoStaffUI.FLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "8 / 9"
-        lessonStepNum = 8
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
@@ -249,17 +247,19 @@ class Lesson001: UIViewController {
         view.removeGestureRecognizer(sender!)
         
         LessonLabel_number.text = "9 / 9"
-        lessonStepNum = 9
+        lessonModel.accumulateLessonStepNumber()
         
         self.displayNotes()
         
-        self.startLessonPlay = true
+        lessonModel.startLesson()
         
     }
     
     func lessonLoop(){
-        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
-            if(self.lessonStepNum == 9){
+        print(lessonModel.getLessonStepNum())
+        Timer.scheduledTimer(withTimeInterval: lessonModel.getTimer(), repeats: true) { timer in
+            if(self.lessonModel.getLessonStepNum() == 9){
+                print("Hello")
                 self.LessonLogic()
             }
         }
@@ -273,13 +273,13 @@ class Lesson001: UIViewController {
     }
     
     func LessonLogic(){
-        if(PitchDetectionManager.getLabel() == goalNote && PitchDetectionManager.getLabel() == NotesSequence[goalIndex]){
-            NoteImageSequence[goalIndex].tintColor = UIColor.green
-            if(goalIndex >= NotesSequence.count-1){
+        if(PitchDetectionManager.getLabel() == lessonModel.getGoalNote() && PitchDetectionManager.getLabel() == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
+            NoteImageSequence[lessonModel.getGoalIndex()].tintColor = UIColor.green
+            if(lessonModel.getGoalIndex() >= lessonModel.getLessonGoalNote().count-1){
                 CompleteLession()
             }else{
-                goalIndex += 1
-                goalNote = NotesSequence[goalIndex]
+                lessonModel.accumulateGoalIndex()
+                lessonModel.setGoalNote(newGoalNote: lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()])
             }
         }
     }

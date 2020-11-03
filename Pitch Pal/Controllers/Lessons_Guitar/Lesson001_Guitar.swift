@@ -12,35 +12,33 @@ import AudioKitUI
 
 class Lesson001_Guitar: UIViewController {
     
+    // Pause Menu UI
     @IBOutlet weak var pauseMenuBtn: UIButton!
     @IBOutlet weak var pause_Yes_Btn: UIButton!
     @IBOutlet weak var pause_No_Btn: UIButton!
     @IBOutlet weak var pauseView: UIView!
     
-    // Lesson Logic
-    let LessonGoalNote = ["G", "D", "E"]
-    var goalNote = "G"
-    var goalIndex = 0
-    var timerLoop = 0.25
-    var startLessonPlay: Bool = false
     
     // Lesson text at the top of the screen
     @IBOutlet weak var LessonLabel: UILabel!
     @IBOutlet weak var LessonLabel_number: UILabel!
     
-    private var lessonModel: LessonsModel = LessonsModel()
     
+    // Reference to the Lesson Model
+    var lessonModel: LessonsModel = LessonsModel()
     
+    // Refernece to the Guitar UI
+    let GuitarUI: GuitarTabUI = GuitarTabUI()
+    
+    // Reference to the pitch detection model
+    let PitchDetectionManager: PitchDetection = PitchDetection()
+    
+    // Images used in the Lesson
     var NoteImageSequence : [UIImageView] = []
-    
     var note001 = UIImageView()
     var note002 = UIImageView()
     var note003 = UIImageView()
-    
-    let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
-    let GuitarUI: GuitarTabUI = GuitarTabUI()
-    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +49,11 @@ class Lesson001_Guitar: UIViewController {
         // Setup Pitch Detection
         PitchDetectionManager.initializePitchDetection()
         
+        // Hide the pause menu when the screen first loads
         self.pauseView.isHidden = true
         
-        self.startLesson()
+        setupLesson()
+        startLesson()
         
         
     }
@@ -63,6 +63,11 @@ class Lesson001_Guitar: UIViewController {
 
         PitchDetectionManager.setupPitchDetection()
         
+    }
+    
+    func setupLesson(){
+        lessonModel.setLessonGoalNote(lessonNotes: ["G", "D", "E"])
+        lessonModel.setGoalNote(newGoalNote: "G")
     }
     
     func startLesson(){
@@ -264,7 +269,7 @@ class Lesson001_Guitar: UIViewController {
         
         view.removeGestureRecognizer(sender!)
         
-        self.startLessonPlay = true
+        self.lessonModel.startLesson()
         
         self.lessonLoop()
     }
@@ -272,7 +277,7 @@ class Lesson001_Guitar: UIViewController {
     
     
     func lessonLoop(){
-        Timer.scheduledTimer(withTimeInterval: timerLoop, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: self.lessonModel.getTimer(), repeats: true) { timer in
             if(self.lessonModel.getLessonStepNum() == 9){
                 self.LessonLogic()
             }
@@ -280,13 +285,13 @@ class Lesson001_Guitar: UIViewController {
     }
     
     func LessonLogic(){
-        if(PitchDetectionManager.getLabel() == goalNote && PitchDetectionManager.getLabel() == LessonGoalNote[goalIndex]){
-            NoteImageSequence[goalIndex].tintColor = UIColor.green
-            if(goalIndex >= LessonGoalNote.count-1){
+        if(PitchDetectionManager.getLabel() == lessonModel.getGoalNote() && PitchDetectionManager.getLabel() == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
+            NoteImageSequence[lessonModel.getGoalIndex()].tintColor = UIColor.green
+            if(lessonModel.getGoalIndex() >= lessonModel.getLessonGoalNote().count-1){
                 CompleteLession()
             }else{
-                goalIndex += 1
-                goalNote = LessonGoalNote[goalIndex]
+                lessonModel.accumulateGoalIndex()
+                lessonModel.setGoalNote(newGoalNote: lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()])
             }
         }
     }
@@ -294,7 +299,7 @@ class Lesson001_Guitar: UIViewController {
     func CompleteLession(){
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
-        timerLoop = 0
+        lessonModel.setTimer(newTimer: 0)
     }
     
     @IBAction func pauseYesClicked(_ sender: Any) {

@@ -10,14 +10,18 @@ import UIKit
 import AudioKit
 
 class Lesson002: UIViewController {
+    
+    // Pause menu UI
     @IBOutlet weak var pauseView: UIView!
     @IBOutlet weak var pauseMenuBtn: UIButton!
     @IBOutlet weak var pauseNoBtn: UIButton!
     @IBOutlet weak var pauseYesBtn: UIButton!
     
+    // Lesson text UI
     @IBOutlet weak var lessonTextLabel: UILabel!
     @IBOutlet weak var lessonNumberLabel: UILabel!
     
+    // Images used in the lesson
     var wholeNoteImg = UIImageView()
     var halfNoteImg = UIImageView()
     var quarterNoteImg = UIImageView()
@@ -26,9 +30,14 @@ class Lesson002: UIViewController {
     var eighthNoteDouble = UIImageView()
     var sixteenthNoteDouble = UIImageView()
     
-    var lessonNum = 0
     
+    // Reference to the Lesson Model
+    var lessonModel: LessonsModel = LessonsModel()
+    
+    // Reference to Piano UI
     let PianoKeysUI: PianoUI = PianoUI()
+    
+    // Refernece to pitch detection
     let PitchDetectionManager: PitchDetection = PitchDetection()
     
     
@@ -59,7 +68,7 @@ class Lesson002: UIViewController {
         
         lessonTextLabel.text = "Hello! Welcome to lesson 2 of the Pitch Pal App. In this lesson we are going to learn about note duration. To proceed tap anywhere on the screen."
         lessonNumberLabel.text = "1 / 9"
-        lessonNum = 1
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
@@ -68,7 +77,7 @@ class Lesson002: UIViewController {
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The length of time a note is played is called the note's duration. There are different types of notes, with different note durations."
         lessonNumberLabel.text = "2 / 9"
-        lessonNum = 2
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
@@ -77,7 +86,7 @@ class Lesson002: UIViewController {
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The image displayed on screen is called a whole note. This is the longest of the note durations."
         lessonNumberLabel.text = "3 / 9"
-        lessonNum = 3
+        lessonModel.accumulateGoalIndex()
         wholeNoteImg.image = UIImage(named: "wholeNote")
         
         wholeNoteImg.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +111,7 @@ class Lesson002: UIViewController {
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The image displayed on screen is called a half note. This is the half of the whole notes duration."
         lessonNumberLabel.text = "4 / 9"
-        lessonNum = 4
+        lessonModel.accumulateGoalIndex()
         halfNoteImg.image = UIImage(named: "halfNote")
         
         halfNoteImg.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +136,7 @@ class Lesson002: UIViewController {
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The image displayed on screen is called a quarter note. This is the quarter of the whole notes duration."
         lessonNumberLabel.text = "5 / 9"
-        lessonNum = 5
+        lessonModel.accumulateGoalIndex()
         quarterNoteImg.image = UIImage(named: "quarterNote")
         
         quarterNoteImg.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +161,7 @@ class Lesson002: UIViewController {
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The image displayed on screen is called a eighth note. This is the eighth of the whole notes duration."
         lessonNumberLabel.text = "5 / 9"
-        lessonNum = 5
+        lessonModel.accumulateGoalIndex()
         eighthNoteImg.image = UIImage(named: "eighthNote")
         
         eighthNoteImg.translatesAutoresizingMaskIntoConstraints = false
@@ -177,7 +186,7 @@ class Lesson002: UIViewController {
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The image displayed on screen is called a sixteenth note. This is the sixteenth of the whole notes duration."
         lessonNumberLabel.text = "6 / 9"
-        lessonNum = 6
+        lessonModel.accumulateGoalIndex()
         sixteenthNoteImg.image = UIImage(named: "sixteenthNote")
         
         sixteenthNoteImg.translatesAutoresizingMaskIntoConstraints = false
@@ -202,7 +211,7 @@ class Lesson002: UIViewController {
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "When you combine two eighth notes, you get the symbol displayed now. The symbol acts the same as two eighth notes, just a different symbol."
         lessonNumberLabel.text = "7 / 9"
-        lessonNum = 7
+        lessonModel.accumulateGoalIndex()
         eighthNoteDouble.image = UIImage(named: "eighthNoteDouble")
         
         eighthNoteDouble.translatesAutoresizingMaskIntoConstraints = false
@@ -227,7 +236,7 @@ class Lesson002: UIViewController {
     @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "The same is true for the sixteenth notes. When you have two sixteenth notes togther, you get the image displayed on screen."
         lessonNumberLabel.text = "8 / 9"
-        lessonNum = 8
+        lessonModel.accumulateGoalIndex()
         sixteenthNoteDouble.image = UIImage(named: "sixteenthNoteDouble")
         
         sixteenthNoteDouble.translatesAutoresizingMaskIntoConstraints = false
@@ -252,7 +261,7 @@ class Lesson002: UIViewController {
     @objc func step009(_ sender: UITapGestureRecognizer? = nil) {
         lessonTextLabel.text = "End of lesson! Good job!"
         lessonNumberLabel.text = "9 / 9"
-        lessonNum = 9
+        lessonModel.accumulateGoalIndex()
         
         wholeNoteImg.alpha = 0
         halfNoteImg.alpha = 0
