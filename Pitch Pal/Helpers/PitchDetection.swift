@@ -12,7 +12,7 @@ import AudioKitUI
 
 class PitchDetection{
     
-    static let shared = PitchDetection()
+    let PianoKeysUI: PianoUI = PianoUI()
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     
@@ -119,9 +119,7 @@ class PitchDetection{
         pitchDetectionLabel = Notes[index ?? 0]
         
         // Check if the user is using piano or guitar
-        if (isPiano){
-            PianoUI.shared.pianoKeyPressedUI(pitchDetectionLabel: pitchDetectionLabel)
-        }
+        
     }
     
     func getLabel() -> String{

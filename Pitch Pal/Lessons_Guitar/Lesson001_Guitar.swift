@@ -43,6 +43,7 @@ class Lesson001_Guitar: UIViewController {
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
     let GuitarUI: GuitarTabUI = GuitarTabUI()
+    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class Lesson001_Guitar: UIViewController {
         GuitarUI.setupStringUI(view: view)
         
         // Setup Pitch Detection
-        PitchDetection.shared.initializePitchDetection()
+        PitchDetectionManager.initializePitchDetection()
         
         // Pause Button Setup
         self.setupHomeMenu()
@@ -65,7 +66,7 @@ class Lesson001_Guitar: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetection.shared.setupPitchDetection(isPiano: false)
+        PitchDetectionManager.setupPitchDetection(isPiano: false)
         
         
         //self.lessonLoop()

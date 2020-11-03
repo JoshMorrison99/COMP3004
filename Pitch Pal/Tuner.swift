@@ -18,22 +18,24 @@ class Tuner: UIViewController {
     @IBOutlet weak var pauseNoBtn: UIButton!
     @IBOutlet weak var pauseBtn: UIButton!
     
+    let PitchDetectionManager: PitchDetection = PitchDetection()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.pauseMenu.isHidden = true
         
-        PitchDetection.shared.initializePitchDetection()
+        self.PitchDetectionManager.initializePitchDetection()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        PitchDetection.shared.setupPitchDetection(isPiano: false)
+        self.PitchDetectionManager.setupPitchDetection(isPiano: false)
         
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
-            self.tunerLabel.text = PitchDetection.shared.getLabel()
+            self.tunerLabel.text = self.PitchDetectionManager.getLabel()
         }
     }
     

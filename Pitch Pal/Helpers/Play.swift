@@ -12,8 +12,6 @@ import AudioKit
 
 class Play: UIViewController {
     
-    static let shared = Play()
-    
     @IBOutlet weak var pauseBtn: UIButton!
     
     @IBOutlet weak var pauseView: UIView!

@@ -11,7 +11,7 @@ import AudioKit
 
 class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     
-    static let shared = PlayScene_Guitar()
+    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     var noteSpeed = 6
     
@@ -52,8 +52,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         
         
         // Setup Pitch Detection
-        PitchDetection.shared.initializePitchDetection()
-        PitchDetection.shared.setupPitchDetection(isPiano: false)
+        PitchDetectionManager.initializePitchDetection()
+        PitchDetectionManager.setupPitchDetection(isPiano: false)
         
         
         physicsWorld.contactDelegate = self
@@ -136,7 +136,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     // Called when contact ends between two physics bodies
     func didEnd(_ contact: SKPhysicsContact) {
         isOverlap = false
-        PitchDetection.shared.setLabel(newLabel: EmptyNote)
+        PitchDetectionManager.setLabel(newLabel: EmptyNote)
         
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
@@ -163,7 +163,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     // Called when contact begins between two physics bodies
     func didBegin(_ contact: SKPhysicsContact) {
         isOverlap = true
-        PitchDetection.shared.setLabel(newLabel: EmptyNote)
+        PitchDetectionManager.setLabel(newLabel: EmptyNote)
         overlap(contact, isOverlapping: isOverlap)
     }
     
@@ -179,9 +179,9 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
                     
                     
 
-                if (nodeA.name == PitchDetection.shared.getLabel()){
+                if (nodeA.name == self.PitchDetectionManager.getLabel()){
                         self.collisionBetween(note: nodeA, object: nodeB)
-                    } else if (nodeB.name == PitchDetection.shared.getLabel()){
+                } else if (nodeB.name == self.PitchDetectionManager.getLabel()){
                         self.collisionBetween(note: nodeB, object: nodeA)
                     }
             }

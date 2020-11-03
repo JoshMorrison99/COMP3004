@@ -9,11 +9,9 @@
 import UIKit
 
 class PianoUI {
-    
-    static let shared = PianoUI()
 
     let whiteNotes = ["C","D","E","F","G","A","B","C","D","E","F","G","A","B","C","D","E","F","G","A","B","C","D","E","F","G","A","B"]
-    var notes: [UIButton]!
+    var notes: [UIButton] = [UIButton]()
     
     var stackView = UIStackView()
 
@@ -87,7 +85,6 @@ class PianoUI {
 
             blackNote.widthAnchor.constraint(equalTo: note.widthAnchor, multiplier: 2/3).isActive = true
         }
-        print(notes)
     }
     
     func pianoKeyPressedUI(pitchDetectionLabel: String){

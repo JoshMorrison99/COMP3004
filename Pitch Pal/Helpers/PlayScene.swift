@@ -11,8 +11,6 @@ import AudioKit
 
 class PlayScene : SKScene, SKPhysicsContactDelegate{
     
-    static let shared = PlayScene()
-    
     var noteSpeed = 6
     
     let noteHitLabel = SKLabelNode()
@@ -32,6 +30,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     var staff = UIView()
     
     let PianoStaffUI: StaffUI = StaffUI()
+    let PianoKeysUI: PianoUI = PianoUI()
+    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     let GAxis:Double = 0.43
     let BAxis:Double = 0.52
@@ -58,12 +58,13 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         PianoStaffUI.getTrebleClef().alpha = 1
         
         // Setup Piano UI
-        PianoUI.shared.setupPianoUI(view: view)
+        PianoKeysUI.setupPianoUI(view: view)
         
         
         // Setup Pitch Detection
-        PitchDetection.shared.initializePitchDetection()
-        PitchDetection.shared.setupPitchDetection(isPiano: true)
+        PitchDetectionManager.initializePitchDetection()
+        PitchDetectionManager.setupPitchDetection(isPiano: true)
+        pianoKeysPressedUI()
         
         
         physicsWorld.contactDelegate = self
@@ -75,6 +76,13 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         
         
         TwinkeTwinkle_Song()
+        
+    }
+    
+    func pianoKeysPressedUI(){
+        Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
+            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.PitchDetectionManager.getLabel())
+        }
         
     }
     
@@ -139,7 +147,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     // Called when contact ends between two physics bodies
     func didEnd(_ contact: SKPhysicsContact) {
         isOverlap = false
-        PitchDetection.shared.setLabel(newLabel: EmptyNote)
+        PitchDetectionManager.setLabel(newLabel: EmptyNote)
         
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
@@ -157,7 +165,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     // Called when contact begins between two physics bodies
     func didBegin(_ contact: SKPhysicsContact) {
         isOverlap = true
-        PitchDetection.shared.setLabel(newLabel: EmptyNote)
+        PitchDetectionManager.setLabel(newLabel: EmptyNote)
         overlap(contact, isOverlapping: isOverlap)
     }
     
@@ -165,8 +173,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         removeAllChildren()
         staff.alpha = 0
         PianoStaffUI.getTrebleClef().alpha = 0
-        PianoUI.shared.stackView.alpha = 0
-        for each in PianoUI.shared.notes{
+        PianoKeysUI.stackView.alpha = 0
+        for each in PianoKeysUI.notes{
             each.alpha = 0
         }
         noteHitLabel.fontSize = 90
@@ -188,9 +196,9 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
                     
                     
 
-                if (nodeA.name == PitchDetection.shared.getLabel()){
+                if (nodeA.name == self.PitchDetectionManager.getLabel()){
                         self.collisionBetween(note: nodeA, object: nodeB)
-                    } else if (nodeB.name == PitchDetection.shared.getLabel()){
+                } else if (nodeB.name == self.PitchDetectionManager.getLabel()){
                         self.collisionBetween(note: nodeB, object: nodeA)
                     }
             }

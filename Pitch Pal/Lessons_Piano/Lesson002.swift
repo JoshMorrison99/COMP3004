@@ -28,6 +28,9 @@ class Lesson002: UIViewController {
     
     var lessonNum = 0
     
+    let PianoKeysUI: PianoUI = PianoUI()
+    let PitchDetectionManager: PitchDetection = PitchDetection()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +38,10 @@ class Lesson002: UIViewController {
         view.viewBackgroundColor()
         
         // Setup Piano UI
-        PianoUI.shared.setupPianoUI(view: view)
+        PianoKeysUI.setupPianoUI(view: view)
         
         // Setup Pitch Detection
-        PitchDetection.shared.initializePitchDetection()
+        PitchDetectionManager.initializePitchDetection()
         
         // Pause Button Setup
         self.setupHomeMenu()

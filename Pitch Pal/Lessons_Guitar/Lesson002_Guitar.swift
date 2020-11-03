@@ -41,6 +41,7 @@ class Lesson002_Guitar: UIViewController {
     var noteDetectionLabel = UILabel()
     
     let GuitarUI: GuitarTabUI = GuitarTabUI()
+    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     var lessonStepNum = 0
     
@@ -54,7 +55,7 @@ class Lesson002_Guitar: UIViewController {
         GuitarUI.setupStringUI(view: view)
         
         // Setup Pitch Detection
-        PitchDetection.shared.initializePitchDetection()
+        PitchDetectionManager.initializePitchDetection()
         
         // Pause Button Setup
         self.setupHomeMenu()
@@ -68,7 +69,7 @@ class Lesson002_Guitar: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetection.shared.setupPitchDetection(isPiano: false)
+        PitchDetectionManager.setupPitchDetection(isPiano: false)
         
         
         self.lessonLoop()
@@ -130,7 +131,7 @@ class Lesson002_Guitar: UIViewController {
         
         noteDetectionLabel.font = noteDetectionLabel.font.withSize(200)
         noteDetectionLabel.textAlignment = .center
-        noteDetectionLabel.text = PitchDetection.shared.getLabel()
+        noteDetectionLabel.text = PitchDetectionManager.getLabel()
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
@@ -156,7 +157,7 @@ class Lesson002_Guitar: UIViewController {
         LessonLabel_number.text = "7 / 8"
         lessonStepNum = 7
         
-        PitchDetection.shared.setLabel(newLabel: "#")
+        PitchDetectionManager.setLabel(newLabel: "#")
         
         threeFretNum.image = UIImage(systemName: "3.circle")
         threeFretNum.translatesAutoresizingMaskIntoConstraints = false
@@ -187,9 +188,9 @@ class Lesson002_Guitar: UIViewController {
     func lessonLoop(){
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
             if(self.lessonStepNum == 5){
-                self.noteDetectionLabel.text = PitchDetection.shared.getLabel()
+                self.noteDetectionLabel.text = self.PitchDetectionManager.getLabel()
             }
-            if(PitchDetection.shared.getLabel() == "G" && self.lessonStepNum == 7){
+            if(self.PitchDetectionManager.getLabel() == "G" && self.lessonStepNum == 7){
                 self.CompleteLession()
             }
         }

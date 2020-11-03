@@ -12,8 +12,6 @@ import AudioKit
 
 class Play_Guitar: UIViewController {
     
-    static let shared = Play_Guitar()
-    
     @IBOutlet weak var pauseBtn: UIButton!
     
     @IBOutlet weak var pauseView: UIView!

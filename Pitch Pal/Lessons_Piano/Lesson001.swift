@@ -23,6 +23,10 @@ class Lesson001: UIViewController {
     @IBOutlet weak var LessonLabel: UILabel!
     @IBOutlet weak var LessonLabel_number: UILabel!
     
+    var timer = Timer()
+    var noteDetectionTimer = Timer()
+    var noteDetectionTimerCycle:Double = 0.05
+    
     
     // Lesson Logic
     let NotesSequence = ["G","B","E"]
@@ -36,6 +40,8 @@ class Lesson001: UIViewController {
     var note003 = UIImageView()
     
     let PianoStaffUI:StaffUI = StaffUI()
+    let PianoKeysUI: PianoUI = PianoUI()
+    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     
     var NoteImageSequence : [UIImageView] = []
@@ -50,10 +56,10 @@ class Lesson001: UIViewController {
         PianoStaffUI.setupStaffUI(view: view)
         
         // Setup Piano UI
-        PianoUI.shared.setupPianoUI(view: view)
+        PianoKeysUI.setupPianoUI(view: view)
         
         // Setup Pitch Detection
-        PitchDetection.shared.initializePitchDetection()
+        PitchDetectionManager.initializePitchDetection()
         
         // Pause Button Setup
         self.setupHomeMenu()
@@ -67,7 +73,9 @@ class Lesson001: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        PitchDetection.shared.setupPitchDetection(isPiano: true)
+        PitchDetectionManager.setupPitchDetection(isPiano: true)
+        
+        pianoKeysPressedUI()
         
         
         self.lessonLoop()
@@ -242,8 +250,15 @@ class Lesson001: UIViewController {
         }
     }
     
+    func pianoKeysPressedUI(){
+        Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
+            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.PitchDetectionManager.getLabel())
+        }
+        
+    }
+    
     func LessonLogic(){
-        if(PitchDetection.shared.getLabel() == goalNote && PitchDetection.shared.getLabel() == NotesSequence[goalIndex]){
+        if(PitchDetectionManager.getLabel() == goalNote && PitchDetectionManager.getLabel() == NotesSequence[goalIndex]){
             NoteImageSequence[goalIndex].tintColor = UIColor.green
             if(goalIndex >= NotesSequence.count-1){
                 CompleteLession()
