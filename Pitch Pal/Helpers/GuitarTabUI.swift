@@ -10,8 +10,6 @@ import UIKit
 
 class GuitarTabUI {
     
-    static let shared = GuitarTabUI()
-    
     let strings = UIView()
     let stringsStack = UIStackView()
     let BigELine = UIView()

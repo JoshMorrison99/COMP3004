@@ -40,7 +40,7 @@ class Lesson002_Guitar: UIViewController {
     let threeFretNum = UIImageView()
     var noteDetectionLabel = UILabel()
     
-    
+    let GuitarUI: GuitarTabUI = GuitarTabUI()
     
     var lessonStepNum = 0
     
@@ -51,7 +51,7 @@ class Lesson002_Guitar: UIViewController {
         super.viewDidLoad()
         
         // Setup Staff UI
-        GuitarTabUI.shared.setupStringUI(view: view)
+        GuitarUI.setupStringUI(view: view)
         
         // Setup Pitch Detection
         PitchDetection.shared.initializePitchDetection()
@@ -77,7 +77,7 @@ class Lesson002_Guitar: UIViewController {
     func startLesson(){
         
         noteDetectionLabel.alpha = 0
-        GuitarTabUI.shared.getStrings().alpha = 0
+        GuitarUI.getStrings().alpha = 0
         
         LessonLabel.text = "Hello! Welcome to lesson 2 of the Pitch Pal App. To proceed tap anywhere on the screen."
         LessonLabel_number.text = "1 / 9"
@@ -143,7 +143,7 @@ class Lesson002_Guitar: UIViewController {
         lessonStepNum = 6
         
         noteDetectionLabel.alpha = 0
-        GuitarTabUI.shared.getStrings().alpha = 1
+        GuitarUI.getStrings().alpha = 1
         
         
         
@@ -179,7 +179,7 @@ class Lesson002_Guitar: UIViewController {
     func CompleteLession(){
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
-        GuitarTabUI.shared.getStrings().alpha = 0
+        GuitarUI.getStrings().alpha = 0
         threeFretNum.alpha = 0
         
     }

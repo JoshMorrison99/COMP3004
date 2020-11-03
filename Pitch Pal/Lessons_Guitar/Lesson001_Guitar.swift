@@ -38,14 +38,17 @@ class Lesson001_Guitar: UIViewController {
     
     var NoteImageSequence : [UIImageView] = []
     
+    //let guitarUI: GuitarTabUI = GuitarTabUI()
+    
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
 
-
+    let GuitarUI: GuitarTabUI = GuitarTabUI()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Setup Staff UI
-        GuitarTabUI.shared.setupStringUI(view: view)
+        GuitarUI.setupStringUI(view: view)
         
         // Setup Pitch Detection
         PitchDetection.shared.initializePitchDetection()
@@ -90,12 +93,12 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel.text = "The highlighted string is the Big E String."
         LessonLabel_number.text = "3 / 9"
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        GuitarUI.BigELine.backgroundColor = UIColor.green
+        GuitarUI.ALine.backgroundColor = UIColor.black
+        GuitarUI.DLine.backgroundColor = UIColor.black
+        GuitarUI.GLine.backgroundColor = UIColor.black
+        GuitarUI.BLine.backgroundColor = UIColor.black
+        GuitarUI.LittleELine.backgroundColor = UIColor.black
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
@@ -105,12 +108,12 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel.text = "The highlighted string is the A String."
         LessonLabel_number.text = "4 / 9"
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        GuitarUI.BigELine.backgroundColor = UIColor.black
+        GuitarUI.ALine.backgroundColor = UIColor.green
+        GuitarUI.DLine.backgroundColor = UIColor.black
+        GuitarUI.GLine.backgroundColor = UIColor.black
+        GuitarUI.BLine.backgroundColor = UIColor.black
+        GuitarUI.LittleELine.backgroundColor = UIColor.black
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
@@ -120,12 +123,12 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel.text = "The highlighted string is the D String."
         LessonLabel_number.text = "5 / 9"
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        GuitarUI.BigELine.backgroundColor = UIColor.black
+        GuitarUI.ALine.backgroundColor = UIColor.black
+        GuitarUI.DLine.backgroundColor = UIColor.green
+        GuitarUI.GLine.backgroundColor = UIColor.black
+        GuitarUI.BLine.backgroundColor = UIColor.black
+        GuitarUI.LittleELine.backgroundColor = UIColor.black
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
@@ -135,12 +138,12 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel.text = "The highlighted string is the G String."
         LessonLabel_number.text = "6 / 9"
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        GuitarUI.BigELine.backgroundColor = UIColor.black
+        GuitarUI.ALine.backgroundColor = UIColor.black
+        GuitarUI.DLine.backgroundColor = UIColor.black
+        GuitarUI.GLine.backgroundColor = UIColor.green
+        GuitarUI.BLine.backgroundColor = UIColor.black
+        GuitarUI.LittleELine.backgroundColor = UIColor.black
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
@@ -150,12 +153,12 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel.text = "The highlighted string is the B String."
         LessonLabel_number.text = "7 / 9"
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.green
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.black
+        GuitarUI.BigELine.backgroundColor = UIColor.black
+        GuitarUI.ALine.backgroundColor = UIColor.black
+        GuitarUI.DLine.backgroundColor = UIColor.black
+        GuitarUI.GLine.backgroundColor = UIColor.black
+        GuitarUI.BLine.backgroundColor = UIColor.green
+        GuitarUI.LittleELine.backgroundColor = UIColor.black
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
@@ -165,12 +168,12 @@ class Lesson001_Guitar: UIViewController {
         LessonLabel.text = "The highlighted string is the little E String."
         LessonLabel_number.text = "8 / 9"
         
-        GuitarTabUI.shared.BigELine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.ALine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.DLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.GLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.BLine.backgroundColor = UIColor.black
-        GuitarTabUI.shared.LittleELine.backgroundColor = UIColor.green
+        GuitarUI.BigELine.backgroundColor = UIColor.black
+        GuitarUI.ALine.backgroundColor = UIColor.black
+        GuitarUI.DLine.backgroundColor = UIColor.black
+        GuitarUI.GLine.backgroundColor = UIColor.black
+        GuitarUI.BLine.backgroundColor = UIColor.black
+        GuitarUI.LittleELine.backgroundColor = UIColor.green
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
