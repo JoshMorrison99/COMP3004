@@ -10,8 +10,6 @@ import UIKit
 
 class StaffUI {
     
-    static let shared = StaffUI()
-    
     let staff = UIView()
     let staffStack = UIStackView()
     let ELine = UIView()

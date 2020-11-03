@@ -35,6 +35,8 @@ class Lesson001: UIViewController {
     var note002 = UIImageView()
     var note003 = UIImageView()
     
+    let PianoStaffUI:StaffUI = StaffUI()
+    
     
     var NoteImageSequence : [UIImageView] = []
     
@@ -45,7 +47,7 @@ class Lesson001: UIViewController {
         super.viewDidLoad()
         
         // Setup Staff UI
-        StaffUI.shared.setupStaffUI(view: view)
+        PianoStaffUI.setupStaffUI(view: view)
         
         // Setup Piano UI
         PianoUI.shared.setupPianoUI(view: view)
@@ -72,8 +74,8 @@ class Lesson001: UIViewController {
     }
     
     func startLesson(){
-        StaffUI.shared.getStaff().alpha = 0
-        StaffUI.shared.getTrebleClef().alpha = 0
+        PianoStaffUI.getStaff().alpha = 0
+        PianoStaffUI.getTrebleClef().alpha = 0
         
         self.NoteImageSequence = [note001, note002, note003]
         
@@ -87,12 +89,12 @@ class Lesson001: UIViewController {
     
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
-        StaffUI.shared.getStaff().alpha = 1
-        StaffUI.shared.FLine.alpha = 1
-        StaffUI.shared.DLine.alpha = 1
-        StaffUI.shared.GLine.alpha = 1
-        StaffUI.shared.BLine.alpha = 1
-        StaffUI.shared.ELine.alpha = 1
+        PianoStaffUI.getStaff().alpha = 1
+        PianoStaffUI.FLine.alpha = 1
+        PianoStaffUI.DLine.alpha = 1
+        PianoStaffUI.GLine.alpha = 1
+        PianoStaffUI.BLine.alpha = 1
+        PianoStaffUI.ELine.alpha = 1
         clearNotes()
         LessonLabel.text = "This is the STAFF. It is the foundation upon which notes are drawn. The STAFF consists of 5 lines and 4 spaces. Every line or white space on the STAFF represents a key on the keyboard."
         LessonLabel_number.text = "2 / 9"
@@ -107,7 +109,7 @@ class Lesson001: UIViewController {
         LessonLabel.text = "Two CLEFS are normally used: Treble and Bass CLEFS. Displayed on the STAFF is the TREBLE CLEF (also called the G clef)."
         LessonLabel_number.text = "3 / 9"
         lessonStepNum = 3
-        StaffUI.shared.getTrebleClef().alpha = 1
+        PianoStaffUI.getTrebleClef().alpha = 1
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
@@ -116,7 +118,7 @@ class Lesson001: UIViewController {
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         LessonLabel.text = "The highlighted line show is: E"
-        StaffUI.shared.ELine.backgroundColor = UIColor.green
+        PianoStaffUI.ELine.backgroundColor = UIColor.green
         LessonLabel_number.text = "4 / 9"
         lessonStepNum = 4
         
@@ -127,8 +129,8 @@ class Lesson001: UIViewController {
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         LessonLabel.text = "The highlighted line show is: G"
-        StaffUI.shared.ELine.backgroundColor = UIColor.black
-        StaffUI.shared.GLine.backgroundColor = UIColor.green
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "5 / 9"
         lessonStepNum = 5
         
@@ -139,9 +141,9 @@ class Lesson001: UIViewController {
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         LessonLabel.text = "The highlighted line show is: B"
-        StaffUI.shared.ELine.backgroundColor = UIColor.black
-        StaffUI.shared.GLine.backgroundColor = UIColor.black
-        StaffUI.shared.BLine.backgroundColor = UIColor.green
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "6 / 9"
         lessonStepNum = 6
         
@@ -152,10 +154,10 @@ class Lesson001: UIViewController {
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         LessonLabel.text = "The highlighted line show is: D"
-        StaffUI.shared.ELine.backgroundColor = UIColor.black
-        StaffUI.shared.GLine.backgroundColor = UIColor.black
-        StaffUI.shared.BLine.backgroundColor = UIColor.black
-        StaffUI.shared.DLine.backgroundColor = UIColor.green
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.black
+        PianoStaffUI.DLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "7 / 9"
         lessonStepNum = 7
         
@@ -166,11 +168,11 @@ class Lesson001: UIViewController {
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         LessonLabel.text = "The highlighted line show is: F"
-        StaffUI.shared.ELine.backgroundColor = UIColor.black
-        StaffUI.shared.GLine.backgroundColor = UIColor.black
-        StaffUI.shared.BLine.backgroundColor = UIColor.black
-        StaffUI.shared.DLine.backgroundColor = UIColor.black
-        StaffUI.shared.FLine.backgroundColor = UIColor.green
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.black
+        PianoStaffUI.DLine.backgroundColor = UIColor.black
+        PianoStaffUI.FLine.backgroundColor = UIColor.green
         LessonLabel_number.text = "8 / 9"
         lessonStepNum = 8
         
@@ -181,11 +183,11 @@ class Lesson001: UIViewController {
     @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         LessonLabel.text = "Pitch Pal works by picking up the sound through your mobile device's microphone. Play the sequence of notes display. (NOTE: Remember the line letters.)"
-        StaffUI.shared.ELine.backgroundColor = UIColor.black
-        StaffUI.shared.GLine.backgroundColor = UIColor.black
-        StaffUI.shared.BLine.backgroundColor = UIColor.black
-        StaffUI.shared.DLine.backgroundColor = UIColor.black
-        StaffUI.shared.FLine.backgroundColor = UIColor.black
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.black
+        PianoStaffUI.DLine.backgroundColor = UIColor.black
+        PianoStaffUI.FLine.backgroundColor = UIColor.black
         
         note001.image = UIImage(named: "musicnote")
         note002.image = UIImage(named: "musicnote")
@@ -255,8 +257,8 @@ class Lesson001: UIViewController {
     func CompleteLession(){
         LessonLabel.text = "Good Job. Lesson Complete"
         LessonLabel_number.text = "100%"
-        StaffUI.shared.staff.alpha = 0
-        StaffUI.shared.getTrebleClef().alpha = 0
+        PianoStaffUI.staff.alpha = 0
+        PianoStaffUI.getTrebleClef().alpha = 0
         clearNotes()
     }
     

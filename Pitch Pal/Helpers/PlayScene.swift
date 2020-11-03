@@ -31,6 +31,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     var staff = UIView()
     
+    let PianoStaffUI: StaffUI = StaffUI()
+    
     let GAxis:Double = 0.43
     let BAxis:Double = 0.52
     let DAxis:Double = 0.61
@@ -48,12 +50,12 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         setupUI()
         
         // Setup Staff UI
-        staff = StaffUI.shared.setupStaffUI(view: view)!
+        staff = PianoStaffUI.setupStaffUI(view: view)!
         staff.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
         
         // Need to set the alpha back to 1 in the case where the user plays the song again
         staff.alpha = 1
-        StaffUI.shared.getTrebleClef().alpha = 1
+        PianoStaffUI.getTrebleClef().alpha = 1
         
         // Setup Piano UI
         PianoUI.shared.setupPianoUI(view: view)
@@ -162,7 +164,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     @objc func endOfSong(){
         removeAllChildren()
         staff.alpha = 0
-        StaffUI.shared.getTrebleClef().alpha = 0
+        PianoStaffUI.getTrebleClef().alpha = 0
         PianoUI.shared.stackView.alpha = 0
         for each in PianoUI.shared.notes{
             each.alpha = 0
