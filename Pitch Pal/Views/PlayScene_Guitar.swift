@@ -31,12 +31,12 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     
     var staff = UIView()
     
-    let BigEAxis:Double = 0.6
-    let AAxis:Double = 0.5
-    let DAxis:Double = 0.4
-    let GAxis:Double = 0.3
-    let BAxis:Double = 0.2
-    let LittleEAxis:Double = 0.1
+    let BigEAxis:Double = 0.1
+    let AAxis:Double = 0.2
+    let DAxis:Double = 0.3
+    let GAxis:Double = 0.4
+    let BAxis:Double = 0.5
+    let LittleEAxis:Double = 0.6
     
     let lineBitMask:UInt32 = 0b001
     let noteBitMask:UInt32 = 0b010
@@ -45,10 +45,6 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     override func didMove(to view: SKView) {
         
         setupUI()
-        
-        // Setup Staff UI
-        //staff = GuitarTabUI.shared.setupStringUI(view: view)!
-        //staff.backgroundColor = UIColor.init(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.01)
         
         
         // Setup Pitch Detection
