@@ -256,10 +256,8 @@ class Lesson001: UIViewController {
     }
     
     func lessonLoop(){
-        print(lessonModel.getLessonStepNum())
         Timer.scheduledTimer(withTimeInterval: lessonModel.getTimer(), repeats: true) { timer in
             if(self.lessonModel.getLessonStepNum() == 9){
-                print("Hello")
                 self.LessonLogic()
             }
         }

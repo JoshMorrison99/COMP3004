@@ -63,11 +63,14 @@ class PitchDetection{
         var noteOctaveLowerBound: [Double] = []
         var noteOctaveUpperBound: [Double] = []
         var octave: Int = 0
+        
+        // Calculte the intervales the note frequencies can be in.
         for i in 0...8{
             noteOctaveLowerBound.append(16.25 * pow(2.0,Double(i)))
             noteOctaveUpperBound.append(30.87 * pow(2.0,Double(i)))
         }
         
+        // Calculates what octave the note is on
         for i in 0...8 {
             if(tracker.frequency >= noteOctaveLowerBound[i] && tracker.frequency <= noteOctaveUpperBound[i]){
                 octave = i
@@ -79,16 +82,15 @@ class PitchDetection{
         
         // Calculate the frequency from middleA
         var octaveFrequencies: [Double] = []
-        for i in 3...14{
+        for i in 3...14{ // Start at 3 because its easier to work with the chart im using. This way it starts at C and ends at B
             let middleACalculation = middleA * pow(2, i / 12)
-            octaveFrequencies.append(middleACalculation)
+            octaveFrequencies.append(middleACalculation) // Adds all the frequencies in that octave to the array
         }
         
-        // Find the closest value in the octaveFrequencies array
+        // Find the closest value in the octaveFrequencies array. (auto tune / pitch correction between the set invervals above)
         var smallestValue:Double = 0
         var biggestValue:Double = 10000
         for each in octaveFrequencies{
-            //let upperNLower: [Double] = []
             if(tracker.frequency >= each && each > smallestValue){
                 smallestValue = each
             }
