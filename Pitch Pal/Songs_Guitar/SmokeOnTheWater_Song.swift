@@ -39,7 +39,7 @@ extension PlayScene_Guitar {
         perform(#selector(endOfSong), with: nil, afterDelay: tempo)
     }
     
-    func getTotalNotes() -> Int{
+    func getTotalNotes_Smoke() -> Int{
         return 12
     }
 }

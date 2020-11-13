@@ -13,7 +13,9 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     
     let PitchDetectionManager: PitchDetection = PitchDetection()
     
+    var songIndex:Int = 0
     var noteSpeed = 6
+    var numNotes:Int = 0
     
     let noteHitLabel = SKLabelNode()
     
@@ -44,8 +46,6 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
 
     override func didMove(to view: SKView) {
         
-        setupUI()
-        
         
         // Setup Pitch Detection
         PitchDetectionManager.initializePitchDetection()
@@ -60,7 +60,17 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         createNoteDetectionLine()
         
         
-        SmokeOnTheWater_Song()
+        
+        
+        if(songIndex == 0){
+            SmokeOnTheWater_Song()
+            numNotes = getTotalNotes_Smoke()
+        }else{
+            print("ERROR: The selected song is not an option.")
+            numNotes = 0
+        }
+        
+        setupUI()
         
     }
     
@@ -70,7 +80,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         noteHitLabel.fontSize = 40
         noteHitLabel.position = CGPoint(x: size.width*0.9, y: size.height * 0.9)
         noteHitLabel.fontColor = .black
-        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        noteHitLabel.text = String(notesHit) + "/" + String(numNotes)
         addChild(noteHitLabel)
         
         // Create the UI line
@@ -152,7 +162,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         noteHitLabel.fontSize = 90
         noteHitLabel.position = CGPoint(x: size.width*0.5, y: size.height * 0.5)
         noteHitLabel.fontColor = .black
-        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+        noteHitLabel.text = String(notesHit) + "/" + String(numNotes)
         addChild(noteHitLabel)
     }
     
@@ -189,7 +199,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
         if object.name == "line" {
             destroy(note: note)
             notesHit+=1
-            noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes())
+            noteHitLabel.text = String(notesHit) + "/" + String(numNotes)
         }
     }
 

@@ -14,6 +14,7 @@
 		E70DCE82254B06ED0053BFA2 /* Lesson001_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE81254B06ED0053BFA2 /* Lesson001_Guitar.swift */; };
 		E70DCE85254B0FB00053BFA2 /* Lesson002_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE84254B0FB00053BFA2 /* Lesson002_Guitar.swift */; };
 		E73D2B40255E0BBE00174E53 /* SongSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D2B3F255E0BBE00174E53 /* SongSelectionController.swift */; };
+		E73D2B47255E213900174E53 /* SongSelectionGuitarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D2B46255E213900174E53 /* SongSelectionGuitarController.swift */; };
 		E790F60D251EB068005652C0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E790F60C251EB068005652C0 /* Styles.swift */; };
 		E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */; };
 		E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */; };
@@ -45,6 +46,7 @@
 		E70DCE81254B06ED0053BFA2 /* Lesson001_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson001_Guitar.swift; sourceTree = "<group>"; };
 		E70DCE84254B0FB00053BFA2 /* Lesson002_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson002_Guitar.swift; sourceTree = "<group>"; };
 		E73D2B3F255E0BBE00174E53 /* SongSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectionController.swift; sourceTree = "<group>"; };
+		E73D2B46255E213900174E53 /* SongSelectionGuitarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectionGuitarController.swift; sourceTree = "<group>"; };
 		E790F60C251EB068005652C0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		E7C53FF2251C0ED000EDECE0 /* Pitch Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				E7EA3DA02532544500B1BBE2 /* Lessons_Piano */,
 				E7D7FB74253229B80078968E /* TunerController.swift */,
 				E73D2B3F255E0BBE00174E53 /* SongSelectionController.swift */,
+				E73D2B46255E213900174E53 /* SongSelectionGuitarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70DCE7A2549C2A80053BFA2 /* Lesson002.swift in Sources */,
+				E73D2B47255E213900174E53 /* SongSelectionGuitarController.swift in Sources */,
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
 				E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */,
 				E7D0071F254DAAA300262D0C /* SmokeOnTheWater_Song.swift in Sources */,

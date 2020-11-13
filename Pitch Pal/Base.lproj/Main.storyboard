@@ -624,10 +624,10 @@
             </objects>
             <point key="canvasLocation" x="-936" y="251"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Song Selection Guitar Controller-->
         <scene sceneID="cGD-5Y-Nta">
             <objects>
-                <tableViewController id="6n4-6J-Gak" sceneMemberID="viewController">
+                <tableViewController id="6n4-6J-Gak" customClass="SongSelectionGuitarController" customModule="Pitch_Pal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ba4-2B-NF2">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -659,9 +659,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18449997900000001" green="0.1919861138" blue="0.20392328500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <connections>
-                                            <segue destination="ALt-M6-aP6" kind="show" id="Y6b-OI-nng"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -671,6 +668,9 @@
                             <outlet property="delegate" destination="6n4-6J-Gak" id="vEv-pP-xso"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="ALt-M6-aP6" kind="show" identifier="PlayGuitarSong" id="fkc-e7-K31"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0R-Sv-zrw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
