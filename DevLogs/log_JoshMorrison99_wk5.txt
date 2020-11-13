@@ -1,0 +1,9 @@
+- Added to guitar lesson 1
+- Fixed bug in lessons where you could go back to previous lesson by tapping
+- Fixed tuner bug where the tuner wouldn't show the main menu button
+- Architecture Recovery: MVC
+- Fixed lessons model for MVC
+- Cleaned up code and added more comments
+- Fixed bug where guitar notes played backwards on the tabs.
+- Fixed note timing for the song "Smoke on the Water"
+- Added a demo song for "Twinkle Twinkle Little Star" because the full song is too long to play during the demo. 
