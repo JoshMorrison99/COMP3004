@@ -16,12 +16,15 @@ class Play: UIViewController {
     
     @IBOutlet weak var pauseView: UIView!
     
+    var songSelectionIndex:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pauseView.isHidden = true
         
         let scene = PlayScene(size: view.bounds.size)
+        scene.songIndex = songSelectionIndex
         let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true

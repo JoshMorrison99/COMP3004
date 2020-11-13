@@ -106,7 +106,7 @@ extension PlayScene {
         perform(#selector(endOfSong), with: nil, afterDelay: tempo)
     }
     
-    func getTotalNotes() -> Int{
+    func getTotalNotesTwinkleTwinkle() -> Int{
         return 42
     }
 }

@@ -13,6 +13,9 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     var noteSpeed = 6
     
+    var songIndex:Int = 0
+    var numNotes:Int = 0
+    
     let noteHitLabel = SKLabelNode()
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
@@ -47,8 +50,6 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
 
     override func didMove(to view: SKView) {
         
-        setupUI()
-        
         // Setup Staff UI
         PianoStaffUI.setupStaffUI(view: view)
         staff = PianoStaffUI.getStaff()
@@ -76,7 +77,21 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         createNoteDetectionLine()
         
         
-        Twinke_Demo()
+        print(songIndex)
+        
+        
+        if(songIndex == 0){
+            TwinkeTwinkle_Song()
+            numNotes = getTotalNotesTwinkleTwinkle()
+        }else if(songIndex == 1){
+            OdeToJoy_Song()
+            numNotes = getTotalNotes_OdeToJoy()
+        }else{
+            print("ERROR: The selected song is not an option.")
+            numNotes = 0
+        }
+        
+        setupUI()
         
     }
     
@@ -93,7 +108,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         noteHitLabel.fontSize = 40
         noteHitLabel.position = CGPoint(x: size.width*0.9, y: size.height * 0.9)
         noteHitLabel.fontColor = .black
-        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes_Demo())
+        noteHitLabel.text = String(notesHit) + "/" + String(numNotes)
         addChild(noteHitLabel)
         
         // Create the UI line
@@ -181,13 +196,12 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         noteHitLabel.fontSize = 90
         noteHitLabel.position = CGPoint(x: size.width*0.5, y: size.height * 0.5)
         noteHitLabel.fontColor = .black
-        noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes_Demo())
+        noteHitLabel.text = String(notesHit) + "/" + String(numNotes)
         addChild(noteHitLabel)
     }
     
     // Called in the interval from when the 2 physics bodies collide and when they end.
     func overlap(_ contact: SKPhysicsContact, isOverlapping:Bool){
-        print(contact)
         print(isOverlapping)
         if(isOverlapping == true){
             Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
@@ -211,7 +225,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
         if object.name == "line" {
             destroy(note: note)
             notesHit+=1
-            noteHitLabel.text = String(notesHit) + "/" + String(getTotalNotes_Demo())
+            noteHitLabel.text = String(notesHit) + "/" + String(numNotes)
         }
     }
 
@@ -241,7 +255,6 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     }
     
     @objc func createGNote(){
-        print("hey")
         let note = SKSpriteNode(imageNamed: "musicnote")
         
         //Set the position of the music note
