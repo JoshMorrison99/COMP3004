@@ -1,0 +1,5 @@
+- Added the ability for the user to select a certain piano song from a table view controller.
+- When the user selects a cetain piano song, the view controller will segue to the playable view controller with the correct song notes being displayed.
+- Added the ability for the user to selct a certain guitar song from a table view controller.
+- When the user selects a certain guitar song, the view controller will segue to the playable view controller with the correct song notes being displayed.
+- Fixed a bug in both piano and guitar playable song view controller where the UI for the total notes in the song was rendering in late.

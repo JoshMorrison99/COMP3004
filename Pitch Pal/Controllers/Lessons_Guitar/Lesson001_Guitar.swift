@@ -10,7 +10,7 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class Lesson001_Guitar: UIViewController {
+class Lesson001_Guitar: UIViewController, Subscriber {
     
     // Pause Menu UI
     @IBOutlet weak var pauseMenuBtn: UIButton!
@@ -30,8 +30,20 @@ class Lesson001_Guitar: UIViewController {
     // Refernece to the Guitar UI
     let GuitarUI: GuitarTabUI = GuitarTabUI()
     
-    // Reference to the pitch detection model
-    let PitchDetectionManager: PitchDetection = PitchDetection()
+    var pitchLabel:String!
+    
+    var PitchDetectionManager = PitchDetection()
+    var id = Int()
+    
+    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
+        self.PitchDetectionManager = PitchDetectionManager
+        self.PitchDetectionManager.addSubscriber(subscriber: self)
+        self.id = id
+    }
+    
+    func update() {
+        pitchLabel = PitchDetectionManager.pitchLabel
+    }
     
     // Images used in the Lesson
     var NoteImageSequence : [UIImageView] = []
@@ -42,6 +54,8 @@ class Lesson001_Guitar: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initialize(PitchDetectionManager: PitchDetectionManager, id: 3)
         
         // Setup Staff UI
         GuitarUI.setupStringUI(view: view)
@@ -285,7 +299,7 @@ class Lesson001_Guitar: UIViewController {
     }
     
     func LessonLogic(){
-        if(PitchDetectionManager.getLabel() == lessonModel.getGoalNote() && PitchDetectionManager.getLabel() == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
+        if(pitchLabel == lessonModel.getGoalNote() && pitchLabel == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
             NoteImageSequence[lessonModel.getGoalIndex()].tintColor = UIColor.green
             if(lessonModel.getGoalIndex() >= lessonModel.getLessonGoalNote().count-1){
                 CompleteLession()

@@ -44,6 +44,7 @@ class Lesson002: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         view.viewBackgroundColor()
         
         // Setup Piano UI

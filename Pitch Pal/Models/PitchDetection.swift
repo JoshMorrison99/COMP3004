@@ -11,7 +11,18 @@ import AudioKit
 import AudioKitUI
 
 class PitchDetection{
-
+    
+    private var subscriberArray = [Subscriber]()
+    
+    func addSubscriber(subscriber : Subscriber){
+        subscriberArray.append(subscriber)
+    }
+    
+    private func notify(){
+        for each in subscriberArray{
+            each.update()
+        }
+    }
     
     let Notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
     
@@ -30,6 +41,9 @@ class PitchDetection{
     var pitchDetectionLabel: String!
     var frequencyDebugLabel: String!
     var amplitudeDebugLabel: String!
+    
+    // Pub-Sub Label
+    var pitchLabel:String!
     
     func initializePitchDetection(){
         AKSettings.audioInputEnabled = true
@@ -109,15 +123,17 @@ class PitchDetection{
         
         // Get the index of the closest value
         let index = octaveFrequencies.firstIndex(of: closest)
-        pitchDetectionLabel = Notes[index ?? 0]
+        pitchLabel = Notes[index ?? 0]
         
-    }
-    
-    func getLabel() -> String{
-        return pitchDetectionLabel
+        // Pub-Sub notify
+        notify()
+        
     }
     
     func setLabel(newLabel: String){
         pitchDetectionLabel = newLabel
+        
+        // Pub-Sub notify
+        notify()
     }
 }

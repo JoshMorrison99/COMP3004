@@ -10,7 +10,23 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class Lesson001: UIViewController {
+class Lesson001: UIViewController, Subscriber {
+    
+    // Pitch label
+    var pitchLabel:String!
+    
+    var PitchDetectionManager = PitchDetection()
+    var id = Int()
+    
+    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
+        self.PitchDetectionManager = PitchDetectionManager
+        self.PitchDetectionManager.addSubscriber(subscriber: self)
+        self.id = id
+    }
+    
+    func update() {
+        pitchLabel = PitchDetectionManager.pitchLabel
+    }
     
     // Pause Button
     @IBOutlet weak var pauseButton: UIButton!
@@ -38,11 +54,12 @@ class Lesson001: UIViewController {
     
     let PianoStaffUI:StaffUI = StaffUI()
     let PianoKeysUI: PianoUI = PianoUI()
-    let PitchDetectionManager: PitchDetection = PitchDetection()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initialize(PitchDetectionManager: PitchDetectionManager, id: 1)
         
         // Setup Staff UI
         PianoStaffUI.setupStaffUI(view: view)
@@ -265,13 +282,13 @@ class Lesson001: UIViewController {
     
     func pianoKeysPressedUI(){
         Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
-            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.PitchDetectionManager.getLabel())
+            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.pitchLabel)
         }
         
     }
     
     func LessonLogic(){
-        if(PitchDetectionManager.getLabel() == lessonModel.getGoalNote() && PitchDetectionManager.getLabel() == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
+        if(pitchLabel == lessonModel.getGoalNote() && pitchLabel == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
             NoteImageSequence[lessonModel.getGoalIndex()].tintColor = UIColor.green
             if(lessonModel.getGoalIndex() >= lessonModel.getLessonGoalNote().count-1){
                 CompleteLession()

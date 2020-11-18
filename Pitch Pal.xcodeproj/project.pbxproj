@@ -16,6 +16,8 @@
 		E73D2B40255E0BBE00174E53 /* SongSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D2B3F255E0BBE00174E53 /* SongSelectionController.swift */; };
 		E73D2B47255E213900174E53 /* SongSelectionGuitarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D2B46255E213900174E53 /* SongSelectionGuitarController.swift */; };
 		E790F60D251EB068005652C0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E790F60C251EB068005652C0 /* Styles.swift */; };
+		E795936F2562B36700EA4FBA /* Eden - Rock and Roll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E795936E2562B36700EA4FBA /* Eden - Rock and Roll.swift */; };
+		E795937225657FE600EA4FBA /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E795937125657FE600EA4FBA /* Subscriber.swift */; };
 		E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */; };
 		E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */; };
 		E7C53FFD251C0ED000EDECE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C53FFB251C0ED000EDECE0 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		E73D2B3F255E0BBE00174E53 /* SongSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectionController.swift; sourceTree = "<group>"; };
 		E73D2B46255E213900174E53 /* SongSelectionGuitarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectionGuitarController.swift; sourceTree = "<group>"; };
 		E790F60C251EB068005652C0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		E795936E2562B36700EA4FBA /* Eden - Rock and Roll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Eden - Rock and Roll.swift"; sourceTree = "<group>"; };
+		E795937125657FE600EA4FBA /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		E7C53FF2251C0ED000EDECE0 /* Pitch Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C53FF5251C0ED000EDECE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C53FF7251C0ED000EDECE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E790F60C251EB068005652C0 /* Styles.swift */,
+				E795937125657FE600EA4FBA /* Subscriber.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D0071E254DAAA300262D0C /* SmokeOnTheWater_Song.swift */,
+				E795936E2562B36700EA4FBA /* Eden - Rock and Roll.swift */,
 			);
 			path = Songs_Guitar;
 			sourceTree = "<group>";
@@ -329,10 +335,12 @@
 				E70DCE82254B06ED0053BFA2 /* Lesson001_Guitar.swift in Sources */,
 				E7D0071B254DAA2500262D0C /* PlayScene_Guitar.swift in Sources */,
 				E7D0073A255200E300262D0C /* OdeToJoy_Song.swift in Sources */,
+				E795936F2562B36700EA4FBA /* Eden - Rock and Roll.swift in Sources */,
 				E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */,
 				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
 				E7D00717254DA9F900262D0C /* Play_Guitar.swift in Sources */,
 				E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */,
+				E795937225657FE600EA4FBA /* Subscriber.swift in Sources */,
 				E7D0072B2551ADA400262D0C /* LessonsModel.swift in Sources */,
 				E70DCE7D254B03D20053BFA2 /* GuitarTabUI.swift in Sources */,
 			);

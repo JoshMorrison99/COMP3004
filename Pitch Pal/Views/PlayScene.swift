@@ -9,7 +9,23 @@
 import SpriteKit
 import AudioKit
 
-class PlayScene : SKScene, SKPhysicsContactDelegate{
+class PlayScene : SKScene, SKPhysicsContactDelegate, Subscriber{
+    
+    // Pitch label
+    var pitchLabel:String!
+    
+    var PitchDetectionManager = PitchDetection()
+    var id = Int()
+    
+    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
+        self.PitchDetectionManager = PitchDetectionManager
+        self.PitchDetectionManager.addSubscriber(subscriber: self)
+        self.id = id
+    }
+    
+    func update() {
+        pitchLabel = PitchDetectionManager.pitchLabel
+    }
     
     var noteSpeed = 6
     
@@ -34,7 +50,6 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     let PianoStaffUI: StaffUI = StaffUI()
     let PianoKeysUI: PianoUI = PianoUI()
-    let PitchDetectionManager: PitchDetection = PitchDetection()
     
     let GAxis:Double = 0.43
     let BAxis:Double = 0.52
@@ -49,6 +64,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
 
     override func didMove(to view: SKView) {
+        
+        initialize(PitchDetectionManager: PitchDetectionManager, id: 5)
         
         // Setup Staff UI
         PianoStaffUI.setupStaffUI(view: view)
@@ -97,7 +114,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
     
     func pianoKeysPressedUI(){
         Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
-            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.PitchDetectionManager.getLabel())
+            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.pitchLabel)
         }
         
     }
@@ -211,9 +228,9 @@ class PlayScene : SKScene, SKPhysicsContactDelegate{
                     
                     
 
-                if (nodeA.name == self.PitchDetectionManager.getLabel()){
+                if (nodeA.name == self.pitchLabel){
                         self.collisionBetween(note: nodeA, object: nodeB)
-                } else if (nodeB.name == self.PitchDetectionManager.getLabel()){
+                } else if (nodeB.name == self.pitchLabel){
                         self.collisionBetween(note: nodeB, object: nodeA)
                     }
             }

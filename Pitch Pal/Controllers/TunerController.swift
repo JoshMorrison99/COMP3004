@@ -9,7 +9,8 @@
 import UIKit
 import AudioKit
 
-class TunerController: UIViewController {
+
+class TunerController: UIViewController, Subscriber {
     
     @IBOutlet weak var tunerLabel: UILabel!
     
@@ -18,11 +19,24 @@ class TunerController: UIViewController {
     @IBOutlet weak var pauseNoBtn: UIButton!
     @IBOutlet weak var pauseBtn: UIButton!
     
-    let PitchDetectionManager: PitchDetection = PitchDetection()
+    var PitchDetectionManager = PitchDetection()
+    var id = Int()
+    
+    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
+        self.PitchDetectionManager = PitchDetectionManager
+        self.PitchDetectionManager.addSubscriber(subscriber: self)
+        self.id = id
+    }
+    
+    func update() {
+        tunerLabel.text = PitchDetectionManager.pitchLabel
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initialize(PitchDetectionManager: PitchDetectionManager, id: 0)
         
         self.pauseMenu.isHidden = true
         
@@ -35,7 +49,7 @@ class TunerController: UIViewController {
         self.PitchDetectionManager.setupPitchDetection()
         
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
-            self.tunerLabel.text = self.PitchDetectionManager.getLabel()
+            self.tunerLabel.text = self.tunerLabel.text
         }
     }
     

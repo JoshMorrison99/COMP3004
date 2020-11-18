@@ -9,9 +9,22 @@
 import SpriteKit
 import AudioKit
 
-class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
+class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
     
-    let PitchDetectionManager: PitchDetection = PitchDetection()
+    var pitchLabel:String!
+    
+    var PitchDetectionManager = PitchDetection()
+    var id = Int()
+    
+    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
+        self.PitchDetectionManager = PitchDetectionManager
+        self.PitchDetectionManager.addSubscriber(subscriber: self)
+        self.id = id
+    }
+    
+    func update() {
+        pitchLabel = PitchDetectionManager.pitchLabel
+    }
     
     var songIndex:Int = 0
     var noteSpeed = 6
@@ -45,6 +58,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
     
 
     override func didMove(to view: SKView) {
+        
+        initialize(PitchDetectionManager: PitchDetectionManager, id: 6)
         
         
         // Setup Pitch Detection
@@ -185,9 +200,9 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate{
                     
                     
 
-                if (nodeA.name == self.PitchDetectionManager.getLabel()){
+                if (nodeA.name == self.pitchLabel){
                         self.collisionBetween(note: nodeA, object: nodeB)
-                } else if (nodeB.name == self.PitchDetectionManager.getLabel()){
+                } else if (nodeB.name == self.pitchLabel){
                         self.collisionBetween(note: nodeB, object: nodeA)
                     }
             }

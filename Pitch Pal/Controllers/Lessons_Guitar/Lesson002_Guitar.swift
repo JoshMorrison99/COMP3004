@@ -10,7 +10,7 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class Lesson002_Guitar: UIViewController {
+class Lesson002_Guitar: UIViewController, Subscriber {
     
     // Pause Button
     @IBOutlet weak var pauseButton: UIButton!
@@ -29,15 +29,30 @@ class Lesson002_Guitar: UIViewController {
     // Reference to the guitar UI
     let GuitarUI: GuitarTabUI = GuitarTabUI()
     
-    // Reference to the pitch detection
-    let PitchDetectionManager: PitchDetection = PitchDetection()
-    
     // Reference to the Lesson Model
     private var lessonModel: LessonsModel = LessonsModel()
+    
+    // Pitch label
+    var pitchLabel:String!
+    
+    var PitchDetectionManager = PitchDetection()
+    var id = Int()
+    
+    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
+        self.PitchDetectionManager = PitchDetectionManager
+        self.PitchDetectionManager.addSubscriber(subscriber: self)
+        self.id = id
+    }
+    
+    func update() {
+        pitchLabel = PitchDetectionManager.pitchLabel
+    }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initialize(PitchDetectionManager: PitchDetectionManager, id: 4)
         
         // Setup Staff UI
         GuitarUI.setupStringUI(view: view)
@@ -117,7 +132,7 @@ class Lesson002_Guitar: UIViewController {
         
         noteDetectionLabel.font = noteDetectionLabel.font.withSize(200)
         noteDetectionLabel.textAlignment = .center
-        noteDetectionLabel.text = PitchDetectionManager.getLabel()
+        noteDetectionLabel.text = pitchLabel
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
