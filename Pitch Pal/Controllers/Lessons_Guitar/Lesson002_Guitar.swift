@@ -35,7 +35,7 @@ class Lesson002_Guitar: UIViewController, Subscriber {
     // Pitch label
     var pitchLabel:String!
     
-    var PitchDetectionManager = PitchDetection()
+    var PitchDetectionManager = PitchDetection.shared
     var id = Int()
     
     func initialize(PitchDetectionManager : PitchDetection, id : Int) {

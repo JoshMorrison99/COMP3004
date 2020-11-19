@@ -19,7 +19,7 @@ class TunerController: UIViewController, Subscriber {
     @IBOutlet weak var pauseNoBtn: UIButton!
     @IBOutlet weak var pauseBtn: UIButton!
     
-    var PitchDetectionManager = PitchDetection()
+    var PitchDetectionManager = PitchDetection.shared
     var id = Int()
     
     func initialize(PitchDetectionManager : PitchDetection, id : Int) {

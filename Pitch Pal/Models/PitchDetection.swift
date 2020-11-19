@@ -12,6 +12,8 @@ import AudioKitUI
 
 class PitchDetection{
     
+    static let shared = PitchDetection()
+    
     private var subscriberArray = [Subscriber]()
     
     func addSubscriber(subscriber : Subscriber){
@@ -33,7 +35,7 @@ class PitchDetection{
     let frequencyError:Double = 1 // the room for error on the frequency calculations
     
     // Microphone setup
-    var mic: AKMicrophone!
+    private var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
     var silence: AKBooster!
     
