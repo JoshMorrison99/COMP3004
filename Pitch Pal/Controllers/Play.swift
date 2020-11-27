@@ -33,6 +33,7 @@ class Play: UIViewController {
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
         
+        
     }
     
     @IBAction func pauseBtnClicked(_ sender: Any) {

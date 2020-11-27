@@ -1,0 +1,7 @@
+- Added the ability for the user to select songs from the table view controller then segue to the playable song.
+- Fixed bug where the total number of notes fpr a spng in the UI wouldn't show right away.
+- Added the abiltiy for the user to select certain songs for th guitar.
+- When the user selects a song to play, it will segue to the correct song.
+- Fixed a bug in the guitar playable song where the UI for total notes in the song rendered in late.
+- Added the Pub/Sub architecture to handle the interactions between views and models and controllers and models.
+- Turned the pitch detection class back to a singleton.

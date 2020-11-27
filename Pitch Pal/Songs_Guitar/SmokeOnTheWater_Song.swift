@@ -6,7 +6,9 @@
 //  Copyright © 2020 Pied Piper. All rights reserved.
 //
 
-extension PlayScene_Guitar {
+
+extension PlayScene_Guitar{
+    
     
     func SmokeOnTheWater_Song(){
         

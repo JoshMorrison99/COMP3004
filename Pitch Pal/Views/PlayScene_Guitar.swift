@@ -80,6 +80,9 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
         if(songIndex == 0){
             SmokeOnTheWater_Song()
             numNotes = getTotalNotes_Smoke()
+        }else if(songIndex == 1){
+            RockAndRoll_Song()
+            numNotes = getTotalNotes_Rock()
         }else{
             print("ERROR: The selected song is not an option.")
             numNotes = 0
@@ -191,6 +194,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
     // Called in the interval from when the 2 physics bodies collide and when they end.
     func overlap(_ contact: SKPhysicsContact, isOverlapping:Bool){
         print(contact)
+        print(pitchLabel)
         print(isOverlapping)
         if(isOverlapping == true){
             Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
@@ -253,7 +257,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
         let note = SKSpriteNode(texture: texture,size: CGSize(width: 250, height: 250))
         
         //Set the position of the music note
-        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(GAxis))
+        let noteYOffset = 0.09
+        note.position = CGPoint(x: size.width * 1.1, y: size.height * CGFloat(GAxis+noteYOffset))
         
         // Scale the note to proper size
         note.setScale(0.15)
@@ -277,6 +282,7 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
         let actionMoveDone = SKAction.removeFromParent()
         note.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
+    
     
     @objc func createBigENote(pos: String){
         print(pos+".circle")
