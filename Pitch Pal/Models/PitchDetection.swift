@@ -30,7 +30,7 @@ class PitchDetection{
     
     // Pitch Calculation Logic
     var timer = Timer()
-    let noiseGateThreshold: Double = 0.01
+    let noiseGateThreshold: Double = 0.05
     let timerCycle:Double = 0.05
     let frequencyError:Double = 1 // the room for error on the frequency calculations
     

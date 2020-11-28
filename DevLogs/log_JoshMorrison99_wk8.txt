@@ -1,0 +1,3 @@
+- Added song Eden - Rock and Roll for guitar
+- Added the ability for the guitar table view to select multiple songs.
+- Turned down the noise gate for pitch detection.
