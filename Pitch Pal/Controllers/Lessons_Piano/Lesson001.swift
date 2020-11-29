@@ -102,7 +102,7 @@ class Lesson001: UIViewController, Subscriber {
         
         self.NoteImageSequence = [note001, note002, note003]
         
-        LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen."
+        LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen!"
         LessonLabel_number.text = "1 / 9"
         lessonModel.accumulateLessonStepNumber()
         
