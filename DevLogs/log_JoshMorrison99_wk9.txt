@@ -1,0 +1,4 @@
+- created a settings menu on the guitar main menu
+- created a settings menu on the paino main menu
+- created a setting for the user to choose a level for the noise gate.
+- added the ability for the user's noise gate level setting to persist through the shutdown and restart.
