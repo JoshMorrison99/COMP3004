@@ -193,9 +193,6 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
     
     // Called in the interval from when the 2 physics bodies collide and when they end.
     func overlap(_ contact: SKPhysicsContact, isOverlapping:Bool){
-        print(contact)
-        print(pitchLabel)
-        print(isOverlapping)
         if(isOverlapping == true){
             Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
                 
@@ -214,7 +211,6 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
     }
     
     func collisionBetween(note: SKNode, object: SKNode) {
-        print("hello")
         if object.name == "line" {
             destroy(note: note)
             notesHit+=1

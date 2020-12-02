@@ -12,6 +12,8 @@ import AudioKitUI
 
 class PitchDetection{
     
+    let defaults = UserDefaults.standard
+    
     static let shared = PitchDetection()
     
     private var subscriberArray = [Subscriber]()
@@ -30,7 +32,7 @@ class PitchDetection{
     
     // Pitch Calculation Logic
     var timer = Timer()
-    let noiseGateThreshold: Double = 0.05
+    var noiseGateThreshold: Double = 0.05
     let timerCycle:Double = 0.05
     let frequencyError:Double = 1 // the room for error on the frequency calculations
     
@@ -54,7 +56,22 @@ class PitchDetection{
         silence = AKBooster(tracker, gain: 0)
     }
     
+    func determineNoiseGate(){
+        if(defaults.integer(forKey: "NoiseGate") == 1){
+            noiseGateThreshold = 0.01
+        }else if(defaults.integer(forKey: "NoiseGate") == 2){
+            noiseGateThreshold = 0.05
+        }else if(defaults.integer(forKey: "NoiseGate") == 3){
+            noiseGateThreshold = 0.1
+        }else if(defaults.integer(forKey: "NoiseGate") == 4){
+            noiseGateThreshold = 0.15
+        }else{
+            print("that's tough...")
+        }
+    }
+    
     func setupPitchDetection(){
+        determineNoiseGate()
         AKManager.output = silence
         do {
             try AKManager.start()
