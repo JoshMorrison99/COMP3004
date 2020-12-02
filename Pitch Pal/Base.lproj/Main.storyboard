@@ -498,8 +498,12 @@
                     <navigationItem key="navigationItem" id="Ix2-9U-gyr"/>
                     <connections>
                         <outlet property="closeBtn" destination="1sC-kq-zuz" id="LAw-fZ-706"/>
+                        <outlet property="four" destination="sao-Oc-XiZ" id="Cva-0Z-ocP"/>
+                        <outlet property="one" destination="CeM-7c-4Kw" id="7Jn-0z-nBk"/>
                         <outlet property="settingsBtn" destination="WG7-4K-Fuh" id="SRX-RP-zwe"/>
                         <outlet property="settingsView" destination="wiP-Um-fcQ" id="BvY-Sh-edR"/>
+                        <outlet property="three" destination="Af5-0z-F08" id="5iv-KA-HqZ"/>
+                        <outlet property="two" destination="CR6-SZ-XFS" id="uWn-Oj-qgP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54w-3p-ml4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1339,8 +1343,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="yAD-48-nZD"/>
                     <connections>
+                        <outlet property="four" destination="NZ1-DZ-cDD" id="LgD-JG-RHZ"/>
+                        <outlet property="one" destination="MWx-2Q-UXc" id="jh6-0B-nbk"/>
                         <outlet property="settingsBtn" destination="Y9d-T8-12a" id="bec-e3-Ya1"/>
                         <outlet property="settingsView" destination="jA2-X3-mgn" id="vm1-80-1vp"/>
+                        <outlet property="three" destination="17Z-2W-rSD" id="gIq-Yr-R7w"/>
+                        <outlet property="two" destination="cXf-1v-DjR" id="qBm-xd-ng4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1C-bd-3QU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
