@@ -97,6 +97,7 @@ class PlayScene : SKScene, SKPhysicsContactDelegate, Subscriber{
         print(songIndex)
         
         
+        // If statement to render what song the user picked at the Slection View Controller
         if(songIndex == 0){
             TwinkeTwinkle_Song()
             numNotes = getTotalNotesTwinkleTwinkle()

@@ -12,16 +12,6 @@ import AudioKit
 
 class TunerController: UIViewController, Subscriber {
     
-    @IBOutlet weak var tunerLabel: UILabel!
-    
-    @IBOutlet weak var pauseMenu: UIView!
-    @IBOutlet weak var pauseYesBtn: UIButton!
-    @IBOutlet weak var pauseNoBtn: UIButton!
-    @IBOutlet weak var pauseBtn: UIButton!
-    
-    var PitchDetectionManager = PitchDetection.shared
-    var id = Int()
-    
     func initialize(PitchDetectionManager : PitchDetection, id : Int) {
         self.PitchDetectionManager = PitchDetectionManager
         self.PitchDetectionManager.addSubscriber(subscriber: self)
@@ -31,6 +21,19 @@ class TunerController: UIViewController, Subscriber {
     func update() {
         tunerLabel.text = PitchDetectionManager.pitchLabel
     }
+    
+    @IBOutlet weak var tunerLabel: UILabel!
+    
+    @IBOutlet weak var pauseMenu: UIView!
+    @IBOutlet weak var pauseYesBtn: UIButton!
+    @IBOutlet weak var pauseNoBtn: UIButton!
+    @IBOutlet weak var pauseBtn: UIButton!
+    
+    var PitchDetectionManager = PitchDetection.shared
+    
+    var id = Int()
+    
+    
     
     
     override func viewDidLoad() {
