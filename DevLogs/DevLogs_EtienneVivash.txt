@@ -27,6 +27,7 @@ updated Dec 3
 5)
 -added piano lesson 5
 -simplified code in lessons 1,2
+-fixed number labeling in lesson 4
 
 6)
 -modified order of lessons 
