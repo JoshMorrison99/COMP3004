@@ -1,0 +1,51 @@
+Dev logs
+updated Dec 3
+
+1)
+-added documentation to piano lesson 1
+-fixed spacing issues in piano lesson 1
+
+2)
+-added theory to piano lesson 1
+-fixed formatting issue in lesson 2
+-added ability to see specific white key on the keyboard in lesson 1
+-updated storyboard for lesson 1
+
+3)
+-added piano lesson 3
+-added documentation for lesson 3
+-cleaned code for lesson 2
+-updated and cleaned the storyboard
+-resolved issue with home icon falling outside the view
+
+4)
+-added piano lesson 4
+-changed existing description for lessons
+-cleaned code for lesson 3
+-added extra theory to lesson 2
+
+5)
+-added piano lesson 5
+-simplified code in lessons 1,2
+
+6)
+-modified order of lessons 
+-added theory to lesson 3
+-fixed issue in storyboard for second slide in lesson 2 
+-added coloring to label number for lessons
+-added more documentation to all the lessons
+
+7)
+-added header to Play Guitar view
+-added header to Play Piano view
+-added header to piano lessons view
+-added header to guitar lessons view
+-simplified code in lessons 3,4
+
+8)
+-added home button to play guitar view
+-added home button to play piano view
+-added home button to piano lessons view
+-added home button to guitar lessons view
+-added more theory to lesson 5
+-updated labels in lesson 1-5
