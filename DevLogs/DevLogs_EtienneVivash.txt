@@ -50,3 +50,5 @@ updated Dec 3
 -added home button to guitar lessons view
 -added more theory to lesson 5
 -updated labels in lesson 1-5
+
+9)
