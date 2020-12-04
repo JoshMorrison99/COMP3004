@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A71B26C2534689BFA153857A /* Pods_Pitch_Pal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10515BA02CD7AA55DD0E3E76 /* Pods_Pitch_Pal.framework */; };
 		E70DCE7725486D7D0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */; };
-		E70DCE7A2549C2A80053BFA2 /* Lesson002.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE792549C2A80053BFA2 /* Lesson002.swift */; };
+		E70DCE7A2549C2A80053BFA2 /* Lesson003.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE792549C2A80053BFA2 /* Lesson003.swift */; };
 		E70DCE7D254B03D20053BFA2 /* GuitarTabUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE7C254B03D20053BFA2 /* GuitarTabUI.swift */; };
 		E70DCE82254B06ED0053BFA2 /* Lesson001_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE81254B06ED0053BFA2 /* Lesson001_Guitar.swift */; };
 		E70DCE85254B0FB00053BFA2 /* Lesson002_Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70DCE84254B0FB00053BFA2 /* Lesson002_Guitar.swift */; };
@@ -35,9 +35,12 @@
 		E7D7FB6F25321AFA0078968E /* PianoUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB6E25321AF90078968E /* PianoUI.swift */; };
 		E7D7FB72253228630078968E /* PitchDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB71253228630078968E /* PitchDetection.swift */; };
 		E7D7FB75253229B80078968E /* TunerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D7FB74253229B80078968E /* TunerController.swift */; };
-		E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B692523AF6F0061EE19 /* Lesson001.swift */; };
+		E7E58B6A2523AF6F0061EE19 /* Lesson005.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B692523AF6F0061EE19 /* Lesson005.swift */; };
 		E7E58B6E25240B070061EE19 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E58B6D25240B070061EE19 /* Play.swift */; };
 		E7EA3D9E253238ED00B1BBE2 /* StaffUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EA3D9D253238ED00B1BBE2 /* StaffUI.swift */; };
+		F483E4BD25785DEF005C4173 /* Lesson001.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483E4BC25785DEF005C4173 /* Lesson001.swift */; };
+		F483E4C025785E08005C4173 /* Lesson002.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483E4BF25785E07005C4173 /* Lesson002.swift */; };
+		F483E4E32578A616005C4173 /* Lesson004.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483E4E22578A616005C4173 /* Lesson004.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +48,7 @@
 		708568F4FCC060D092072F8D /* Pods-Pitch Pal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.release.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.release.xcconfig"; sourceTree = "<group>"; };
 		9C1A01FDBF932F7EE5567F93 /* Pods-Pitch Pal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Pal.debug.xcconfig"; path = "Target Support Files/Pods-Pitch Pal/Pods-Pitch Pal.debug.xcconfig"; sourceTree = "<group>"; };
 		E70DCE7625486D7C0053BFA2 /* TwinkleTwinkleLittleStar_Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleTwinkleLittleStar_Song.swift; sourceTree = "<group>"; };
-		E70DCE792549C2A80053BFA2 /* Lesson002.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson002.swift; sourceTree = "<group>"; };
+		E70DCE792549C2A80053BFA2 /* Lesson003.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson003.swift; sourceTree = "<group>"; };
 		E70DCE7C254B03D20053BFA2 /* GuitarTabUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarTabUI.swift; sourceTree = "<group>"; };
 		E70DCE81254B06ED0053BFA2 /* Lesson001_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson001_Guitar.swift; sourceTree = "<group>"; };
 		E70DCE84254B0FB00053BFA2 /* Lesson002_Guitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson002_Guitar.swift; sourceTree = "<group>"; };
@@ -73,9 +76,12 @@
 		E7D7FB6E25321AF90078968E /* PianoUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoUI.swift; sourceTree = "<group>"; };
 		E7D7FB71253228630078968E /* PitchDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetection.swift; sourceTree = "<group>"; };
 		E7D7FB74253229B80078968E /* TunerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerController.swift; sourceTree = "<group>"; };
-		E7E58B692523AF6F0061EE19 /* Lesson001.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson001.swift; sourceTree = "<group>"; };
+		E7E58B692523AF6F0061EE19 /* Lesson005.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson005.swift; sourceTree = "<group>"; };
 		E7E58B6D25240B070061EE19 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		E7EA3D9D253238ED00B1BBE2 /* StaffUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffUI.swift; sourceTree = "<group>"; };
+		F483E4BC25785DEF005C4173 /* Lesson001.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson001.swift; sourceTree = "<group>"; };
+		F483E4BF25785E07005C4173 /* Lesson002.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson002.swift; sourceTree = "<group>"; };
+		F483E4E22578A616005C4173 /* Lesson004.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson004.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +227,11 @@
 		E7EA3DA02532544500B1BBE2 /* Lessons_Piano */ = {
 			isa = PBXGroup;
 			children = (
-				E7E58B692523AF6F0061EE19 /* Lesson001.swift */,
-				E70DCE792549C2A80053BFA2 /* Lesson002.swift */,
+				F483E4BC25785DEF005C4173 /* Lesson001.swift */,
+				F483E4BF25785E07005C4173 /* Lesson002.swift */,
+				E70DCE792549C2A80053BFA2 /* Lesson003.swift */,
+				F483E4E22578A616005C4173 /* Lesson004.swift */,
+				E7E58B692523AF6F0061EE19 /* Lesson005.swift */,
 			);
 			path = Lessons_Piano;
 			sourceTree = "<group>";
@@ -324,11 +333,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E70DCE7A2549C2A80053BFA2 /* Lesson002.swift in Sources */,
+				E70DCE7A2549C2A80053BFA2 /* Lesson003.swift in Sources */,
 				E79593852578396B00EA4FBA /* MainMenuGuitar.swift in Sources */,
 				E73D2B47255E213900174E53 /* SongSelectionGuitarController.swift in Sources */,
 				E7C53FF6251C0ED000EDECE0 /* AppDelegate.swift in Sources */,
-				E7E58B6A2523AF6F0061EE19 /* Lesson001.swift in Sources */,
+				E7E58B6A2523AF6F0061EE19 /* Lesson005.swift in Sources */,
 				E7D0071F254DAAA300262D0C /* SmokeOnTheWater_Song.swift in Sources */,
 				E7EA3D9E253238ED00B1BBE2 /* StaffUI.swift in Sources */,
 				E7C53FF8251C0ED000EDECE0 /* SceneDelegate.swift in Sources */,
@@ -340,6 +349,7 @@
 				E7D0073D2552026000262D0C /* Twinkle_Demo.swift in Sources */,
 				E7D7FB75253229B80078968E /* TunerController.swift in Sources */,
 				E70DCE82254B06ED0053BFA2 /* Lesson001_Guitar.swift in Sources */,
+				F483E4C025785E08005C4173 /* Lesson002.swift in Sources */,
 				E7D0071B254DAA2500262D0C /* PlayScene_Guitar.swift in Sources */,
 				E7D0073A255200E300262D0C /* OdeToJoy_Song.swift in Sources */,
 				E795936F2562B36700EA4FBA /* Eden - Rock and Roll.swift in Sources */,
@@ -347,7 +357,9 @@
 				E79593822578341A00EA4FBA /* MainMenuPiano.swift in Sources */,
 				E7E58B6E25240B070061EE19 /* Play.swift in Sources */,
 				E7D00717254DA9F900262D0C /* Play_Guitar.swift in Sources */,
+				F483E4BD25785DEF005C4173 /* Lesson001.swift in Sources */,
 				E7D7FB6C252D290B0078968E /* PlayScene.swift in Sources */,
+				F483E4E32578A616005C4173 /* Lesson004.swift in Sources */,
 				E795937225657FE600EA4FBA /* Subscriber.swift in Sources */,
 				E7D0072B2551ADA400262D0C /* LessonsModel.swift in Sources */,
 				E70DCE7D254B03D20053BFA2 /* GuitarTabUI.swift in Sources */,

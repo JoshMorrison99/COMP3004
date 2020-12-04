@@ -1,68 +1,41 @@
 //
-//  PitchDetection.swift
+//  Lesson001.swift
 //  Pitch Pal
 //
-//  Created by Josh Morrison on 9/24/20.
+//  Created by Etienne Vivash on 2020-12-02.
 //  Copyright © 2020 Pied Piper. All rights reserved.
 //
 
 import UIKit
 import AudioKit
-import AudioKitUI
 
-class Lesson001: UIViewController, Subscriber {
+class Lesson001: UIViewController {
     
-    // Pitch label
-    var pitchLabel:String!
-    
-    var PitchDetectionManager = PitchDetection.shared
-    var id = Int()
-    
-    func initialize(PitchDetectionManager : PitchDetection, id : Int) {
-        self.PitchDetectionManager = PitchDetectionManager
-        self.PitchDetectionManager.addSubscriber(subscriber: self)
-        self.id = id
-    }
-    
-    func update() {
-        pitchLabel = PitchDetectionManager.pitchLabel
-    }
-    
-    // Pause Button
-    @IBOutlet weak var pauseButton: UIButton!
+    // Pause menu UI
     @IBOutlet weak var pauseView: UIView!
-    @IBOutlet weak var mainManu_Yes_Btn: UIButton!
-    @IBOutlet weak var mainManu_No_Btn: UIButton!
+    @IBOutlet weak var pauseMenuBtn: UIButton!
+    @IBOutlet weak var pauseNoBtn: UIButton!
+    @IBOutlet weak var pauseYesBtn: UIButton!
     
-    
-    // Lesson text at the top of the screen
-    @IBOutlet weak var LessonLabel: UILabel!
-    @IBOutlet weak var LessonLabel_number: UILabel!
-    
-    var noteDetectionTimer = Timer()
-    var noteDetectionTimerCycle:Double = 0.05
-    
-    
-    // Images used in the lesson
-    var NoteImageSequence : [UIImageView] = []
-    var note001 = UIImageView()
-    var note002 = UIImageView()
-    var note003 = UIImageView()
-    
+    // Lesson text UI
+    @IBOutlet weak var lessonTextLabel: UILabel!
+    @IBOutlet weak var lessonNumberLabel: UILabel!
+
     // Reference to the Lesson Model
     var lessonModel: LessonsModel = LessonsModel()
     
-    let PianoStaffUI:StaffUI = StaffUI()
+    // Reference to Piano UI
     let PianoKeysUI: PianoUI = PianoUI()
-
-
+    
+    // Refernece to pitch detection
+    let PitchDetectionManager: PitchDetection = PitchDetection()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initialize(PitchDetectionManager: PitchDetectionManager, id: 1)
         
-        // Setup Staff UI
-        PianoStaffUI.setupStaffUI(view: view)
+        view.viewBackgroundColor()
         
         // Setup Piano UI
         PianoKeysUI.setupPianoUI(view: view)
@@ -73,267 +46,206 @@ class Lesson001: UIViewController, Subscriber {
         // Pause Button Setup
         self.setupHomeMenu()
 
-        setupLesson()
-        
-        startLesson()
-        
-        
+        // Start the Lesson
+        self.startLesson()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        PitchDetectionManager.setupPitchDetection()
-        
-        pianoKeysPressedUI()
-        
-        
-        self.lessonLoop()
-    }
-    
-    func setupLesson(){
-        lessonModel.setLessonGoalNote(lessonNotes: ["G","B","E"])
-        lessonModel.setGoalNote(newGoalNote: "G")
+    func setupHomeMenu(){
+        self.pauseView.isHidden = true
+        view.bringSubviewToFront(pauseView)
     }
     
     func startLesson(){
-        PianoStaffUI.getStaff().alpha = 0
-        PianoStaffUI.getTrebleClef().alpha = 0
         
-        self.NoteImageSequence = [note001, note002, note003]
+        lessonTextLabel.text = "Hello! Welcome to Lesson 1 of the Pitch Pal App. In this lesson, we are going to learn about the piano keyboard. To proceed tap anywhere on the screen."
+        lessonNumberLabel.text = "1 / 11"
         
-        LessonLabel.text = "Hello! Welcome to lesson 1 of the Pitch Pal App. To proceed tap anywhere on the screen!"
-        LessonLabel_number.text = "1 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        PianoStaffUI.getStaff().alpha = 1
-        PianoStaffUI.FLine.alpha = 1
-        PianoStaffUI.DLine.alpha = 1
-        PianoStaffUI.GLine.alpha = 1
-        PianoStaffUI.BLine.alpha = 1
-        PianoStaffUI.ELine.alpha = 1
-        clearNotes()
-        LessonLabel.text = "This is the STAFF. It is the foundation upon which notes are drawn. The STAFF consists of 5 lines and 4 spaces. Every line or white space on the STAFF represents a key on the keyboard."
-        LessonLabel_number.text = "2 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonTextLabel.text = "The keyboard is made up of white keys and black keys. The black keys are arranged in groups of two and three. As you move up the keyboard, the notes sound higher. As you move down the keyboard, the notes sound lower."
+        lessonNumberLabel.text = "2 / 11"
+
+        
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
-        
-        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "Two CLEFS are normally used: Treble and Bass CLEFS. Displayed on the STAFF is the TREBLE CLEF (also called the G clef)."
-        LessonLabel_number.text = "3 / 9"
-        lessonModel.accumulateLessonStepNumber()
-        PianoStaffUI.getTrebleClef().alpha = 1
+        lessonTextLabel.text = "For the moment, we will only pay attention to the white keys. They are A, B, C, D, E, F, and G repeated over and over."
+        lessonNumberLabel.text = "3 / 11"
+
+        
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
-        
-        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "The highlighted line show is: E"
-        PianoStaffUI.ELine.backgroundColor = UIColor.green
-        LessonLabel_number.text = "4 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonTextLabel.text = "This is the C key. C's are found before every 2 black key group."
+        lessonNumberLabel.text = "4 / 11"
+        
+        //showing C keys
+        PianoKeysUI.notes[0].backgroundColor = UIColor.red
+        PianoKeysUI.notes[7].backgroundColor = UIColor.red
+        PianoKeysUI.notes[14].backgroundColor = UIColor.red
+        PianoKeysUI.notes[21].backgroundColor = UIColor.red
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
-        
-        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "The highlighted line show is: G"
-        PianoStaffUI.ELine.backgroundColor = UIColor.black
-        PianoStaffUI.GLine.backgroundColor = UIColor.green
-        LessonLabel_number.text = "5 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonTextLabel.text = "This is the D key. D's are found between every 2 black key group."
+        lessonNumberLabel.text = "5 / 11"
+        
+        // Removing C keys
+        PianoKeysUI.notes[0].backgroundColor = UIColor.white
+        PianoKeysUI.notes[7].backgroundColor = UIColor.white
+        PianoKeysUI.notes[14].backgroundColor = UIColor.white
+        PianoKeysUI.notes[21].backgroundColor = UIColor.white
+        
+        // Showing D keys
+        PianoKeysUI.notes[1].backgroundColor = UIColor.red
+        PianoKeysUI.notes[8].backgroundColor = UIColor.red
+        PianoKeysUI.notes[15].backgroundColor = UIColor.red
+        PianoKeysUI.notes[22].backgroundColor = UIColor.red
+        
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
-        
-        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "The highlighted line show is: B"
-        PianoStaffUI.ELine.backgroundColor = UIColor.black
-        PianoStaffUI.GLine.backgroundColor = UIColor.black
-        PianoStaffUI.BLine.backgroundColor = UIColor.green
-        LessonLabel_number.text = "6 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonTextLabel.text = "This is the E key. E's are found after every 2 black key group."
+        lessonNumberLabel.text = "6 / 11"
+        
+        // Removing D keys
+        PianoKeysUI.notes[1].backgroundColor = UIColor.white
+        PianoKeysUI.notes[8].backgroundColor = UIColor.white
+        PianoKeysUI.notes[15].backgroundColor = UIColor.white
+        PianoKeysUI.notes[22].backgroundColor = UIColor.white
+        
+        // Showing E keys
+        PianoKeysUI.notes[2].backgroundColor = UIColor.red
+        PianoKeysUI.notes[9].backgroundColor = UIColor.red
+        PianoKeysUI.notes[16].backgroundColor = UIColor.red
+        PianoKeysUI.notes[23].backgroundColor = UIColor.red
+        
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
-        
-        view.removeGestureRecognizer(sender!)
     }
-    
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "The highlighted line show is: D"
-        PianoStaffUI.ELine.backgroundColor = UIColor.black
-        PianoStaffUI.GLine.backgroundColor = UIColor.black
-        PianoStaffUI.BLine.backgroundColor = UIColor.black
-        PianoStaffUI.DLine.backgroundColor = UIColor.green
-        LessonLabel_number.text = "7 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonTextLabel.text = "This is the F key. F's are found before every 3 black key group."
+        lessonNumberLabel.text = "7 / 11"
+        
+        // Removing E keys
+        PianoKeysUI.notes[2].backgroundColor = UIColor.white
+        PianoKeysUI.notes[9].backgroundColor = UIColor.white
+        PianoKeysUI.notes[16].backgroundColor = UIColor.white
+        PianoKeysUI.notes[23].backgroundColor = UIColor.white
+        
+        // Showing F keys
+        PianoKeysUI.notes[3].backgroundColor = UIColor.red
+        PianoKeysUI.notes[10].backgroundColor = UIColor.red
+        PianoKeysUI.notes[17].backgroundColor = UIColor.red
+        PianoKeysUI.notes[24].backgroundColor = UIColor.red
+        
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
-        
-        view.removeGestureRecognizer(sender!)
     }
-    
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "The highlighted line show is: F"
-        PianoStaffUI.ELine.backgroundColor = UIColor.black
-        PianoStaffUI.GLine.backgroundColor = UIColor.black
-        PianoStaffUI.BLine.backgroundColor = UIColor.black
-        PianoStaffUI.DLine.backgroundColor = UIColor.black
-        PianoStaffUI.FLine.backgroundColor = UIColor.green
-        LessonLabel_number.text = "8 / 9"
-        lessonModel.accumulateLessonStepNumber()
+        lessonTextLabel.text = "This is the G key. G's are found between every first two keys of the 3 black key group."
+        lessonNumberLabel.text = "8 / 11"
+        
+        // Removing F keys
+        PianoKeysUI.notes[3].backgroundColor = UIColor.white
+        PianoKeysUI.notes[10].backgroundColor = UIColor.white
+        PianoKeysUI.notes[17].backgroundColor = UIColor.white
+        PianoKeysUI.notes[24].backgroundColor = UIColor.white
+        
+        // Showing G keys
+        PianoKeysUI.notes[4].backgroundColor = UIColor.red
+        PianoKeysUI.notes[11].backgroundColor = UIColor.red
+        PianoKeysUI.notes[18].backgroundColor = UIColor.red
+        PianoKeysUI.notes[25].backgroundColor = UIColor.red
+        
+        lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
+    }
+    @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
+        lessonTextLabel.text = "This is the A key. A's are found between every last two keys of the 3 black key group."
+        lessonNumberLabel.text = "9 / 11"
         
-        view.removeGestureRecognizer(sender!)
+        // Removing G keys
+        PianoKeysUI.notes[4].backgroundColor = UIColor.white
+        PianoKeysUI.notes[11].backgroundColor = UIColor.white
+        PianoKeysUI.notes[18].backgroundColor = UIColor.white
+        PianoKeysUI.notes[25].backgroundColor = UIColor.white
+        
+        // Showing A keys
+        PianoKeysUI.notes[5].backgroundColor = UIColor.red
+        PianoKeysUI.notes[12].backgroundColor = UIColor.red
+        PianoKeysUI.notes[19].backgroundColor = UIColor.red
+        PianoKeysUI.notes[26].backgroundColor = UIColor.red
+        
+        lessonModel.accumulateGoalIndex()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step009(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func step009(_ sender: UITapGestureRecognizer? = nil) {
+        lessonTextLabel.text = "This is the B key. B's are found after every 3 black key group."
+        lessonNumberLabel.text = "10 / 11"
+        
+        // Removing A keys
+        PianoKeysUI.notes[5].backgroundColor = UIColor.white
+        PianoKeysUI.notes[12].backgroundColor = UIColor.white
+        PianoKeysUI.notes[19].backgroundColor = UIColor.white
+        PianoKeysUI.notes[26].backgroundColor = UIColor.white
+        
+        // Showing B keys
+        PianoKeysUI.notes[6].backgroundColor = UIColor.red
+        PianoKeysUI.notes[13].backgroundColor = UIColor.red
+        PianoKeysUI.notes[20].backgroundColor = UIColor.red
+        PianoKeysUI.notes[27].backgroundColor = UIColor.red
+        
+        lessonModel.accumulateGoalIndex()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step010(_:)))
+        view.addGestureRecognizer(tap)
     }
 
-    @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
-        // handling code
-        LessonLabel.text = "Pitch Pal works by picking up the sound through your mobile device's microphone. Play the sequence of notes display. (NOTE: Remember the line letters.)"
-        PianoStaffUI.ELine.backgroundColor = UIColor.black
-        PianoStaffUI.GLine.backgroundColor = UIColor.black
-        PianoStaffUI.BLine.backgroundColor = UIColor.black
-        PianoStaffUI.DLine.backgroundColor = UIColor.black
-        PianoStaffUI.FLine.backgroundColor = UIColor.black
+    @objc func step010(_ sender: UITapGestureRecognizer? = nil) {
+        lessonTextLabel.text = "That's it for Lesson 1. Great job! Memorize the placement of each white key and you will be ready for Lesson 2."
+        lessonNumberLabel.text = "11 / 11"
         
-        note001.image = UIImage(named: "musicnote")
-        note002.image = UIImage(named: "musicnote")
-        note003.image = UIImage(named: "musicnote")
+        // Removing B keys
+        PianoKeysUI.notes[6].backgroundColor = UIColor.white
+        PianoKeysUI.notes[13].backgroundColor = UIColor.white
+        PianoKeysUI.notes[20].backgroundColor = UIColor.white
+        PianoKeysUI.notes[27].backgroundColor = UIColor.white
         
-        note001.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(note001)
-        note001.widthAnchor.constraint(equalToConstant: 85).isActive = true
-        note001.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        note001.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -140).isActive = true
-        note001.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120).isActive = true
-        
-        note002.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(note002)
-        note002.widthAnchor.constraint(equalToConstant: 85).isActive = true
-        note002.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        note002.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -175).isActive = true
-        note002.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 220).isActive = true
-        
-        note003.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(note003)
-        note003.widthAnchor.constraint(equalToConstant: 85).isActive = true
-        note003.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        note003.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -105).isActive = true
-        note003.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 320).isActive = true
-        
-        // Render images as templates, so we can change the color
-        note001.image = note001.image?.withRenderingMode(.alwaysTemplate)
-        note002.image = note001.image?.withRenderingMode(.alwaysTemplate)
-        note003.image = note001.image?.withRenderingMode(.alwaysTemplate)
-        
-        // Set the note color to black
-        note001.tintColor = .black
-        note002.tintColor = .black
-        note003.tintColor = .black
-        
-        view.removeGestureRecognizer(sender!)
-        
-        LessonLabel_number.text = "9 / 9"
-        lessonModel.accumulateLessonStepNumber()
-        
-        self.displayNotes()
-        
-        lessonModel.startLesson()
-        
+        lessonModel.accumulateGoalIndex()
+    
     }
     
-    func lessonLoop(){
-        Timer.scheduledTimer(withTimeInterval: lessonModel.getTimer(), repeats: true) { timer in
-            if(self.lessonModel.getLessonStepNum() == 9){
-                self.LessonLogic()
-            }
-        }
-    }
-    
-    func pianoKeysPressedUI(){
-        Timer.scheduledTimer(withTimeInterval: self.noteDetectionTimerCycle, repeats: true) { noteDetectionTimer in // Timer executes every 1/10 of a second
-            self.PianoKeysUI.pianoKeyPressedUI(pitchDetectionLabel: self.pitchLabel)
-        }
-        
-    }
-    
-    func LessonLogic(){
-        if(pitchLabel == lessonModel.getGoalNote() && pitchLabel == lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()]){
-            NoteImageSequence[lessonModel.getGoalIndex()].tintColor = UIColor.green
-            if(lessonModel.getGoalIndex() >= lessonModel.getLessonGoalNote().count-1){
-                CompleteLession()
-            }else{
-                lessonModel.accumulateGoalIndex()
-                lessonModel.setGoalNote(newGoalNote: lessonModel.getLessonGoalNote()[lessonModel.getGoalIndex()])
-            }
-        }
-    }
-    
-    func CompleteLession(){
-        LessonLabel.text = "Good Job. Lesson Complete"
-        LessonLabel_number.text = "100%"
-    }
-    
-    @objc func pauseButtonClicked(){
-        view.bringSubviewToFront(pauseView)
-        pauseView.isHidden = false
-    }
-    
-    
-    func clearNotes(){
-        note001.alpha = 0
-        note002.alpha = 0
-        note003.alpha = 0
-    }
-    
-    func displayNotes(){
-        note001.alpha = 1
-        note002.alpha = 1
-        note003.alpha = 1
-    }
-    
-    func setupHomeMenu(){
-        self.pauseView.isHidden = true
-        pauseButton.addTarget(self,
-                           action: #selector(pauseButtonClicked),
-                           for: .touchUpInside)
-        mainManu_Yes_Btn.addTarget(self,
-                                   action: #selector(pauseYesButtonClicked),
-                                   for: .touchUpInside)
-        view.bringSubviewToFront(pauseView)
-    }
-    
-    @objc func pauseYesButtonClicked(){
+    @IBAction func pauseYesBtnClicked(_ sender: Any) {
         do {
             try AKManager.stop()
         }catch{
@@ -341,10 +253,12 @@ class Lesson001: UIViewController, Subscriber {
         }
     }
     
-    @IBAction func PauseNoButtonClick(_ sender: Any) {
+    @IBAction func pauseNoBtnClicked(_ sender: Any) {
         self.pauseView.isHidden = true
     }
     
+    @IBAction func pauseMenuBtnClicked(_ sender: Any) {
+        view.bringSubviewToFront(pauseView)
+        pauseView.isHidden = false
+    }
 }
-
-

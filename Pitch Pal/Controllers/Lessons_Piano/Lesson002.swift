@@ -1,8 +1,8 @@
 //
-//  Lesson002.swift
+//  Lesson003.swift
 //  Pitch Pal
 //
-//  Created by Josh Morrison on 10/28/20.
+//  Created by Etienne Vivash on 2020-12-02.
 //  Copyright © 2020 Pied Piper. All rights reserved.
 //
 
@@ -20,24 +20,22 @@ class Lesson002: UIViewController {
     // Lesson text UI
     @IBOutlet weak var lessonTextLabel: UILabel!
     @IBOutlet weak var lessonNumberLabel: UILabel!
+
     
     // Images used in the lesson
-    var wholeNoteImg = UIImageView()
-    var halfNoteImg = UIImageView()
-    var quarterNoteImg = UIImageView()
-    var eighthNoteImg = UIImageView()
-    var sixteenthNoteImg = UIImageView()
-    var eighthNoteDouble = UIImageView()
-    var sixteenthNoteDouble = UIImageView()
-    
+    var NoteImageSequence : [UIImageView] = []
+    var note001 = UIImageView()
+    var note002 = UIImageView()
+    var note003 = UIImageView()
     
     // Reference to the Lesson Model
     var lessonModel: LessonsModel = LessonsModel()
     
     // Reference to Piano UI
     let PianoKeysUI: PianoUI = PianoUI()
+    let PianoStaffUI:StaffUI = StaffUI()
     
-    // Refernece to pitch detection
+    // Reference to pitch detection
     let PitchDetectionManager: PitchDetection = PitchDetection()
     
     
@@ -46,6 +44,9 @@ class Lesson002: UIViewController {
         
         
         view.viewBackgroundColor()
+        
+        // Setup Staff UI
+        PianoStaffUI.setupStaffUI(view: view)
         
         // Setup Piano UI
         PianoKeysUI.setupPianoUI(view: view)
@@ -66,9 +67,12 @@ class Lesson002: UIViewController {
     }
     
     func startLesson(){
+        PianoStaffUI.getStaff().alpha = 0
+        PianoStaffUI.getTrebleClef().alpha = 0
         
-        lessonTextLabel.text = "Hello! Welcome to lesson 2 of the Pitch Pal App. In this lesson we are going to learn about note duration. To proceed tap anywhere on the screen."
-        lessonNumberLabel.text = "1 / 9"
+        lessonTextLabel.text = "Hello! Welcome to Lesson 2 of the Pitch Pal App. In this lesson, we are going to learn about the staff and the treble clef. To proceed tap anywhere on the screen."
+        lessonNumberLabel.text = "1 / 13"
+        
         lessonModel.accumulateGoalIndex()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
@@ -76,203 +80,191 @@ class Lesson002: UIViewController {
     }
     
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The length of time a note is played is called the note's duration. There are different types of notes, with different note durations."
-        lessonNumberLabel.text = "2 / 9"
-        lessonModel.accumulateGoalIndex()
+        // handling code
+        PianoStaffUI.getStaff().alpha = 1
+        PianoStaffUI.FLine.alpha = 1
+        PianoStaffUI.DLine.alpha = 1
+        PianoStaffUI.GLine.alpha = 1
+        PianoStaffUI.BLine.alpha = 1
+        PianoStaffUI.ELine.alpha = 1
+        lessonTextLabel.text = "This is the STAFF. It is the foundation upon which notes are drawn. The STAFF consists of 5 lines and 4 spaces. Every line or white space on the STAFF represents a key on the keyboard."
+        lessonNumberLabel.text = "2 / 13"
+        
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The image displayed on screen is called a whole note. This is the longest of the note durations."
-        lessonNumberLabel.text = "3 / 9"
-        lessonModel.accumulateGoalIndex()
-        wholeNoteImg.image = UIImage(named: "wholeNote")
-        
-        wholeNoteImg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(wholeNoteImg)
-        wholeNoteImg.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        wholeNoteImg.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        wholeNoteImg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        wholeNoteImg.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 1
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 0
+        // handling code
+        lessonTextLabel.text = "Two CLEFS are normally used: Treble and Bass CLEFS. Displayed on the STAFF is the TREBLE CLEF (also called the G clef). We will only be using the TREBLE CLEF for the moment."
+        lessonNumberLabel.text = "3 / 13"
+        lessonModel.accumulateLessonStepNumber()
+        PianoStaffUI.getTrebleClef().alpha = 1
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The image displayed on screen is called a half note. This is the half of the whole notes duration."
-        lessonNumberLabel.text = "4 / 9"
-        lessonModel.accumulateGoalIndex()
-        halfNoteImg.image = UIImage(named: "halfNote")
-        
-        halfNoteImg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(halfNoteImg)
-        halfNoteImg.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        halfNoteImg.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        halfNoteImg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        halfNoteImg.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 1
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 0
+        // handling code
+        lessonTextLabel.text = "The highlighted line shown is: E"
+        PianoStaffUI.ELine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "4 / 13"
+    
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step004(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The image displayed on screen is called a quarter note. This is the quarter of the whole notes duration."
-        lessonNumberLabel.text = "5 / 9"
-        lessonModel.accumulateGoalIndex()
-        quarterNoteImg.image = UIImage(named: "quarterNote")
-        
-        quarterNoteImg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(quarterNoteImg)
-        quarterNoteImg.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        quarterNoteImg.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        quarterNoteImg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        quarterNoteImg.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 1
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 0
+        // handling code
+        lessonTextLabel.text = "The white space between highlighted lines shown is: F"
+        PianoStaffUI.ELine.backgroundColor = UIColor.green
+        PianoStaffUI.GLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "5 / 13"
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step005(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The image displayed on screen is called a eighth note. This is the eighth of the whole notes duration."
-        lessonNumberLabel.text = "5 / 9"
-        lessonModel.accumulateGoalIndex()
-        eighthNoteImg.image = UIImage(named: "eighthNote")
-        
-        eighthNoteImg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(eighthNoteImg)
-        eighthNoteImg.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        eighthNoteImg.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        eighthNoteImg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        eighthNoteImg.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 1
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 0
+        // handling code
+        lessonTextLabel.text = "The highlighted line shown is: G"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "6 / 13"
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step006(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
-    
     @objc func step006(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The image displayed on screen is called a sixteenth note. This is the sixteenth of the whole notes duration."
-        lessonNumberLabel.text = "6 / 9"
-        lessonModel.accumulateGoalIndex()
-        sixteenthNoteImg.image = UIImage(named: "sixteenthNote")
-        
-        sixteenthNoteImg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(sixteenthNoteImg)
-        sixteenthNoteImg.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        sixteenthNoteImg.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        sixteenthNoteImg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        sixteenthNoteImg.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 1
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 0
+        // handling code
+        lessonTextLabel.text = "The white space between highlighted lines shown is: A"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.green
+        PianoStaffUI.BLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "7 / 13"
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step007(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step007(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "When you combine two eighth notes, you get the symbol displayed now. The symbol acts the same as two eighth notes, just a different symbol."
-        lessonNumberLabel.text = "7 / 9"
-        lessonModel.accumulateGoalIndex()
-        eighthNoteDouble.image = UIImage(named: "eighthNoteDouble")
-        
-        eighthNoteDouble.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(eighthNoteDouble)
-        eighthNoteDouble.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        eighthNoteDouble.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        eighthNoteDouble.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        eighthNoteDouble.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 1
-        sixteenthNoteDouble.alpha = 0
+        // handling code
+        lessonTextLabel.text = "The highlighted line shown is: B"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "8 / 13"
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step008(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step008(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "The same is true for the sixteenth notes. When you have two sixteenth notes togther, you get the image displayed on screen."
-        lessonNumberLabel.text = "8 / 9"
-        lessonModel.accumulateGoalIndex()
-        sixteenthNoteDouble.image = UIImage(named: "sixteenthNoteDouble")
-        
-        sixteenthNoteDouble.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(sixteenthNoteDouble)
-        sixteenthNoteDouble.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        sixteenthNoteDouble.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        sixteenthNoteDouble.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        sixteenthNoteDouble.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 1
+        // handling code
+        lessonTextLabel.text = "The white space between highlighted lines shown is: C"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.green
+        PianoStaffUI.DLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "9 / 13"
+        lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step009(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
     @objc func step009(_ sender: UITapGestureRecognizer? = nil) {
-        lessonTextLabel.text = "End of lesson! Good job!"
-        lessonNumberLabel.text = "9 / 9"
-        lessonModel.accumulateGoalIndex()
+        // handling code
+        lessonTextLabel.text = "The highlighted line shown is: D"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.black
+        PianoStaffUI.DLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "10 / 13"
+        lessonModel.accumulateLessonStepNumber()
         
-        wholeNoteImg.alpha = 0
-        halfNoteImg.alpha = 0
-        quarterNoteImg.alpha = 0
-        eighthNoteImg.alpha = 0
-        sixteenthNoteImg.alpha = 0
-        eighthNoteDouble.alpha = 0
-        sixteenthNoteDouble.alpha = 0
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step010(_:)))
+        view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
     }
     
+    @objc func step010(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        lessonTextLabel.text = "The white space between highlighted lines shown is: E"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.black
+        PianoStaffUI.DLine.backgroundColor = UIColor.green
+        PianoStaffUI.FLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "11 / 13"
+        lessonModel.accumulateLessonStepNumber()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step011(_:)))
+        view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
+    }
+    
+    @objc func step011(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        lessonTextLabel.text = "The highlighted line shown is: F"
+        PianoStaffUI.ELine.backgroundColor = UIColor.black
+        PianoStaffUI.GLine.backgroundColor = UIColor.black
+        PianoStaffUI.BLine.backgroundColor = UIColor.black
+        PianoStaffUI.DLine.backgroundColor = UIColor.black
+        PianoStaffUI.FLine.backgroundColor = UIColor.green
+        lessonNumberLabel.text = "12 / 13"
+        lessonModel.accumulateLessonStepNumber()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.step012(_:)))
+        view.addGestureRecognizer(tap)
+        
+        view.removeGestureRecognizer(sender!)
+    }
+    
+    @objc func step012(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        PianoStaffUI.getStaff().alpha = 0
+        PianoStaffUI.getTrebleClef().alpha = 0
+        PianoStaffUI.FLine.alpha = 0
+        PianoStaffUI.DLine.alpha = 0
+        PianoStaffUI.GLine.alpha = 0
+        PianoStaffUI.BLine.alpha = 0
+        PianoStaffUI.ELine.alpha = 0
+        
+        lessonTextLabel.text = "End of Lesson 2. Great job! You are now ready for Lesson 3."
+        lessonNumberLabel.text = "13 / 13"
+        lessonModel.accumulateLessonStepNumber()
+        
+        
+        view.removeGestureRecognizer(sender!)
+    }
     @IBAction func pauseYesBtnClicked(_ sender: Any) {
         do {
             try AKManager.stop()
