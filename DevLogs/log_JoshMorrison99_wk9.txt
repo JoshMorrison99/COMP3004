@@ -2,3 +2,6 @@
 - created a settings menu on the paino main menu
 - created a setting for the user to choose a level for the noise gate.
 - added the ability for the user's noise gate level setting to persist through the shutdown and restart.
+- created lesson 3 of the guitar.
+- made it so the user's device wont go into sleep mode while using the applciaiton.
+- removed visual debug information for the user.
