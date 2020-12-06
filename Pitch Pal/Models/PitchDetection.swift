@@ -57,17 +57,26 @@ class PitchDetection{
     }
     
     func determineNoiseGate(){
-        if(defaults.integer(forKey: "NoiseGate") == 1){
-            noiseGateThreshold = 0.01
-        }else if(defaults.integer(forKey: "NoiseGate") == 2){
-            noiseGateThreshold = 0.025
-        }else if(defaults.integer(forKey: "NoiseGate") == 3){
-            noiseGateThreshold = 0.05
-        }else if(defaults.integer(forKey: "NoiseGate") == 4){
-            noiseGateThreshold = 0.07
-        }else{
-            print("that's tough...")
+        
+        print(UserDefaults.standard.integer(forKey: "NoiseGate"))
+        
+        if (UserDefaults.standard.integer(forKey: "NoiseGate") == 0) {
+            if(defaults.integer(forKey: "NoiseGate") == 1){
+                noiseGateThreshold = 0.01
+            }else if(defaults.integer(forKey: "NoiseGate") == 2){
+                noiseGateThreshold = 0.025
+            }else if(defaults.integer(forKey: "NoiseGate") == 3){
+                noiseGateThreshold = 0.05
+            }else if(defaults.integer(forKey: "NoiseGate") == 4){
+                noiseGateThreshold = 0.075
+            }else{
+                print("that's tough...")
+            }
+        } else {
+            defaults.set(2, forKey: "NoiseGate")
         }
+        
+        
     }
     
     func setupPitchDetection(){
