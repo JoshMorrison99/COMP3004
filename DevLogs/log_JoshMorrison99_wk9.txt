@@ -5,3 +5,5 @@
 - created lesson 3 of the guitar.
 - made it so the user's device wont go into sleep mode while using the applciaiton.
 - removed visual debug information for the user.
+- created lesson 4 of the guitar.
+- changed the ui for the settings menu.
