@@ -61,6 +61,8 @@ class PitchDetection{
         print(UserDefaults.standard.integer(forKey: "NoiseGate"))
         
         if (UserDefaults.standard.integer(forKey: "NoiseGate") == 0) {
+            defaults.set(1, forKey: "NoiseGate")
+        } else {
             if(defaults.integer(forKey: "NoiseGate") == 1){
                 noiseGateThreshold = 0.01
             }else if(defaults.integer(forKey: "NoiseGate") == 2){
@@ -72,11 +74,7 @@ class PitchDetection{
             }else{
                 print("that's tough...")
             }
-        } else {
-            defaults.set(2, forKey: "NoiseGate")
         }
-        
-        
     }
     
     func setupPitchDetection(){
