@@ -59,6 +59,8 @@ class PlayScene_Guitar : SKScene, SKPhysicsContactDelegate, Subscriber{
 
     override func didMove(to view: SKView) {
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         initialize(PitchDetectionManager: PitchDetectionManager, id: 6)
         
         

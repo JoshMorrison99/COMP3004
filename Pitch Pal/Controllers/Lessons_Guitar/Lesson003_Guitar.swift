@@ -56,6 +56,8 @@ class Lesson003_Guitar: UIViewController, Subscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         initialize(PitchDetectionManager: PitchDetectionManager, id: 4)
         
         // Setup Staff UI

@@ -39,6 +39,8 @@ class TunerController: UIViewController, Subscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         initialize(PitchDetectionManager: PitchDetectionManager, id: 0)
         
         self.pauseMenu.isHidden = true

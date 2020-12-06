@@ -65,6 +65,8 @@ class PlayScene : SKScene, SKPhysicsContactDelegate, Subscriber{
 
     override func didMove(to view: SKView) {
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         initialize(PitchDetectionManager: PitchDetectionManager, id: 5)
         
         // Setup Staff UI

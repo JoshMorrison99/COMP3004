@@ -59,6 +59,8 @@ class Lesson005: UIViewController, Subscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         initialize(PitchDetectionManager: PitchDetectionManager, id: 1)
         
         // Setup Staff UI

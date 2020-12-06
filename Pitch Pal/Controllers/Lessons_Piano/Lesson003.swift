@@ -44,6 +44,8 @@ class Lesson003: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         
         view.viewBackgroundColor()
         
