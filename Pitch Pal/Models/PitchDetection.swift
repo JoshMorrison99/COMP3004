@@ -60,11 +60,11 @@ class PitchDetection{
         if(defaults.integer(forKey: "NoiseGate") == 1){
             noiseGateThreshold = 0.01
         }else if(defaults.integer(forKey: "NoiseGate") == 2){
-            noiseGateThreshold = 0.05
+            noiseGateThreshold = 0.025
         }else if(defaults.integer(forKey: "NoiseGate") == 3){
-            noiseGateThreshold = 0.1
+            noiseGateThreshold = 0.05
         }else if(defaults.integer(forKey: "NoiseGate") == 4){
-            noiseGateThreshold = 0.15
+            noiseGateThreshold = 0.07
         }else{
             print("that's tough...")
         }
