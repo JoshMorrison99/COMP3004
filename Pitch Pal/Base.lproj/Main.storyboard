@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -391,61 +392,45 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-bY-KT3">
                                         <rect key="frame" x="20" y="148" width="812" height="195"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TQ-SY-bEi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csP-r6-BM6">
                                                 <rect key="frame" x="0.0" y="0.0" width="812" height="165"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PitchPal Guitar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffR-a8-3Iy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="118" height="165"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csP-r6-BM6">
-                                                        <rect key="frame" x="118" y="0.0" width="694" height="165"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="arrow.right" catalog="system"/>
-                                                        <connections>
-                                                            <segue destination="7Ev-Gp-DTv" kind="show" id="lhQ-MY-FgU"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-xz-tkb">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="  Pitch Pal Guitar" image="arrow.right" catalog="system">
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="7Ev-Gp-DTv" kind="show" id="lhQ-MY-FgU"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-xz-tkb">
                                                 <rect key="frame" x="0.0" y="165" width="812" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noise Gate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-XH-bS3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noise Gate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-XH-bS3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-7c-4Kw">
-                                                        <rect key="frame" x="162.5" y="0.0" width="162.5" height="30"/>
-                                                        <state key="normal" title="1"/>
-                                                        <connections>
-                                                            <action selector="noiseGate1Pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="g9I-RT-rf3"/>
-                                                        </connections>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-7c-4Kw">
+                                                        <rect key="frame" x="51" y="0.0" width="24" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal">
+                                                            <imageReference key="image" image="speaker.wave.1" catalog="system" symbolScale="large"/>
+                                                        </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR6-SZ-XFS">
-                                                        <rect key="frame" x="325" y="0.0" width="162" height="30"/>
-                                                        <state key="normal" title="2"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="138-NK-Edy">
+                                                        <rect key="frame" x="73" y="0.0" width="707.5" height="31"/>
                                                         <connections>
-                                                            <action selector="noiseGate2Pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="f3S-85-Iwt"/>
+                                                            <action selector="noiseGateSliderAction:" destination="kUu-eh-y8v" eventType="valueChanged" id="eKo-k6-U5O"/>
                                                         </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af5-0z-F08">
-                                                        <rect key="frame" x="487" y="0.0" width="162.5" height="30"/>
-                                                        <state key="normal" title="3"/>
-                                                        <connections>
-                                                            <action selector="noiseGate3Pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="iLU-0A-rUV"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sao-Oc-XiZ">
-                                                        <rect key="frame" x="649.5" y="0.0" width="162.5" height="30"/>
-                                                        <state key="normal" title="4"/>
-                                                        <connections>
-                                                            <action selector="noiseGate4pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="HW6-TK-JMB"/>
-                                                        </connections>
+                                                    </slider>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sao-Oc-XiZ">
+                                                        <rect key="frame" x="778.5" y="0.0" width="33.5" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal">
+                                                            <imageReference key="image" image="speaker.wave.3" catalog="system" symbolScale="large"/>
+                                                        </state>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -465,7 +450,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.23540273310000001" green="0.23910418150000001" blue="0.24706000089999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="kgC-bY-KT3" secondAttribute="trailing" constant="20" id="2TG-Rv-96S"/>
                                     <constraint firstItem="kgC-bY-KT3" firstAttribute="leading" secondItem="wiP-Um-fcQ" secondAttribute="leading" constant="20" id="3Ry-6d-hC9"/>
@@ -498,12 +483,9 @@
                     <navigationItem key="navigationItem" id="Ix2-9U-gyr"/>
                     <connections>
                         <outlet property="closeBtn" destination="1sC-kq-zuz" id="LAw-fZ-706"/>
-                        <outlet property="four" destination="sao-Oc-XiZ" id="Cva-0Z-ocP"/>
-                        <outlet property="one" destination="CeM-7c-4Kw" id="7Jn-0z-nBk"/>
+                        <outlet property="noiseGateSlider" destination="138-NK-Edy" id="DHE-LZ-79F"/>
                         <outlet property="settingsBtn" destination="WG7-4K-Fuh" id="SRX-RP-zwe"/>
                         <outlet property="settingsView" destination="wiP-Um-fcQ" id="BvY-Sh-edR"/>
-                        <outlet property="three" destination="Af5-0z-F08" id="5iv-KA-HqZ"/>
-                        <outlet property="two" destination="CR6-SZ-XFS" id="uWn-Oj-qgP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54w-3p-ml4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -545,7 +527,7 @@
             <objects>
                 <viewController id="ryb-lH-Tzz" customClass="Play" customModule="Pitch_Pal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6y5-AC-Y6N" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="808" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEF-zu-Yt4">
@@ -561,20 +543,20 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUz-3T-jAJ">
-                                <rect key="frame" x="0.0" y="0.0" width="852" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="808" height="393"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Menu?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRO-8c-vVh">
-                                        <rect key="frame" x="0.0" y="20" width="852" height="60"/>
+                                        <rect key="frame" x="0.0" y="20" width="808" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="3" height="3"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8ef-CH-Axc">
-                                        <rect key="frame" x="0.0" y="90" width="852" height="224"/>
+                                        <rect key="frame" x="0.0" y="90" width="808" height="203"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-qQ-eKk">
-                                                <rect key="frame" x="0.0" y="0.0" width="852" height="112"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="808" height="101.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="Yes">
@@ -586,7 +568,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypd-BO-wwA">
-                                                <rect key="frame" x="0.0" y="112" width="852" height="112"/>
+                                                <rect key="frame" x="0.0" y="101.5" width="808" height="101.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                 <size key="titleShadowOffset" width="3" height="3"/>
                                                 <state key="normal" title="No">
@@ -1499,6 +1481,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9d-T8-12a">
+                                <rect key="frame" x="84" y="10" width="54" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54.5" id="bvG-9D-kSK"/>
+                                    <constraint firstAttribute="width" constant="54" id="wLn-7K-hne"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="gearshape.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="settingsBtnPressed:" destination="7Ev-Gp-DTv" eventType="touchUpInside" id="euk-9e-zu8"/>
+                                    <action selector="settingsBtnPressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="zwv-1U-Lho"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch Pal Guitar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOY-hf-vuQ">
                                 <rect key="frame" x="214" y="68.5" width="468.5" height="77.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="64"/>
@@ -1522,65 +1517,45 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xe6-X0-zLn">
                                         <rect key="frame" x="20" y="148" width="856" height="216"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-xv-TSJ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QF1-MM-ouy">
                                                 <rect key="frame" x="0.0" y="0.0" width="856" height="186"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PitchPal Piano" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaP-FV-neo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="186"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QF1-MM-ouy">
-                                                        <rect key="frame" x="113.5" y="0.0" width="742.5" height="186"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="arrow.right" catalog="system"/>
-                                                        <connections>
-                                                            <segue destination="kUu-eh-y8v" kind="show" id="BLj-8K-5Et"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JYa-aB-0X6">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="  Pitch Pal Piano" image="arrow.right" catalog="system">
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="kUu-eh-y8v" kind="show" id="BLj-8K-5Et"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYa-aB-0X6">
                                                 <rect key="frame" x="0.0" y="186" width="856" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noise Gate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F60-Pb-n3j">
-                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noise Gate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F60-Pb-n3j">
+                                                        <rect key="frame" x="0.0" y="0.0" width="34.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWx-2Q-UXc">
-                                                        <rect key="frame" x="171" y="0.0" width="171.5" height="30"/>
-                                                        <state key="normal" title="1"/>
-                                                        <connections>
-                                                            <action selector="noiseGate1Pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="R4O-Iw-WhG"/>
-                                                            <action selector="noiseGate1Pressed:" destination="7Ev-Gp-DTv" eventType="touchUpInside" id="fHe-xK-Z4O"/>
-                                                        </connections>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmK-xZ-6k4">
+                                                        <rect key="frame" x="34.5" y="0.0" width="24" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal">
+                                                            <imageReference key="image" image="speaker.wave.1" catalog="system" symbolScale="large"/>
+                                                        </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXf-1v-DjR">
-                                                        <rect key="frame" x="342.5" y="0.0" width="171" height="30"/>
-                                                        <state key="normal" title="2"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PLh-45-g1v">
+                                                        <rect key="frame" x="56.5" y="0.0" width="768" height="31"/>
                                                         <connections>
-                                                            <action selector="noiseGate2Pressed:" destination="7Ev-Gp-DTv" eventType="touchUpInside" id="Bqn-Ch-iah"/>
-                                                            <action selector="noiseGate2Pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="YWT-PB-IcT"/>
+                                                            <action selector="noiseGateSliderAction:" destination="7Ev-Gp-DTv" eventType="valueChanged" id="xnA-bP-z3p"/>
                                                         </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17Z-2W-rSD">
-                                                        <rect key="frame" x="513.5" y="0.0" width="171.5" height="30"/>
-                                                        <state key="normal" title="3"/>
-                                                        <connections>
-                                                            <action selector="noiseGate3Pressed:" destination="7Ev-Gp-DTv" eventType="touchUpInside" id="drd-C0-q5h"/>
-                                                            <action selector="noiseGate3Pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="mLe-e1-2NI"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZ1-DZ-cDD">
-                                                        <rect key="frame" x="685" y="0.0" width="171" height="30"/>
-                                                        <state key="normal" title="4"/>
-                                                        <connections>
-                                                            <action selector="noiseGate4Pressed:" destination="7Ev-Gp-DTv" eventType="touchUpInside" id="OC0-T2-Inl"/>
-                                                            <action selector="noiseGate4pressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="zoc-af-3va"/>
-                                                        </connections>
+                                                    </slider>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elw-0A-3Md">
+                                                        <rect key="frame" x="822.5" y="0.0" width="33.5" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal">
+                                                            <imageReference key="image" image="speaker.wave.3" catalog="system" symbolScale="large"/>
+                                                        </state>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1601,7 +1576,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.23540273310000001" green="0.23910418150000001" blue="0.24706000089999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="xe6-X0-zLn" secondAttribute="trailing" constant="20" id="5ev-mL-fCy"/>
                                     <constraint firstItem="Dpk-KW-aBd" firstAttribute="top" secondItem="jA2-X3-mgn" secondAttribute="top" constant="8" id="8rX-zd-F6B"/>
@@ -1614,19 +1589,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Dpk-KW-aBd" secondAttribute="trailing" constant="200" id="u8Q-g4-pqT"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9d-T8-12a">
-                                <rect key="frame" x="84" y="10" width="54" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54.5" id="bvG-9D-kSK"/>
-                                    <constraint firstAttribute="width" constant="54" id="wLn-7K-hne"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="gearshape.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="settingsBtnPressed:" destination="7Ev-Gp-DTv" eventType="touchUpInside" id="euk-9e-zu8"/>
-                                    <action selector="settingsBtnPressed:" destination="kUu-eh-y8v" eventType="touchUpInside" id="zwv-1U-Lho"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BzK-au-7WT"/>
                         <color key="backgroundColor" red="0.18449997900000001" green="0.1919861138" blue="0.20392328500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1646,12 +1608,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="yAD-48-nZD"/>
                     <connections>
-                        <outlet property="four" destination="NZ1-DZ-cDD" id="LgD-JG-RHZ"/>
-                        <outlet property="one" destination="MWx-2Q-UXc" id="jh6-0B-nbk"/>
+                        <outlet property="noiseGateSlider" destination="PLh-45-g1v" id="9nv-cw-8z5"/>
                         <outlet property="settingsBtn" destination="Y9d-T8-12a" id="bec-e3-Ya1"/>
                         <outlet property="settingsView" destination="jA2-X3-mgn" id="vm1-80-1vp"/>
-                        <outlet property="three" destination="17Z-2W-rSD" id="gIq-Yr-R7w"/>
-                        <outlet property="two" destination="cXf-1v-DjR" id="qBm-xd-ng4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1C-bd-3QU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2560,8 +2519,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zfC-R3-fz4"/>
-        <segue reference="eCl-S4-sba"/>
+        <segue reference="lhQ-MY-FgU"/>
+        <segue reference="BLj-8K-5Et"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor"/>
     <resources>
@@ -2570,6 +2529,8 @@
         <image name="guitarWallpaper" width="1080" height="1920"/>
         <image name="house.circle" catalog="system" width="128" height="121"/>
         <image name="pianoWallpaper" width="2560" height="1600"/>
+        <image name="speaker.wave.1" catalog="system" width="128" height="108"/>
+        <image name="speaker.wave.3" catalog="system" width="128" height="86"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
