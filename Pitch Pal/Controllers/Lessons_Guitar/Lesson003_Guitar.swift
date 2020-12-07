@@ -92,7 +92,7 @@ class Lesson003_Guitar: UIViewController, Subscriber {
         GuitarUI.getStrings().alpha = 0
         
         LessonLabel.text = "Hello! Welcome to lesson 3 of the Pitch Pal App. To proceed tap anywhere on the screen."
-        LessonLabel_number.text = "1 / 9"
+        LessonLabel_number.text = "1 / 7"
         lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step001(_:)))
@@ -101,7 +101,7 @@ class Lesson003_Guitar: UIViewController, Subscriber {
     
     @objc func step001(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "In this lesson we are going to learn about guitar chords."
-        LessonLabel_number.text = "2 / 9"
+        LessonLabel_number.text = "2 / 7"
         lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step002(_:)))
@@ -110,7 +110,7 @@ class Lesson003_Guitar: UIViewController, Subscriber {
     
     @objc func step002(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "A guitar chord is a set of notes played on a guitar."
-        LessonLabel_number.text = "3 / 9"
+        LessonLabel_number.text = "3 / 7"
         lessonModel.accumulateLessonStepNumber()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.step003(_:)))
@@ -119,7 +119,7 @@ class Lesson003_Guitar: UIViewController, Subscriber {
     
     @objc func step003(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "The image below displays how to play a G chord. The filled in circles are where your fingers go and the outlined circle is an open string. Give it a try."
-        LessonLabel_number.text = "4 / 9"
+        LessonLabel_number.text = "4 / 7"
         GchordImg.image = UIImage(named: "gchord")
         
         GchordImg.alpha = 1
@@ -141,7 +141,7 @@ class Lesson003_Guitar: UIViewController, Subscriber {
     
     @objc func step004(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "The image below displays how to play an Em chord. Give it a try"
-        LessonLabel_number.text = "5 / 9"
+        LessonLabel_number.text = "5 / 7"
         EmchordImg.image = UIImage(named: "emchord")
         
         GchordImg.alpha = 0
@@ -164,7 +164,7 @@ class Lesson003_Guitar: UIViewController, Subscriber {
     
     @objc func step005(_ sender: UITapGestureRecognizer? = nil) {
         LessonLabel.text = "The image below displays how to play a D chord. The x indicates that the string is not to be played. Give it a try."
-        LessonLabel_number.text = "6 / 9"
+        LessonLabel_number.text = "6 / 7"
         DchordImg.image = UIImage(named: "dchord")
         
         GchordImg.alpha = 0
