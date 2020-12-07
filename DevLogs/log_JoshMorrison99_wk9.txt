@@ -7,3 +7,6 @@
 - removed visual debug information for the user.
 - created lesson 4 of the guitar.
 - changed the ui for the settings menu.
+- Fixed lesson 3 on the guitar.
+- Fixed issue where the user defaults for the "NoiseGate" would crash the applicaiton when not set.
+- Fixed issue in the noise gate slider, where the slider's value wouldn't save.
