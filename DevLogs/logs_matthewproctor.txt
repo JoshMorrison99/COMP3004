@@ -1,0 +1,26 @@
+
+1)
+improved usage software engineering principals within code base
+
+2)
+contemplated and decided on the architectural styles to be used for pitch detection
+
+3)
+implemented architectural styles to be used for pitch detection
+
+4)
+fixed unintended behaviour of pitch detection
+
+5)
+documentation and bug fixes of pitch detection
+
+6)
+simplified code in lesson 2
+
+7)
+corrected anywhere in the project where software engineering principals were not used
+
+8)
+added more theory to lesson 3
+
+
