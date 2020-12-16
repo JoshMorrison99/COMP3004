@@ -52,3 +52,11 @@ updated Dec 3
 -updated labels in lesson 1-5
 
 9)
+-simplified functions and variable names in piano lessons
+-changed home button header dimensions and color
+-cleaned up guitar lesson 1
+
+10)
+-added theory to guitar lesson 2
+-fixed spacing issue with home buttons
+-fixed audiokit error in piano lesson 4
